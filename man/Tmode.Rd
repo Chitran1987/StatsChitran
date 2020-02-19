@@ -14,6 +14,9 @@ Tmode(v,bt=T)
   \item{v}{
 The vector whose mode/frequency table you want to find
 }
+  \item{bt}{
+The value of bt decides the return type. If bt is set to TRUE(default), it returns only the mode and its(the mode's) frequency as a dataframe, but if bt is set to FALSE, it returns a list whose first item is the mode(modes) of the distribution (in case of multimodal distributions) and the second item of the list is a two column dataframe, such that the variables in question are the first column of the dataframe and the frequency of occurrence of the variables are the second column of the data frame
+}
 }
 \details{
 The function returns either a dataframe with the max value(mode value) and the frequency or a list with two objects
