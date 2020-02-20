@@ -2,8 +2,7 @@
 #multicolinearity of input variables is a problem and should be addressed in the help files/help links
 
 
-#' program for calculating the linear regression by setting the gradients of the regression weights to
-#' zero in the residual sum of squares equation.
+#' function for calculating the linear regression
 #'
 #' @param df input a dataframe with more than two columns. The last column is always presumed to be the
 #' column of the independent variables in the perictor equation while the the others are presumed to be
