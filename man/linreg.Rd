@@ -2,8 +2,7 @@
 % Please edit documentation in R/linreg.R
 \name{linreg}
 \alias{linreg}
-\title{program for calculating the linear regression by setting the gradients of the regression weights to
-zero in the residual sum of squares equation.}
+\title{function for calculating the linear regression}
 \usage{
 linreg(df)
 }
@@ -13,9 +12,23 @@ column of the independent variables in the perictor equation while the the other
 the dependent variables.}
 }
 \value{
-A dataframe comprising of your the estimated values of the regression weights
+A dataframe comprising of your the estimated values of the regression weights if the input
+data does not suffer from multicollinearity
 }
 \description{
-program for calculating the linear regression by setting the gradients of the regression weights to
-zero in the residual sum of squares equation.
+function for calculating the linear regression
+}
+\examples{
+linreg(reg_data1)
+[,1]
+[1,] 2.950339
+[2,] 5.052787
+[3,] 0.999999
+[4,] 9.599983
+(The reg_data1 dataset is available with the "StatsChitran" package)
+
+linreg(reg_data2)
+NULL
+(The reg_data2 dataset is available with "StatsChitran" package. The function returns NULL in case
+is an issue with multicollinearity in the input dataset)
 }
