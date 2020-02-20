@@ -1,6 +1,18 @@
-#write a program for calculating the linear regression by setting the variable gradients to zero to
-#minimize the sum squared error function
+#minimize the residual sum of squares
 #multicolinearity of input variables is a problem and should be addressed in the help files/help links
+
+
+#' program for calculating the linear regression by setting the gradients of the regression weights to
+#' zero in the residual sum of squares equation.
+#'
+#' @param df input a dataframe with more than two columns. The last column is always presumed to be the
+#' column of the independent variables in the perictor equation while the the others are presumed to be
+#' the dependent variables.
+#'
+#' @return A dataframe comprising of your the estimated values of the regression weights
+#' @export
+#'
+#' @examples
 linreg<-function(df){
   m<-matrix(NA, ncol=dim(df)[2], nrow = dim(df)[2])
   for (i in 1:(dim(m)[1])) {
