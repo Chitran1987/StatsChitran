@@ -40,7 +40,7 @@ chng_pnt_algo<-function(v,dat){
   ####################################################
 
   #######first plot###################################
-  plot(dat$V1, dat$V2, xlim = xl, ylim = yl)
+  plot(dat$V1, dat$V2)
   dat1<-prof_struct(v,dat)
   lines(dat1$V1,dat1$V2, col='red')
 
@@ -106,6 +106,6 @@ chng_pnt_algo<-function(v,dat){
   ##################################
 
   ######result of final convergence#####
-  final<-list(return=r,OptimizedVector=v, BreakPoints=Bp, Heights=H, Convergence=con)
+  final<-list(return=r,Optimized_Vector=v, BreakPoints=Bp, Heights=H, Convergence=con)
   return(final)
 }
