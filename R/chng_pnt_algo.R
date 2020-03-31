@@ -29,8 +29,18 @@ chng_pnt_algo<-function(v,dat){
   }   #function close
   ####################################################
 
+  ########define the plot limits######################
+  xmin <- min(dat$V1)-(1/4)*(max(dat$V1)-min(dat$V1))
+  xmax <- max(dat$V1)+(1/4)*(max(dat$V1)-min(dat$V1))
+  xl <- c(xmin,xmax)
 
-  plot(dat$V1, dat$V2)
+  ymin <- min(dat$V2)
+  ymax <- max(dat$V2)+(1/4)*(max(dat$V2)-min(dat$V2))
+  yl <- c(ymin, ymax)
+  ####################################################
+
+  #######first plot###################################
+  plot(dat$V1, dat$V2, xlim = xl, ylim = yl)
   dat1<-prof_struct(v,dat)
   lines(dat1$V1,dat1$V2, col='red')
 
@@ -72,9 +82,18 @@ chng_pnt_algo<-function(v,dat){
     return(e)
   }
   r<-constrOptim(v,f,NULL,m,b)
+
+  ######calculating the return values#####
   v<-r$par
+  L<-length(v)
+  Bp<-v[seq(1,2*(L-1)/3)]
+  H<-v[seq(2*(L+1)/3, L)]
+  ########################################
+
+  ######plotting the optimized function#####
   tgt<-prof_struct(v,dat)
   lines(tgt$V1,tgt$V2, col='blue')
+  legend('topleft', legend = c('approx', 'optim'), col = c('red', 'blue'), lty=1:1)
 
   #######convergence factor##########
   con<-vector(mode = 'character', length = 1)
@@ -87,6 +106,6 @@ chng_pnt_algo<-function(v,dat){
   ##################################
 
   ######result of final convergence#####
-  final<-list(r,v, con)
+  final<-list(return=r,OptimizedVector=v, BreakPoints=Bp, Heights=H, Convergence=con)
   return(final)
 }
