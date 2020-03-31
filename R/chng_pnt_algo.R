@@ -87,7 +87,7 @@ chng_pnt_algo<-function(v,dat){
   v<-r$par
   L<-length(v)
   Bp<-v[seq(1,2*(L-1)/3)]
-  H<-v[seq(2*(L+1)/3, L)]
+  H<-v[seq((2*L+1)/3, L)]
   ########################################
 
   ######plotting the optimized function#####
