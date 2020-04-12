@@ -1,5 +1,40 @@
 chng_pnt_algo<-function(v,dat){
   names(dat)<-c('V1', 'V2')
+  L<-length(v)
+  Bp<-v[seq(1,(2*(L-1)/3))]####number of breakpoints
+  H<-v[seq(((2*L+1)/3),L)] ####number of plateau heights
+
+  ###########################################################
+  #######creating the breakpoint height dataframe############
+  Ht<-vector(mode = 'numeric', length=length(Bp))
+  #######creating the Htvalues for the breakpoints##########
+  k<-2
+  for (i in 1:length(Bp)) {
+    if(i==1){
+      Ht[i]<-H[i]
+    }
+    else if(i==length(Bp)){
+      Ht[i]<-H[length(H)]
+    }
+    else{
+      if(i%%2==0){
+        Ht[i] <- H[k]
+        k <- k+1
+      }
+      else{
+        Ht[i]<-Ht[i-1]
+      }
+    }
+  }
+  ###########################################################
+
+  #######creating the dataframe##############################
+  Bp_H_df<-data.frame(matrix(c(Bp,Ht), byrow = F, ncol = 2))
+  names(Bp_H_df)<-c('V1','V2')
+  ###########################################################
+
+  ###########################################################
+  ###########################################################
 
   #######
   #######create a function for accepting the profile that you want to create
@@ -42,7 +77,10 @@ chng_pnt_algo<-function(v,dat){
   #######first plot###################################
   plot(dat$V1, dat$V2)
   dat1<-prof_struct(v,dat)
+  dat1<-rbind(dat1, Bp_H_df)
+  dat1<-dat1[order(dat1$V1),]
   lines(dat1$V1,dat1$V2, col='red')
+
 
   ######setup the constraint matrix and the vector
   ###number of points#####number of constraints=n-1(for breakpoints)+2*((length(v)+2)/3)(for the plateau heights)
@@ -89,9 +127,38 @@ chng_pnt_algo<-function(v,dat){
   Bp<-v[seq(1,2*(L-1)/3)]
   H<-v[seq((2*L+1)/3, L)]
   ########################################
+  ###########################################################
+  #######creating the breakpoint height dataframe############
+  Ht<-vector(mode = 'numeric', length=length(Bp))
+  #######creating the Htvalues for the breakpoints##########
+  k<-2
+  for (i in 1:length(Bp)) {
+    if(i==1){
+      Ht[i]<-H[i]
+    }
+    else if(i==length(Bp)){
+      Ht[i]<-H[length(H)]
+    }
+    else{
+      if(i%%2==0){
+        Ht[i] <- H[k]
+        k <- k+1
+      }
+      else{
+        Ht[i]<-Ht[i-1]
+      }
+    }
+  }
+  ###########################################################
 
+  #######creating the dataframe##############################
+  Bp_H_df<-data.frame(matrix(c(Bp,Ht), byrow = F, ncol = 2))
+  names(Bp_H_df)<-c('V1','V2')
+  ###########################################################
   ######plotting the optimized function#####
   tgt<-prof_struct(v,dat)
+  tgt<-rbind(tgt, Bp_H_df)
+  tgt<-tgt[order(tgt$V1),]
   lines(tgt$V1,tgt$V2, col='blue')
   legend('topleft', legend = c('approx', 'optim'), col = c('red', 'blue'), lty=1:1)
 
@@ -109,3 +176,4 @@ chng_pnt_algo<-function(v,dat){
   final<-list(return=r,Optimized_Vector=v, BreakPoints=Bp, Heights=H, Convergence=con)
   return(final)
 }
+
