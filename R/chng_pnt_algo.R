@@ -1,4 +1,4 @@
-chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125)){
+chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125), col_app='red', col_op='blue'){
   names(dat)<-c('V1', 'V2')
   L<-length(v)
   Bp<-v[seq(1,(2*(L-1)/3))]####number of breakpoints
@@ -79,7 +79,7 @@ chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125)){
   dat1<-prof_struct(v,dat)
   dat1<-rbind(dat1, Bp_H_df)
   dat1<-dat1[order(dat1$V1),]
-  lines(dat1$V1,dat1$V2, col='red')
+  lines(dat1$V1,dat1$V2, col=col_app)
 
 
   ######setup the constraint matrix and the vector
@@ -159,8 +159,8 @@ chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125)){
   tgt<-prof_struct(v,dat)
   tgt<-rbind(tgt, Bp_H_df)
   tgt<-tgt[order(tgt$V1),]
-  lines(tgt$V1,tgt$V2, col='blue')
-  legend('topleft', legend = c('approx', 'optim'), col = c('red', 'blue'), lty=1:1)
+  lines(tgt$V1,tgt$V2, col=col_op)
+  legend('topleft', legend = c('approx', 'optim'), col = c(col_app, col_op), lty=1:1)
 
   #######convergence factor##########
   con<-vector(mode = 'character', length = 1)
