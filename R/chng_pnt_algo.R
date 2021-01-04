@@ -75,7 +75,7 @@ chng_pnt_algo<-function(v,dat){
   ####################################################
 
   #######first plot###################################
-  plot(dat$V1, dat$V2,col=rgb(0,0.5,0, 0.5), pch=19)
+  plot(dat$V1, dat$V2, col=rgb(0,0.5,0, 0.5), pch=19)
   dat1<-prof_struct(v,dat)
   dat1<-rbind(dat1, Bp_H_df)
   dat1<-dat1[order(dat1$V1),]
