@@ -1,4 +1,4 @@
-chng_pnt_algo<-function(v,dat, namX='X', namY='Y'){
+chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0.5,0,0.5)){
   names(dat)<-c('V1', 'V2')
   L<-length(v)
   Bp<-v[seq(1,(2*(L-1)/3))]####number of breakpoints
@@ -75,7 +75,7 @@ chng_pnt_algo<-function(v,dat, namX='X', namY='Y'){
   ####################################################
 
   #######first plot###################################
-  plot(dat$V1, dat$V2, xlab = namX, ylab = namY, col=rgb(0,0.5,0,0.5), pch=19)
+  plot(dat$V1, dat$V2, xlab = namX, ylab = namY, col=col_pt, pch=19)
   dat1<-prof_struct(v,dat)
   dat1<-rbind(dat1, Bp_H_df)
   dat1<-dat1[order(dat1$V1),]
