@@ -1,4 +1,4 @@
-chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0.5,0,0.5)){
+chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.5)){
   names(dat)<-c('V1', 'V2')
   L<-length(v)
   Bp<-v[seq(1,(2*(L-1)/3))]####number of breakpoints
