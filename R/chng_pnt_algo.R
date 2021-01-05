@@ -1,3 +1,19 @@
+#' chng_pnt_algo
+#'
+#' @param v The vector which is the concatenation of the (approximate/estimated/initial guess)breakpoints and the (estimated/initial guess)plateau heights vectors
+#' @param dat The two column dataframe over which you want to optimize the (plateau/slope) curve. The first column is the x-axis, while the second column is the y-axis
+#' @param namX The X-axis label of the output graph(default to 'X')
+#' @param namY The Y-axis label of the output graph(default to 'Y')
+#' @param col_pt The datapoints colour of the output scatter plot(recommended to use rgb(R,G,B,Tr)) of your raw data
+#' @param col_app The colour of the approximated (estimated/initial guess) lines/curve overlayed on your raw data plot(dat), generated using your input vector(v)
+#' @param col_op The colour of the calculated/optimized(calculated/optimized by the chng_pnt_algo) line/curve overlayed over your raw data(dat)
+#' @param gr_app A binary bit(default set to T) asking whether the user wants to see the approximated/estimated/initial guess curve, derived from vector v, overlayed on the raw data(dat)
+#' @param gr_op A binary bit(default set to T) asking whether the user wants to see the optimized/calculated line/curve overlayed on the raw data plot(data)
+#'
+#' @return Returns a list L, containing information about the optimization calculation with the new optimized vector v , new breakpoints Bp and the new heights H.
+#' @export
+#'
+#' @examples
 chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125), col_app='red', col_op='blue', gr_app=T, gr_op=T){
   names(dat)<-c('V1', 'V2')
   L<-length(v)
