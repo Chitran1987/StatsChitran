@@ -37,7 +37,7 @@ ClearPlot()
 
 ClearPlot<-function(){
   if (names(dev.cur()) !='null device'){
-    dev.off()
+    invisible(dev.off())
   }
   #return NULL
 }
