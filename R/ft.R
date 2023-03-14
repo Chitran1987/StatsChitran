@@ -15,13 +15,17 @@ ft <- function(X, Y, w = F){
     rn <- diff(X) #calculate the sampling difference vector
     if(w == T){
       fs <- 2*pi/mean(rn)
-      fr <- seq(0, fs, by=2*pi/((max(X))-(min(X))))
+      wf <- seq(0, fs, by=2*pi/((max(X))-(min(X))))
+      fy <- fft(Y)
+      df <- data.frame(wf,fy)
     }else{
       fs <- 1/mean(rn)
       fr <- seq(0, fs, by=1/((max(X))-(min(X))))
+      fy <- fft(Y)
+      df <- data.frame(fr,fy)
     }
-    fy <- fft(Y)
-    df <- data.frame(fr,fy)
+    #fy <- fft(Y)
+    #df <- data.frame(fr,fy)
     return(df)
   }
 }

@@ -5,8 +5,8 @@
 Return an FFT along with the freq components
 }
 \description{
-The function returns a 2 column data frame with the first column (named fr or w, depending whether w=F or w=T in the arguments respectively) containing the frequencies of the frequency space.
-The second column named ft contains the complex values of the fourier transform
+The function returns a 2 column data frame with the first column (named fr or wf, depending whether w=F or w=T in the arguments respectively) containing the frequencies of the frequency space.
+The second column named fy contains the complex values of the fourier transform
 }
 \usage{
 ft(X,Y,w=F)
@@ -20,7 +20,7 @@ Contains the X component of the input function
   Contains the Y component of the input function
   }
   \item{w}{
-  Set to w=F by default, it toggles between fr or w=2*pi*fr on the frequency axis
+  Set to w=F by default, it toggles between fr or wf=2*pi*fr on the frequency axis
   }
 }
 \details{
