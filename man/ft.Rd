@@ -9,7 +9,7 @@ The function returns a 2 column data frame with the first column (named fr or wf
 The second column named fy contains the complex values of the fourier transform
 }
 \usage{
-ft(X,Y,w=F)
+ft(X,Y,w=F, set.nyquist = T)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,6 +21,9 @@ Contains the X component of the input function
   }
   \item{w}{
   Set to w=F by default, it toggles between fr or wf=2*pi*fr on the frequency axis
+  }
+  \item{set.nyquist}{
+  Ordinarily set to true, this argument(when true) deletes the dataset which is greater than half of the sampling frequency
   }
 }
 \details{
