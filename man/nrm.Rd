@@ -2,7 +2,7 @@
 \alias{nrm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-(normalizes) recalibrates the function between two said values
+(normalizes) recalibrates the vector between two said values
 }
 \description{
 This function takes in a vector and outputs a recalibrated vector according to the min and max values set in the function argument. The min and the max values are set to min=0 and max=1 by default. Hence the name nrm(X)
