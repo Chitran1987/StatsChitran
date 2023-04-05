@@ -65,7 +65,7 @@ linreg<-function(df){
     print('matrix computationally singular')
   }
   else{
-    res<-solve(m,b)
+    res<-as.vector(solve(m,b))
     return(res)
   }
 }
