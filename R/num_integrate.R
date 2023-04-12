@@ -10,6 +10,9 @@ num_integrate <- function(X,Y, xmin, xmax, type='avg'){
   if(length(X) != length(Y)){
     stop('X and Y are not of the same lengths')
   }
+  if(abs(xmax - xmin) < 2*mean(diff(X))){
+    stop('Not enough samples to measure an integral')
+  }
   #####################################################################
   ##subseting the data into the upper(xmax) and lower(xmin) limits####
   df <- data.frame(X,Y)
