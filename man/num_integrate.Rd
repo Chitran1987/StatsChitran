@@ -5,7 +5,7 @@
 Returns the 2D reimann integration of a curve within specified limits
 }
 \description{
-The function returns a single numeric scalar as a result for the integration between upper and lower bounds 
+The function returns a single numeric scalar as a result for the integration between upper and lower bounds
 }
 \usage{
 num_integrate(X,Y, xmin=2, xmax=5)
@@ -38,6 +38,8 @@ num_integrate(X,Y, xmin=2, xmax=5, type='right')
 \details{
 The X vector should include the bounds of xmax and xmin or else an error will be thrown. Look at the arguments section above.\cr
 The funcion is by default set to type='avg'. Hence, if needed, this factor can be changed to 'left' or 'right'.\cr
+The no. of points within the bounds of xmax and xmin should at least be 4. \cr
+The sampling density in the dataset should allow on an average for at least 4 points within the xmax and xmin window length. \cr
 }
 \value{
 The function always returns a numeric scalar\cr
