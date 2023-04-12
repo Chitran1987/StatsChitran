@@ -13,12 +13,12 @@ num_integrate <- function(X,Y, xmin, xmax, type='avg'){
   if(abs(xmax - xmin) < 4*mean(diff(X))){
     stop('Not enough samples to measure an integral')
   }
-  #####################################################################
+  #1.0#####################################################################
   ##subseting the data into the upper(xmax) and lower(xmin) limits####
   df <- data.frame(X,Y)
   names(df) <- c('X', 'Y')
   df <- subset(df, (df$X >= xmin) & (df$X <= xmax))
-  #####################################################################
+  #1.1#####################################################################
   ##extra error checking after subsetting because of the case of non-uniform sampling######
   if(length(df$X) < 4){
     stop('Not enough samples with probably non-uniform sampling')
