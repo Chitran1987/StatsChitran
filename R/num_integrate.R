@@ -19,6 +19,10 @@ num_integrate <- function(X,Y, xmin, xmax, type='avg'){
   names(df) <- c('X', 'Y')
   df <- subset(df, (df$X >= xmin) & (df$X <= xmax))
   #####################################################################
+  ##extra error checking after subsetting because of the case of non-uniform sampling######
+  if(length(df$X) < 4){
+    stop('Not enough samples with probably non-uniform sampling')
+  }
   s <- 0 #sum to update the area of the cumulative reimann rectangles
   if(type == 'right'){
   for (i in 1:(length(df$X)-1)){
