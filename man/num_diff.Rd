@@ -2,10 +2,10 @@
 \alias{num_diff}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Returns a dataframe consisting of the numerically differentiated second variable w.r.t the first variable (dY/dX) as the second column and (X) as the first(independent variable) column. It also plots the curve depending on the input arguments
+Function for numeric differentiation
 }
 \description{
-The function allows for the numeric differentiation of the second column of your data frame with respect to the first
+Returns a dataframe consisting of the numerically differentiated second variable w.r.t the first variable (dY/dX) as the second column and (X) as the first(independent variable) column. It also plots the curve depending on the input arguments
 }
 \usage{
 num_diff(X,Y)
