@@ -66,6 +66,8 @@ num_integrate(X, Y, xmin=2, xmax=8)
 num_integrate(X, Y, xmin=2, xmax=8, type='avg')
 num_integrate(X, Y, xmin=2, xmax=8, type='left')
 num_integrate(X, Y, xmin=2, xmax=8, type='right')
+num_integrate(X,Y, xmin=2, xmax=2)
+num_integrate(X,Y, xmin=6, xmax=6)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
