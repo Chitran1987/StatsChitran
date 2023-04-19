@@ -40,7 +40,7 @@ A vector with the y-values of the dataset. This argument must be provided.
 6. This argument must be provided
 }
   \item{xbox}{
-1. The width of the segmentation box in real space\cr 
+1. The width of the segmentation box in real space\cr
 2. Must be a single number (numeric and 'dim(xbox)=NULL')\cr
 3. Must only be provided when 'nbin' is NOT provided\cr
 4. If provided along with 'nbin', function throws an error\cr
@@ -94,10 +94,10 @@ w1 <- c(550, 850)
 w2 <- c(3000, 3300)
 w3 <- c(4700, 5000)
 w_df <- data.frame(w1, w2, w3)
-col_vec <- c('red', 'blue', 'green')
+col_vec <- c('red', rgb(0,0,1,0.75), rgb(0,1,0,0.5))
 bin <- 0.085
 List_frmap <- freq_map(my_voice_01$time, my_voice_01$left, w_int = w_df, xbox = bin, plt = T, plt.leg = T, color = col_vec)
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
