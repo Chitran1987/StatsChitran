@@ -65,6 +65,8 @@ nrm <- function(X, min=0, max=1){
   Y <- ((max - min)/(max(X) - min(X)))*(X - min(X)) + min
   return(Y)
 }
+
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
