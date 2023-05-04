@@ -6,7 +6,7 @@ Function for reducing the no. of data points in an X-Y dataset
 }
 \description{
 The function\cr
-1. Uniformly selects points between the dataset and for the select indexes returns the X and Y values in a dataframe
+1. Uniformly selects points between the dataset and for the select indexes returns the X and Y values in a dataframe\cr
 2. The no. of selected points is reduced by an integer factor "fract"
 }
 \usage{
