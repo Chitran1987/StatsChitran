@@ -53,7 +53,7 @@ df <- data_reduce(t,Y, fract = 1000)
 par(mfrow = c(2,1))
 plot(t,Y, main = 'original data')
 plot(df$X, df$Y, main = 'reduced data')
-
+par(mfrow = c(1,1))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
