@@ -48,7 +48,7 @@ If the no. of points in the new dataset are one or less, then the function throw
 }
 \examples{
 t <- seq(0, 2*pi, by=0.0001)
-Y <- Sin(t)
+Y <- sin(t)
 df <- data_reduce(t,Y, fract = 1000)
 par(mfrow = c(2,1))
 plot(t,Y, main = 'original data')
