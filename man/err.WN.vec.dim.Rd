@@ -2,7 +2,7 @@
 \alias{err.WN.vec.dim}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-
+Throws an error if the argument vector is not a whole-number vector of a specified dimension
 }
 \description{
 Throws an error if the argument is not an atomic vector withh whole-number elements(could be of type 'double', not necessarily of type 'int') and must have a specified dimension.
