@@ -13,7 +13,8 @@ chng_pnt_algo(
   col_app = "red",
   col_op = "blue",
   gr_app = T,
-  gr_op = T
+  gr_op = T,
+  gr_leg=T
 )
 }
 \arguments{
@@ -34,6 +35,7 @@ chng_pnt_algo(
 \item{gr_app}{A binary bit(default set to T) asking whether the user wants to see the approximated/estimated/initial guess curve, derived from vector v, overlayed on the raw data(dat)}
 
 \item{gr_op}{A binary bit(default set to T) asking whether the user wants to see the optimized/calculated line/curve overlayed on the raw data plot(data)}
+\item{gr_leg}{A binary bit(default set to T) asking whether the user wants to see the legend over the plot}
 }
 \value{
 Returns a list L, containing information about the optimization calculation with the new optimized vector v , new breakpoints Bp and the new heights H.
