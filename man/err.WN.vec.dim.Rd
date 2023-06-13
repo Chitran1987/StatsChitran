@@ -51,20 +51,6 @@ err.vec.dim(w, 2)
 err.vec.dim(w, 3)
 err.vec.dim(L, 2)
 
-## The function is currently defined as
-err.WN.vec.dim <- function(v, n){
-  if(!is.atomic(v) || !is.vector(v)){
-    stop('argument has to be an atomic vector')
-  }
-  if(!all(v%%1 == 0)){
-    stop('argument has to be an integer vector')
-  }
-  if(length(v) != n){
-    stop(paste('dimension of input vector needs to be', n))
-  }
-  return(NULL)
-}
-}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
