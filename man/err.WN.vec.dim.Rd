@@ -46,10 +46,10 @@ Chitran Ghosal
 v <- c(1.3, 2.0)
 w <- c(1.0, 2.0)
 L <- list(v, w)
-err.vec.dim(v, 2)
-err.vec.dim(w, 2)
-err.vec.dim(w, 3)
-err.vec.dim(L, 2)
+err.WN.vec.dim(v, 2)
+err.WN.vec.dim(w, 2)
+err.WN.vec.dim(w, 3)
+err.WN.vec.dim(L, 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
