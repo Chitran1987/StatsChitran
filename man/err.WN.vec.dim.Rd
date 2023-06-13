@@ -50,7 +50,7 @@ err.vec.dim(v, 2)
 err.vec.dim(w, 2)
 err.vec.dim(w, 3)
 err.vec.dim(L, 2)
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
