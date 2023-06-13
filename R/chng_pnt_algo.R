@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125), col_app='red', col_op='blue', gr_app=T, gr_op=T){
+chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125), col_app='red', col_op='blue', gr_app=T, gr_op=T, gr_leg=T){
   names(dat)<-c('V1', 'V2')
   L<-length(v)
   Bp<-v[seq(1,(2*(L-1)/3))]####number of breakpoints
@@ -180,7 +180,7 @@ chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125), col_
   if(gr_op==T){
   lines(tgt$V1,tgt$V2, col=col_op)
   }
-  if(gr_app==T & gr_op==T){
+  if(gr_app==T & gr_op==T & gr_leg==T){
   legend('topleft', legend = c('approx', 'optim'), col = c(col_app, col_op), lty=1:1)
   }
 
