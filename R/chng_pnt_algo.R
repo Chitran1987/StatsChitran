@@ -130,7 +130,7 @@ chng_pnt_algo<-function(v,dat, namX='X', namY='Y', col_pt=rgb(0,0,0,0.125), col_
   for (i in ((n+((n/2)+1)-1)+1):(2*n+1)) {
     b[i]<--max(dat$V2)
   }
-  #######write down the constraint function#####
+  #######write down the objective function#####
   f<-function(v){
     dat2<-dat
     tgt2<-prof_struct(v,dat2)
