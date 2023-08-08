@@ -24,6 +24,9 @@ num_diff <- function(X,Y, type='center', pl=T){
   df_res <- data.frame(X1,Y1)
   names(df_res) <- c('X','Y')
   if(pl==T){
+    #define the plot Y-limits, since X-limits will be the same
+    ymin <- min(c(Y,Y1))
+    ymax <- max(c(Y,Y1))
     plot(X,Y, pch =19, col=rgb(0,0,1,0.3), type='l')
     lines(X1,Y1, col=rgb(1,0,0))
     legend('topright', legend = c('original', 'num_diff'), col = c(rgb(0,0,1,0.3), rgb(1,0,0)), bg='transparent', box.lty = 0, lty =1 )
