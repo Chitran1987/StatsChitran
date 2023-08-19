@@ -45,20 +45,13 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-GeomProg(r=3, n=10)
- [1]     1     3     9    27    81   243   729  2187  6561 19683
+v1 <- GeomProg(r=3, n=10)
+v1
 
- GeomProg(st<-7, r=3, n=10)
- [1]      7     21     63    189    567   1701   5103  15309  45927 137781
+v2 <- GeomProg(st<-7, r=3, n=10)
+v2
 
-## The function is currently defined as
-GeomProg<-function(st=1,r,n){
-  v<-vector(mode = 'numeric', length = n)
-  for (i in 1:n) {
-    v[i]<-st*(r^(i-1))
-  }
-  return(v)
-}
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
