@@ -44,20 +44,12 @@ Chitran Ghosal
 }
 \examples{
 rm(list=ls())
-ArithProg(n=3,d=3)
-[1] 0 3 6
+v1 <- ArithProg(n=3,d=3)
+v1
 
-ArithProg(st=11, n=10,d=3)
-[1] 11 14 17 20 23 26 29 32 35 38
+v2 <- ArithProg(st=11, n=10,d=3)
+v2
 
-
-ArithProg<-function(st=0, n, d){
-  v<-vector(mode = 'numeric', length = n)
-  for (i in 1:n) {
-    v[i]<-st+(i-1)*d
-  }
-  return(v)
-}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
