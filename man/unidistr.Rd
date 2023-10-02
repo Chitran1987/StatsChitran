@@ -47,7 +47,7 @@ Chitran Ghosal
 }
 \examples{
 X <- seq(-10, 10, by= 0.05)
-Y1 <- umidistr(X, a = -1, b = 1)
+Y1 <- unidistr(X, a = -1, b = 1)
 Y2 <- unidistr(X, a = -0.5, b = 0.6)
 Y3 <- unidistr(X, a = -0.2, b = 0.4)
 plot(X, Y3, type='l', col=rgb(0,0,1, 0.5))
