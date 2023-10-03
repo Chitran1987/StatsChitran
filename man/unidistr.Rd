@@ -23,7 +23,7 @@ Describes the upper bound of X above which the function returns a zero value
 }
 }
 \details{
-1. The lower bound should be LESS THAN(NOT EQUAL TO)LOWER BOUND. \cr
+1. The lower bound should be LESS THAN(NOT EQUAL TO)the upper bound. \cr
 2. If a is NOT less than b, function throws an error(careful using constrained optimization). \cr
 }
 \value{
