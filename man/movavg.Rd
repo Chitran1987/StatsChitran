@@ -52,15 +52,14 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+###plotting a noisy parabola
+x <- seq(-1, 1, by = 0.01)
+y <- x^2 + rnorm(length(x), mean=0, sd=0.1)
+plot(x,y)
 
-## The function is currently defined as
-function (x)
-{
-  }
-}
+###plotting the moving average
+df <- movavg(x,y, 10, 10)
+lines(df$X, df$Y, col='red')
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
