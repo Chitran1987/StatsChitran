@@ -60,9 +60,9 @@ plot(x,y)
 ###plotting the moving average
 df <- movavg(x,y, 10, 10) #moving average of bn = fn = 10
 lines(df$X, df$Y, col='red')
-df <- movavg(x, y, 8, 10) ##moving average of bn = 8 and fn = 10
+df <- movavg(x, y, 1, 10) ##moving average of bn = 1 and fn = 10
 lines(df$X, df$Y, col = 'blue')
-legend('top', legend = c('Noisy Data', 'movavg(bn = fn = 10)', 'movavg(bn = 8, fn = 10)'), col = c('black', 'red', 'blue'), lty = c(1,1,1))
+legend('top', legend = c('Noisy Data', 'movavg(bn = fn = 10)', 'movavg(bn = 1, fn = 10)'), col = c('black', 'red', 'blue'), lty = c(1,1,1))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
