@@ -60,6 +60,7 @@ plot(x,y)
 ###plotting the moving average
 df <- movavg(x,y, 10, 10)
 lines(df$X, df$Y, col='red')
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
