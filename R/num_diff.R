@@ -55,4 +55,3 @@ num_diff <- function(X,Y, type='center', pl=T, order=1){
   return(df_res)
 }
 
-}
