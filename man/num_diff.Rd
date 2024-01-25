@@ -70,7 +70,7 @@ abline(v=pi, col='red')
 abline(h=0, col='black')
 
 ##second order derivative plot
-b <- num_diff(x, y, order = 2)
+b <- num_diff(X, y, order = 2)
 abline(v=pi, col='red')
 abline(h=0, col='black')
 
