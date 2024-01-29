@@ -27,7 +27,9 @@ The type variable can be set to 'left', 'right' or 'center'. Depending on each i
 Note, when type='center', the X-axis values of the returned dataframe differs slightly from the x-axis values of the original dataset.
 }
   \item{pl}{
-Set to true by default, the argument can be toggled.When set to TRUE, Outputs a plot of the differentiated function with respect to the original.
+Set to TRUE by default, the argument can be toggled.When set to TRUE, Outputs a plot of the differentiated function with respect to the original.\cr
+The legend indicates the original plot ns the derivative. \cr
+The no. in the bracket of the legend of the derivative indicates the order of differentiation.
   }
   \item{order}{
   Needs to be an integer and a scalar. Fixes the order n of the differentiation. Default value set to 1. That is, calculates the derivative of the first order (dY/dX) when the order argument is left unspecified.
