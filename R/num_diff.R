@@ -21,7 +21,9 @@ num_diff <- function(X,Y, type='center', pl=T, order=1){
   ##execution starts here#################################
   X0 <- X
   Y0 <- Y
-  while(order > 0){
+  n <- order
+
+  while(n > 0){
     Y1 <- diff(Y0)/diff(X0) #calculate the usual numeric difference of Y divided by the difference of X
 
     if(type == 'left'){
@@ -38,7 +40,7 @@ num_diff <- function(X,Y, type='center', pl=T, order=1){
     }
     X0 <- X1
     Y0 <- Y1
-    order <- order-1
+    n <- n - 1
   }
 
   df_res <- data.frame(X1,Y1)
@@ -49,7 +51,7 @@ num_diff <- function(X,Y, type='center', pl=T, order=1){
     ymax <- max(c(Y,Y1))
     plot(X,Y, pch =19, col=rgb(0,0,1,0.3), type='l', ylim = c(ymin, ymax))
     lines(X1,Y1, col=rgb(1,0,0))
-    legend('topright', legend = c('original', 'derivative'), col = c(rgb(0,0,1,0.3), rgb(1,0,0)), bg='transparent', box.lty = 0, lty =1 )
+    legend('topright', legend = c('original', paste('derivative', '(', as.character(order), ')')), col = c(rgb(0,0,1,0.3), rgb(1,0,0)), bg='transparent', box.lty = 0, lty =1 )
   }
   #rm(pl)
   return(df_res)
