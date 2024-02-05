@@ -13,14 +13,18 @@ ft <- function(X, Y, w = F, set.nyquist = T){
     }
     #calculate sampling freq and establish freq vector
     rn <- diff(X) #calculate the sampling error vector
+    N <- length(X) #length of fourier sequence
+    Ts <- mean(rn) #sampling time
     if(w == T){
-      fs <- 2*pi/mean(rn)
-      wf <- seq(0, fs, by=2*pi/((max(X))-(min(X))))
+      #fs <- 2*pi/mean(rn)
+      w0 <- 2*pi/(N*Ts)
+      wf <- seq(0, by=w0, length=N)
       fy <- fft(Y)
       df <- data.frame(wf,fy)
     }else{
-      fs <- 1/mean(rn)
-      fr <- seq(0, fs, by=1/((max(X))-(min(X))))
+      #fs <- 1/mean(rn)
+      f0 <- 1/(N*Ts)
+      fr <- seq(0, by = f0, length=N)
       fy <- fft(Y)
       df <- data.frame(fr,fy)
     }
