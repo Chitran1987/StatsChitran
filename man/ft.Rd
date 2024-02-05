@@ -23,7 +23,8 @@ Contains the X component of the input function
   Set to w=F by default, it toggles between fr or wf=2*pi*fr on the frequency axis
   }
   \item{set.nyquist}{
-  Ordinarily set to true, this argument(when true) deletes the dataset which is greater than half of the sampling frequency
+  Ordinarily set to true, this argument(when true) promotes the dataset which is greater than half of the sampling frequency to the negative frequencies.\cr
+  This is mathematically allowed since the DFT is periodic in frequency domain
   }
 }
 \details{
