@@ -31,7 +31,15 @@ ft <- function(X, Y, w = F, set.nyquist = T){
     if(set.nyquist==F){
       return(df)
     }else{
-      df <- subset(df,df[,1] <= max(df[,1])/2)  ##implement the nyquist criterion when the set.nyquist is left at default
+      #df_front <- subset(df, df[,1] <= max(df[,1])/2)  ##implement the nyquist criterion when the set.nyquist is left at default
+      df_front <- df[1:ceiling(N/2),]
+      df_back <- df[(ceiling(N/2) + 1): N,]
+      if(w == T){
+        df_back$wf <- df_back$wf - N*w0
+      }else{
+        df_back$fr <- df_back$fr - N*f0
+      }
+      df <- rbind(df_back, df_front)
       return(df)
     }
   }
