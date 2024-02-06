@@ -24,7 +24,8 @@ Contains the X component of the input function
   }
   \item{set.nyquist}{
   Ordinarily set to true, this argument(when true) promotes the dataset which is greater than half of the sampling frequency to the negative frequencies.\cr
-  This is mathematically allowed since the DFT is periodic in frequency domain
+  This is mathematically allowed since the DFT is periodic in frequency domain. \cr
+  Basically converts a one sided DFT to a two sided fourier transform.
   }
 }
 \details{
@@ -53,6 +54,12 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+library(StatsChitran) #Call library
+X <- seq(-10*pi, 10*pi, length=200) #define the X values
+Y <- sin(3*X) #define the Y values
+df <- ft(X, Y, w = T, set.nyquist = T) #call the two-sided fourier transform
+plot(df$wf, abs(df$fy), type='b', c(-5,5)) #plots the amplitude function
+abline(v = c(-3, 3), col='red') #draws vertcals along the expected frequency points
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
