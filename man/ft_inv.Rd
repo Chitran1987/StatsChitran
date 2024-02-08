@@ -71,10 +71,12 @@ X <- seq(-10*pi, 10*pi, by=0.001) #build the X-vector
 Y <- sin(3*X)                     #build the sinusoid Y-vector which oscillates 3 times within 2*pi
 df <- ft(X, Y, w = T, set.nyquist = T) #build the fourier transform
 df_back <- ft_inv(df$wf, df$fy, w = T, t_start=-10*pi) #calculate the inverse fourier transform
-plot(df_back$t, df_back$Y, xlim=c(0, 2*pi), type='l') #plot the function
+subplot(c(2,1)) #divide the graphics screen
+plot(df$wf, abs(df$fy), type='b', col = 'red', xlim = c(-5,5), main = 'Fourier Transform') #plot the fourier transform
+plot(df_back$t, df_back$Y, xlim=c(0, 2*pi), type='l', main ='Inverse Fourier Transform', col = 'red') #plot the inverse function
 abline(v=c(0, 2*pi), h=0) #build global geometric markers
 abline(v = c(1, 2)*2*pi/3, col='blue') #build local geometric markers
-
+subplot(c(1,1)) #default to original graphics screen
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
