@@ -75,10 +75,6 @@ plot(df_back$t, df_back$Y, xlim=c(0, 2*pi), type='l') #plot the function
 abline(v=c(0, 2*pi), h=0) #build global geometric markers
 abline(v = c(1, 2)*2*pi/3, col='blue') #build local geometric markers
 
-## The function is currently defined as
-function (x)
-{
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
