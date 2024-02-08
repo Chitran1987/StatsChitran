@@ -2,7 +2,7 @@
 ft_inv <- function(wf, fy, w = T, t_start = 0){
   if(length(wf)!=length(fy)){
     stop('freq and fourier coeff columns have different lengths')
-  }else if(is.numeric(wf)&is.complex(fy) == F){
+  }else if(is.numeric(wf)&is.num_complex(fy) == F){
     stop('either frequency column is non-numeric or fourier coefficients are non-complex ')
   }else if(sum(is.na(wf)) != 0){
     stop('remove NAs from frequency column')
