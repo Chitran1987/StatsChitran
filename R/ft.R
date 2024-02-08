@@ -2,7 +2,7 @@
 ft <- function(X, Y, w = F, set.nyquist = T){
   if(length(X)!=length(Y)){
     stop('X and Y have different lengths')
-  }else if(is.numeric(X)&is.numeric(Y) == F){
+  }else if(is.numeric(X)&is.num_complex(Y) == F){
     stop('either X or Y has non-numeric arguments')
   }else if(sum(is.na(X)) != 0){
     stop('remove NAs from X')
