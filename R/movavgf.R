@@ -29,13 +29,11 @@ movavgf <- function(X,Y, bn, fn, f, val){
     if(sum(is.na(f_seq)) != 0){
       stop('NAs exist in the window function')
     }
-    f_seq <- f_seq/sum(f_seq) #normalize to sum of individual points under the sequence
-    #########################################################################
     #iterate over the window sequence############################
     y_res <- NULL
     for (i in 1:length(Y)) {
-      #y_res <- c( y_res, sum( Y[max(1,i-bn): min(i+fn, length(Y))] )/( min(i+fn, length(Y)) - max(1, i-bn) + 1 ) )
-      y_res <- c(y_res, sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ])*(Y[max(1,i-bn): min(i+fn, length(Y))])))
+      dmp <- sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ])*(Y[max(1,i-bn): min(i+fn, length(Y))]))/sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ]))
+      y_res <- c(y_res, dmp)
     }
   }
   ###############################################################
@@ -45,4 +43,5 @@ movavgf <- function(X,Y, bn, fn, f, val){
   return(df)
   ###############################################################
 }
+
 
