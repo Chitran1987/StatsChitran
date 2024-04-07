@@ -69,7 +69,7 @@ A vector with the y-values of the dataset. This argument must be provided.
 \details{
 1. X, Y, w_int and (either xbox or nbin) are mandatory\cr
 2. If 'plt = TRUE', 'color' is mandatory\cr
-3. w_int uses 'w = 2*pi*f' format, not 'w = 1*f' format
+3. w_int uses 'w = 2*pi*f' format, not 'w = 1*f' format\cr
 }
 \value{
 Returns a list containing dataframes related to each individual frequency window presented in the w_int dataframe
@@ -81,7 +81,7 @@ Returns a list containing dataframes related to each individual frequency window
 Chitran Ghosal
 }
 \note{
-%%  ~~further notes~~
+1. If integration errors with "too few samples for integration" are encountered, either increase 'nbin' till the error goes away, or increase window size (space between the w_max and w_min) for each window (column) in 'w_int'. Typically for w_max >= 5*w_min, the integration should work properly
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
