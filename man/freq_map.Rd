@@ -90,13 +90,32 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+### define the w_int dataframe
 w1 <- c(550, 850)
 w2 <- c(3000, 3300)
 w3 <- c(4700, 5000)
-w_df <- data.frame(w1, w2, w3)
-col_vec <- c('red', rgb(0,0,1,0.75), rgb(0,1,0,0.5))
-bin <- 0.085
+w_df <- data.frame(w1, w2, w3) #input for the 'w_int' dataframe
+
+### define the colour vector
+col_vec <- c('red', rgb(0,0,1,0.75), rgb(0,1,0,0.5)) #input for the 'color' argument
+
+### define the bin size
+bin <- 0.085 #input for 'xbox' argument
+
+### plot the frequency windows
+dft <- ft(my_voice_01$time, my_voice_01$left, w = T, set.nyquist = T) #fourier transform my voice
+
+subplot(c(1, 2)) #divide graph area for plotting
+plot(dft$wf, abs(dft$fy), type = 'l', col = 'grey', xlab = 'w', ylab = 'amp', main = 'frequency windows/fourier transform', xlim = c(-6000, 6000)) # plot fourier transform
+grid(nx = NULL, col = 'black') # grid the fourier transform
+legend('topright', legend = names(w_df), lty = 1, col = col_vec, horiz = F, bg = 'transparent', bty = 'n', lwd = 3) # legend
+abline(v=c(-w1, w1), col = col_vec[1], lwd = 1.5) # plot the w1 windown
+abline(v=c(-w2, w2), col = col_vec[2], lwd = 1.5) # plot the w2 window
+abline(v=c(-w3, w3), col = col_vec[3], lwd = 1.5) # plot the w3 window
+
+### calculate/plot the freq_map of the windows w1, w2 and w3
 List_frmap <- freq_map(my_voice_01$time, my_voice_01$left, w_int = w_df, xbox = bin, plt = T, plt.leg = T, color = col_vec)
+subplot(c(1,1)) #readjust the plotting area
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
