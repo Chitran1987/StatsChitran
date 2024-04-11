@@ -8,3 +8,4 @@ err.vec.dim.bit <- function(v, n){
   }
   return(F)
 }
+
