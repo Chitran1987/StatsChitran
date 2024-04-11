@@ -44,7 +44,7 @@ Chitran Ghosal
  hist(X)
  hist(Y)
  subplot(c(1,1))
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
