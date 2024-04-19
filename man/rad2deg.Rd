@@ -52,6 +52,7 @@ for (i in 1:12) {
 }
 
 v_pos <- rad2deg(test_pos, overlap = T)
+test_pos
 v_pos
 
 
@@ -62,6 +63,7 @@ for (i in 1:12) {
 }
 
 v_neg <- rad2deg(test_neg, overlap = T)
+test_neg
 v_neg
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
