@@ -1,5 +1,8 @@
 #write a code to convert radians to degrees
 rad2deg <- function(rad, overlap = F){
+  if( is.numeric(rad) == F ){
+    stop('input must be a numeric vector')
+  }
   if(overlap == F){
     return((180/pi)*rad)
   }else{
