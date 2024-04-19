@@ -52,6 +52,8 @@ for (i in 1:12) {
 }
 
 v_pos <- rad2deg(test_pos, overlap = T)
+v_pos
+
 
 #test code for negative
 test_neg <- NULL
@@ -60,7 +62,7 @@ for (i in 1:12) {
 }
 
 v_neg <- rad2deg(test_neg, overlap = T)
-
+v_neg
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
