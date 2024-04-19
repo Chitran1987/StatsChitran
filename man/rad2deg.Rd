@@ -9,7 +9,8 @@ Returns a vector after converting radians to degrees.\cr
 When overlap is set to TRUE, output is contained within the [-180, 180] set.
 }
 \usage{
-rad2deg(x)
+rad2deg(rad, overlap = T)
+rad2deg(rad)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
