@@ -18,6 +18,12 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
   if(length(gr.data) != stack.len){
     stop('length of gr.data should be equal to stack length')
   }
+  #each element of the list should be a dataframe
+  for (i in 1:stacklen) {
+    if(is.data.frame(gr.data[[i]]) == F){
+      stop('each element of the list should be a dataframe')
+    }
+  }
   #column dimension of each dataframe should be even
   for (i in 1:stack.len) {
     if( dim(gr.data[[i]])[2]%%2 != 0 ){
