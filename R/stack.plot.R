@@ -19,7 +19,7 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
     stop('length of gr.data should be equal to stack length')
   }
   #each element of the list should be a dataframe
-  for (i in 1:stacklen) {
+  for (i in 1:stack.len) {
     if(is.data.frame(gr.data[[i]]) == F){
       stop('each element of the list should be a dataframe')
     }
