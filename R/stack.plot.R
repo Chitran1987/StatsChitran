@@ -1,5 +1,5 @@
 ###Build a function for plotting a line stacked graph
-stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, main = NULL, axlab = c('', '')){
+stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, main.txt = NULL, axlab = c('', '')){
   ##error handling##############################################################
   #gr.data should be present
   if(missing(gr.data) == T){
@@ -134,7 +134,7 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
 
 
   #start plotting the actual data
-  plot(NA, NA, xlim=c(xmin, xmax), ylim=c(ymin, ymax), yaxt = 'n', xlab = axlab[1], ylab = axlab[2])
+  plot(NA, NA, xlim=c(xmin, xmax), ylim=c(ymin, ymax), yaxt = 'n', xlab = axlab[1], ylab = axlab[2], main = main.txt)
   for (i in 1:stack.len) {
     df <- L[[i]]
     jlim <- dim(df)[2]/2
