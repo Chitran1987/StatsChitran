@@ -47,6 +47,10 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
 
   }
   n <- dim(gr.data[[i]])[2]/2
+  #if col.mat is not provided, default to black
+  if(missing(color.mat) == T){
+    color.mat <- matrix(data = rep('black', times = stack.len*n), ncol = n)
+  }
   #color.mat needs to be a matrix
   if(is.matrix(color.mat) == F){
     stop('color.mat needs to be of type matrix')
