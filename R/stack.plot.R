@@ -141,6 +141,8 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
     mat_sz <- max(dmp.stack.size)
     rm(dmp.stack.size)
     mat_cex <- matrix(rep(1, times = stack.len*mat_sz), nrow = stack.len, byrow = T)
+  }else{
+      mat_cex <- cex.mat
     }
 
   #start plotting the actual data
