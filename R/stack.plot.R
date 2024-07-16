@@ -1,5 +1,5 @@
 ###Build a function for plotting a line stacked graph
-stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, main.txt = NULL, axlab = c('', '')){
+stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', '')){
   ##error handling##############################################################
   #gr.data should be present
   if(missing(gr.data) == T){
@@ -131,7 +131,17 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
   ymin <- 0
   ymax <- stack.ht
 
-
+  #check if cex.mat is given or else use default
+  dmp.stack.size <- NULL
+  if(missing(cex.mat) == T){
+    for (i in 1:stack.len) {
+      df <- L[[i]]
+      dmp.stack.size <- c(dmp.stack.size, dim(df)[2]/2)
+    }
+    mat_sz <- max(dmp.stack.size)
+    rm(dmp.stack.size)
+    mat_cex <- matrix(rep(1, times = stack.len*mat_sz), nrow = stack.len, byrow = T)
+    }
 
   #start plotting the actual data
   plot(NA, NA, xlim=c(xmin, xmax), ylim=c(ymin, ymax), yaxt = 'n', xlab = axlab[1], ylab = axlab[2], main = main.txt)
@@ -140,9 +150,9 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
     jlim <- dim(df)[2]/2
     for ( j in 1:jlim ) {
       if(i == 1){
-        lines( df[,2*j -1], df[, 2*j] - Y_min[i] , type = type.mat[i, j], lwd = lwd.mat[i, j], pch = pch.mat[i, j], col = color.mat[i, j] )
+        lines( df[,2*j -1], df[, 2*j] - Y_min[i] , type = type.mat[i, j], lwd = lwd.mat[i, j], pch = pch.mat[i, j], cex = mat_cex[i, j], col = color.mat[i, j] )
       }else{
-        lines( df[,2*j -1], df[, 2*j] - Y_min[i] + stack.rat*sum(Y_span[1:i-1]), type = type.mat[i, j], lwd = lwd.mat[i, j], pch = pch.mat[i, j], col = color.mat[i, j] )
+        lines( df[,2*j -1], df[, 2*j] - Y_min[i] + stack.rat*sum(Y_span[1:i-1]), type = type.mat[i, j], lwd = lwd.mat[i, j], pch = pch.mat[i, j], cex = mat_cex[i, j], col = color.mat[i, j] )
       }
 
 
