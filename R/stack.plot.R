@@ -156,8 +156,6 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
       }else{
         lines( df[,2*j -1], df[, 2*j] - Y_min[i] + stack.rat*sum(Y_span[1:i-1]), type = type.mat[i, j], lwd = lwd.mat[i, j], pch = pch.mat[i, j], cex = mat_cex[i, j], col = color.mat[i, j] )
       }
-
-
     }
   }
 
