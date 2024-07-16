@@ -19,7 +19,7 @@ The function\cr
 11. The no. of stacks to be plotted is equal to the length of the gr.data list as specified in point 5.
 }
 \usage{
-stack.plot(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, main.txt = NULL, axlab = c('', ''))
+stack.plot(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', ''))
 stack.plot(gr.data, stack.len)
 stack.plot(gr.data, stack.len, col.eq = F)
 stack.plot(gr.data, stack.len, stack.rat = 1.2, color.mat = M, axlab = c('X', 'Y'))
@@ -65,6 +65,11 @@ stack.plot(gr.data, stack.len, color.mat = M, axlab = c('X', 'Y'))
 1.  A matrix of dimension (stack.len X n) which defaults to '1'(default 'points' in base R) for each element. \cr
 2.  The matrix contains the 'lwd' information of each of the 'stack.len X n' plots. \cr
 3.  Each element of 'lwd.mat' can be specified as any of the allowed inputs of the 'lwd' argument in the 'plot' function in the base R package.
+}
+  \item{cex.mat}{
+1.  A matrix of dimension (stack.len X n) which defaults to '1'(default value in base R) for each element. \cr
+2.  The matrix contains the 'cex' information of each of the 'stack.len X n' plots. \cr
+3.  Each element of 'cex.mat' can be specified as any of the allowed inputs of the 'cex' argument in the 'plot' function in the base R package.
 }
   \item{main.txt}{
 1.  A single string to the used as a header of the plot, defaults to NULL.
