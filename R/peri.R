@@ -13,8 +13,8 @@ peri <- function(df, xmin, xmax){
 
 
   ##core function
-  df <- select(df, X >= xmin)
-  df <- select(df, X <= xmax)
+  df <- subset(df, X >= xmin)
+  df <- subset(df, X <= xmax)
   L <- length(df$X)
   peri_vec <- NULL
   for (i in 1:(L-1) ) {
