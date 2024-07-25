@@ -7,7 +7,7 @@ peri <- function(df, xmin, xmax){
   if( (is.numeric(xmin) == F) | (is.numeric(xmax) == F) ){
     stop('The xmax and xmin arguments have to be of type numeric')
   }
-  if( (err.vec.dim.bit(xmin, 1) != 1) | (err.vec.dim.bit(xmax, 1) != 1) ){
+  if( (err.vec.dim.bit(xmin, 1) == T) | (err.vec.dim.bit(xmax, 1) == T) ){
     stop('xmax and xmin have to be vectors of length equal to 1')
   }
 
