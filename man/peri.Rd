@@ -56,7 +56,7 @@ for(i in 1:length(X)){
   Y[i] <- sqrt(1 - X[i]^2)
   }
 }
-dat <- data.farme(X, Y)
+dat <- data.frame(X, Y)
 names(dat) <- c('X', 'Y')
 plot(dat$X, dat$Y, type = 'l', col = 'red')
 peri(df = dat, xmin = 0, xmax = 1)
