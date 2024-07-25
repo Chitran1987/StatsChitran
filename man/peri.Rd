@@ -58,7 +58,7 @@ for(i in 1:length(X)){
 }
 dat <- data.frame(X, Y)
 names(dat) <- c('X', 'Y')
-plot(dat$X, dat$Y, type = 'l', col = 'red')
+plot(dat$X, dat$Y, type = 'l', col = 'red', asp = 1)
 peri(df = dat, xmin = 0, xmax = 1)
 peri(df = dat, xmin = -1, xmax = 1 )
 }
