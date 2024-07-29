@@ -59,9 +59,9 @@ padding <- function(X, Y, fwd, bwd, fval, bval, pad.type = 'default'){
   if( pad.type == 'zero' ){
     Y1 <- rep(0, times = len_X)
     Y2 <- rep(0, times = len_X)
-  }else if( pad. type == 'default' ){
+  }else if( pad.type == 'default' ){
     Y1 <- rep(Y[1], times = len_X )
-    Y2 <- rep(Y[len_X] times = len_X)
+    Y2 <- rep(Y[len_X], times = len_X)
   }else{
     Y1 <- rep(bval, times = len_Y)
     Y2 <- rep(fval, times = len_Y)
