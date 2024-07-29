@@ -2,7 +2,8 @@
 \alias{periodify}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Periodically increases the span of a given X-Y dataset
+Periodically increases the span of a given X-Y dataset. \cr
+See also \link[StatsChitran]{padding}
 }
 \description{
 Adds an integer no. of periods of the X-Y dataset to itself. \cr
