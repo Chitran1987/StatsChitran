@@ -25,6 +25,7 @@ Default set to the ORIGIN.
   \item{deg}{
 Angle in degrees denoting the amnount by which the dataset needs to be rotated.
 }
+}
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
