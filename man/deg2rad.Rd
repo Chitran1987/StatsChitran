@@ -8,7 +8,7 @@ Converts degrees to radians
 Returns a vector after converting degrees to radians.\cr
 When overlap is set to TRUE, output is contained within the [-pi, pi] set.
 }
-}
+
 \usage{
 deg2rad(deg, overlap = T)
 deg2rad(deg)
