@@ -6,3 +6,4 @@ ArithProg<-function(st=0, n, d){
   }
   return(v)
 }
+
