@@ -5,7 +5,7 @@
 Accepts a 2D function f(x,y) along with x and y vectors and plots it
 }
 \description{
-Accepts a function f(x,y) along with vectors, x and y and plots it
+Accepts a function f(x,y) along with vectors, x and y and plots it in grayscale
 }
 \usage{
 function(X, Y, func, pl = T, gray.dens = 10^5, x.lab = NULL, y.lab = NULL)
