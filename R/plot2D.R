@@ -13,7 +13,7 @@ plot2D <- function(X, Y, func, pl = T, gray.dens = 10^5, x.lab = NULL, y.lab = N
     stop('func should be a function')
   }
   #check whether gray.dens is numeric
-  if(err.WN.vec.dim.bit(gray.dens, 1) != T){
+  if(err.WN.vec.dim.bit(gray.dens, 1) != F){
     stop('gray.dens should be a whole number and NOT a vector or fraction')
   }
   #check whether x.lab is NULL or a character of length = 1
