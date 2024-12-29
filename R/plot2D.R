@@ -2,7 +2,7 @@
 plot2D <- function(X, Y, func, pl = T, gray.dens = 10^5, x.lab = NULL, y.lab = NULL){
 
   ##error checking####################################################
-  ##check whether X, Y is a numeric vector and func is a function
+  #check whether X, Y is a numeric vector and func is a function
   if(is.numeric(X) != T){
     stop('X should be a numeric vector')
   }
@@ -11,6 +11,22 @@ plot2D <- function(X, Y, func, pl = T, gray.dens = 10^5, x.lab = NULL, y.lab = N
   }
   if(is.function(func) != T){
     stop('func should be a function')
+  }
+  #check whether gray.dens is numeric
+  if(err.WN.vec.dim.bit(gray.dens, 1) != T){
+    stop('gray.dens should be a whole number and NOT a vector or fraction')
+  }
+  #check whether x.lab is NULL or a character of length = 1
+  if(is.null(x.lab) != T){
+    if( ( (is.character(x.lab)) != T ) | (length(x.lab) != 1 ) ){
+      stop('x.lab should be a character vector of length equal to 1')
+    }
+  }
+  #check whether y.lab is NULL or a character of length = 1
+  if(is.null(y.lab) != T){
+    if( ( (is.character(y.lab)) != T ) | (length(y.lab) != 1 ) ){
+      stop('x.lab should be a character vector of length equal to 1')
+    }
   }
   ######################################################################
 
