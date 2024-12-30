@@ -47,7 +47,7 @@ dumm <- function(X){
 L <- list(vec = c(1, 2, 3, 4))
 L$matrix <- matrix(data = L$vec, nrow = 2, byrow = T)
 L$dataframe <- data.frame(L$matrix)
-L$array <- as.array(L$matrix)
+L$array <- array(seq(1, 60), dim = c(2, 2, 3, 5))
 L$list <- L
 L$func <- dumm
 
