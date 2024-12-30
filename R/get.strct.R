@@ -1,6 +1,6 @@
 #Write a program to return the structure of the object
 #The structures to sample from are
-#dataframe, matrix, array, vector, list and function
+#dataframe, matrix, array, vector, list, function and unknown
 #Returns unknown function if not recognized
 get.strct <- function(obj) {
   if (is.data.frame(obj)) {
@@ -16,6 +16,6 @@ get.strct <- function(obj) {
   } else if (is.function(obj)){
     return('function')
   }else {
-    return("Unknown structure")
+    return("Unknown")
   }
 }
