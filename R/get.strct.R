@@ -5,18 +5,18 @@
 get.strct <- function(obj) {
   if (is.data.frame(obj)) {
     return("Data frame")
-  } else if (is.matrix(obj)) {
-    if(length(dim(obj)) == 2){
-      return("Matrix")
-    }
   } else if (is.array(obj)) {
-    if(length(dim(obj)) > 2){
+    if(is.matrix(obj)){
       return("Array")
+    }else{
+      return('Matrix')
     }
   } else if (is.vector(obj)) {
-    return("Vector")
-  } else if (is.list(obj)) {
-    return("List")
+    if(is.list(obj)){
+      return('List')
+    }else{
+      return('Vector')
+    }
   } else if (is.function(obj)){
     return('function')
   }else {
