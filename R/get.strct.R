@@ -7,9 +7,9 @@ get.strct <- function(obj) {
     return("Data frame")
   } else if (is.array(obj)) {
     if(is.matrix(obj)){
-      return("Array")
+      return("Matrix")
     }else{
-      return('Matrix')
+      return('Array')
     }
   } else if (is.vector(obj)) {
     if(is.list(obj)){
