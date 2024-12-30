@@ -53,7 +53,7 @@ L$func <- dumm
 
 #loop through the list to see the outputs
 for(i in 1:length(L)){
-get.strct(L[[i]])
+print(get.strct(L[[i]]))
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
