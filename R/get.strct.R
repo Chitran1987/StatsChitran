@@ -6,9 +6,13 @@ get.strct <- function(obj) {
   if (is.data.frame(obj)) {
     return("Data frame")
   } else if (is.matrix(obj)) {
-    return("Matrix")
+    if(length(dim(obj)) == 2){
+      return("Matrix")
+    }
   } else if (is.array(obj)) {
-    return("Array")
+    if(length(dim(obj)) > 2){
+      return("Array")
+    }
   } else if (is.vector(obj)) {
     return("Vector")
   } else if (is.list(obj)) {
