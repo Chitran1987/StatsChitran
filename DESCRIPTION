@@ -5,6 +5,13 @@ Version: 1.1.0
 Author: Chitran Ghosal
 Maintainer: The package maintainer <ghosal.chitran@gmail.com>
 Description: This package is a creation of functions used for doing basic statistical tasks.
+Imports: 
+    ggplot2,
+    dplyr,
+    png
+Suggests: 
+    testthat,
+    knitr
 License: GNU General Public License v3.0
 Encoding: UTF-8
 LazyData: true
