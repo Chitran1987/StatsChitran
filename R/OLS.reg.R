@@ -31,7 +31,7 @@ OLS.reg <- function(model, dat, guess, method = 1){
   last_arg <- tail(arg_names, 1)  # Last argument is V
   N <- dim(dat)[2] - 1 #No of X-inputs from data
   err.env <- new.env()#create a new environment which you can later remove
-  err.env$L <- list(rep(1, times = N)) #creates a dummy list for the X values
+  err.env$L <- as.list(rep(1, times = N)) #creates a dummy list for the X values
   err.env$L[[N+1]] <- guess #Enter the guess vector as the last element in the list
   err.env$bit <- T #bit for error checking in tryCatch()
   err.env$result <-tryCatch({
