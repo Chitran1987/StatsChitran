@@ -80,7 +80,7 @@ lin.fun <- function(X1, X2, v){
 }
 
 #Call the OLS regression function
-lst <- OLS.reg(model = lin.fun, dat = df, guess = c(100, 100), method = 2)
+lst <- OLS.reg(model = lin.fun, dat = df, guess = c(105, 115), method = 2)
 
 
 #Plot the built regression model
