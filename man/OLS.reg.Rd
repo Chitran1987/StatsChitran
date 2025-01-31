@@ -91,6 +91,7 @@ lines(X1, lin.fun(X1, X2, v=lst$par), col='red', lwd=3)
 plot(X2, Y)
 lines(X2, lin.fun(X1, X2, v=lst$par), col='red', lwd=3)
 subplot(c(1,1))
+lst$par
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
