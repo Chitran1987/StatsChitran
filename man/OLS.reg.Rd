@@ -68,8 +68,6 @@ X1 <- sort(rnorm(500))
 X2 <- sort(rnorm(500))
 Y <- 110*X1 + 120*X2
 Y <- Y + rnorm(n = length(X1), mean = 0, sd = 100)
-plot(X1, Y)
-plot(X2, Y)
 df <- data.frame(X1, X2, Y)
 
 
