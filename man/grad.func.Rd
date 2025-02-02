@@ -58,8 +58,8 @@ The exact answer is \eqn{4.9152 \times 10^{-95}}, but \eqn{\epsilon = 10^{-6}} i
 The returned value, \eqn{\nabla f}, is always a vector whose length is equal to the length of the argument \code{pt} or \eqn{\vec{r}_o}
 }
 \references{
-\link{https://en.wikipedia.org/wiki/Gradient}\cr
-\link{https://math.stackexchange.com/questions/2744497/what-does-gradient-actually-mean}
+\url{https://en.wikipedia.org/wiki/Gradient}\cr
+\url{https://math.stackexchange.com/questions/2744497/what-does-gradient-actually-mean}
 }
 \author{
 Chitran Ghosal
