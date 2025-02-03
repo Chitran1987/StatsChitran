@@ -53,7 +53,7 @@ Defaults to \eqn{\delta = 10^{-6}}, but should be chosen with caution, see \link
 With \eqn{f(x_1, x_2, \dots, x_{n-1}, \vec{v} )}, make sure that the \code{dat} dataframe has columns \eqn{x_1, x_2, \dots , x_{n-1}, y} in the SAME ORDER.\cr
 Uses the simple squared error and mean squared error loss and cost functions.\cr
 \deqn{l_i(\vec{v}) = \{ y_i - f(x_{i,1}, x_{i,2}, \dots x_{i, n-1}, \vec{v}) \}^2}
-\deqn{C(\vec{v})= \frac{1}{N}{{\sum_i l_i(\vec{v})} }
+\deqn{C(\vec{v})= \frac{1}{N}{{\sum_i l_i(\vec{v})}} }
 
 }
 \value{
@@ -114,7 +114,6 @@ plot(X2, Y)
 lines(X2, lin.fun(X1, X2, v=lst$par), col='red', lwd=3)
 subplot(c(1,1))
 lst$par
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
