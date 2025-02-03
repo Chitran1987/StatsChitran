@@ -1,5 +1,5 @@
 #Write a program for fitting a model to a dataset using OLS regression
-OLS.reg <- function(model, dat, guess, method = 1){
+OLS.reg <- function(model, dat, guess, algorithm = 'Nelder-Mead', Delta = 10^-6){
 
   ######Error checking############################################################
   #model has to be a function
@@ -15,16 +15,21 @@ OLS.reg <- function(model, dat, guess, method = 1){
     stop('Dimensions of dat and model are not compatible')
   }
   #is the dataframe numeric
-  if(!all(sapply(dat, is.numeric))){
+  if(!all(sapply(df, is.numeric))){
     stop('All columns of dat have to be numeric')
   }
-  #is the method input acceptable
-  if( method!=1 && method!= 2){
-    stop('method can only take values 1 or 2')
+  #is the algorithm input acceptable
+  valid.algorithm <- c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN","Brent") #possible choices
+  if( !(algorithm %in% valid.algorithm) ){
+    stop('algorithm can only be among "Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN" or "Brent" ')
   }
-  #is method numeric
-  if(!is.numeric(method) || length(method)!= 1){
-    stop('method has to be a numeric scalar')
+  #is Brent acceptable?
+  if( algorithm == 'Brent' & (length(guess) != 1) ){
+    stop('"Brent" can only be used as an optimization algorithm for univariate parameter space: guess should be a scalar')
+  }
+  #is Delta numeric
+  if(!is.numeric(Delta) || length(Delta) != 1){
+    stop("Delta has to be a numeric scalar")
   }
   #does V have the same dimension as guess
   arg_names <- names(formals(model)) #get the name of the arguments of the function
@@ -50,6 +55,7 @@ OLS.reg <- function(model, dat, guess, method = 1){
   rm(err.env) #Remove the error environment after this
 
   ##########Actual code#################################################################
+  ##The cost function
   func.guess <- function(guess){
     ###real code##############################################################
     N <- dim(dat)[2] - 1 #No of X-inputs from data
@@ -76,12 +82,15 @@ OLS.reg <- function(model, dat, guess, method = 1){
     return(Cost)
   }
 
-  #guess optimization
-  if(method == 1){
-    L <- optim(par = guess, fn = func.guess, method = 'Nelder-Mead')
-  }else{
-    L <- optim(par = guess, fn = func.guess, method = 'SANN')
+  ##The gradient of the cost function
+  grad.guess <- function(guess){
+    return(grad.func(f = func.guess, pt = guess, epsilon = Delta))
   }
+
+
+
+  #guess optimization
+  L <- optim(par = guess, fn = func.guess, gr = grad.guess, method = algorithm)
 
   #add error to model
   #calculate new model values, model.val_new
