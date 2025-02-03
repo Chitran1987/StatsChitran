@@ -15,7 +15,7 @@ OLS.reg <- function(model, dat, guess, algorithm = 'Nelder-Mead', Delta = 10^-6)
     stop('Dimensions of dat and model are not compatible')
   }
   #is the dataframe numeric
-  if(!all(sapply(df, is.numeric))){
+  if(!all(sapply(dat, is.numeric))){
     stop('All columns of dat have to be numeric')
   }
   #is the algorithm input acceptable
