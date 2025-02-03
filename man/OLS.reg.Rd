@@ -106,13 +106,10 @@ lst <- OLS.reg(model = lin.fun, dat = df, guess = c(50, 50), algorithm = 'BFGS')
 
 
 library(StatsChitran)
-ClearPlot()
-subplot(c(1,2))
 plot(X1, Y)
 lines(X1, lin.fun(X1, X2, v=lst$par), col='red', lwd=3)
 plot(X2, Y)
 lines(X2, lin.fun(X1, X2, v=lst$par), col='red', lwd=3)
-subplot(c(1,1))
 lst$par
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
