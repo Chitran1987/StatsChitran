@@ -102,7 +102,7 @@ lin.fun <- function(X1, X2, v){
 }
 
 
-lst <- OLS.reg8(model = lin.fun, dat = df, guess = c(50, 50), algorithm = 'BFGS')
+lst <- OLS.reg(model = lin.fun, dat = df, guess = c(50, 50), algorithm = 'BFGS')
 
 
 library(StatsChitran)
