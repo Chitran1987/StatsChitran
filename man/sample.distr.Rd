@@ -39,7 +39,7 @@ Numeric values within which the returned values of \eqn{\bar{X}} will lie
 }
 \details{
 Uses rejection sampling to arrive at the results of \eqn{\bar{X}}.\cr
-Thus results for \code{n > 10^7} could strain system resources.\cr
+Thus results for \code{n > 10^7} could strain system resources, since rejection sampling is a monte-carlo method and needs overgeneration beyond \code{n} in the rejection space.\cr
 The range of the function \eqn{f(\bar{X},\hat{\theta})} input to \code{func} will be normalized to \eqn{f(\bar{X}, \hat{\theta}) \in [0, 1]}.\cr
 Hence it should be ensured that \eqn{f(\bar{X},\hat{\theta})} is devoid of badly behaved singularities within    \eqn{\code{xmin} \leq \bar{X} \leq \code{xmax}}.
 }
