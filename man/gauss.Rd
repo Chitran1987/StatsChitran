@@ -36,7 +36,7 @@ Describes the mean value, \eqn{\mu}, or the center of the gaussian.
 }
 \details{
 The function returns the vector \eqn{y_i} against the inputs \eqn{x_i} as shown below.\cr
-\deqn{y_i = Ae^{-(x_i - \mu)^2/(2\sigma)} \quad \text{with} \quad A\sqrt{2\pi} = 1/\sigma \,\,\, \text{normalization for density functions}}
+\deqn{y_i = Ae^{-(x_i - \mu)^2/(2\sigma^2)} \quad \text{with} \quad A\sqrt{2\pi} = 1/\sigma \,\,\, \text{normalization for density functions}}
 }
 \value{
 The returned value is always a numeric vector.
