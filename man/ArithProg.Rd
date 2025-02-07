@@ -5,27 +5,27 @@
 Returns a numeric vector whose elements follow an arithmetic progression
 }
 \description{
-The function generates a sequence of numbers which follow an arithmetic progression and which can be tuned by the function arguments
+The function generates a sequence of numbers, \eqn{S_k}, which follow an arithmetic progression as shown below.\cr
+\deqn{S_k = S_1 + (k - 1)d}
 }
 \usage{
 ArithProg(st=0, n, d)
 }
 \arguments{
   \item{st}{
-The starting point of your arithmetic progression set to a default of zero
+The term, \eqn{S_1}, starting point of your arithmetic progression. Defaults to zero.
 }
   \item{n}{
-Defines the length of the vector returned by the function (or defines how many terms are present in the proghression)
+Defines the no. of terms in the progression.
 }
   \item{d}{
-Defines the distance between the numbers of the arithmetic progression.
+Denotes the difference term, \eqn{d = S_{k+1} - S_k}, between consecutive terms of the progression.
 }
 }
 \details{
-The function always returns a vector. There are no other return types or no way to tune the return type in this function.
 }
 \value{
-The return type of the function is always a vector
+The return type of the function is always a vector containing \eqn{S_k,\,\,\, \forall k \in [1, n]}
 }
 \references{
 %% ~put references to the literature/web site here ~
