@@ -93,6 +93,13 @@ sample.distr <- function(n, func, f.par, xmin, xmax){
   }
 
 
+  #Check for length of the vector again, since no length check in the while loop
+  if(RV.len >= n){
+    dmp1 <- sample(seq(1:RV.len), n, replace = F)
+    df <- df[dmp1,]
+  }
+
+
   #create a return list and store the values in them and return
   ret.list <- list()
   ret.list$random_var <- df$RV
