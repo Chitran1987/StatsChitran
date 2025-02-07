@@ -15,29 +15,34 @@ gauss(X, sig, mu, probability=T)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{
-Describes the (numeric) vector against which you need the gaussian vector
+The (numeric) vector which contain the \eqn{x_i} values against which you need the gaussian vector
 }
   \item{probability}{
-Describes a single boolean value. Ordinarily set to FALSE by default. Used to select between a normalized gaussian(probability = TRUE) or a non-normalized statistical distribution(probability = FALSE)
+A single boolean value.\cr
+Defaults to \code{FALSE}. \cr
+Used to select between a normalized gaussian( \code{probability = T}) or a non-normalized statistical distribution( \code{probability = F})
 }
   \item{amp}{
-Amplitude of the gaussian or the value of the gaussian at the mean. Can only be specified when probability = FALSE, if specified when probability = TRUE, then function will throw an error
+Amplitude, \eqn{A}, of the gaussian or the value of the gaussian at the mean. \cr
+Can only be specified when \code{probability = F}.\cr
+If specified when \code{probability = T}, then function throws an error
 }
   \item{sig}{
-Describes the standard deviation of the gaussian
+Describes the standard deviation, \eqn{\sigma}, of the gaussian
 }
   \item{mu}{
-Describes the mean value of the gaussian
+Describes the mean value, \eqn{\mu}, or the center of the gaussian.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The function returns the vector \eqn{y_i} against the inputs \eqn{x_i} as shown below.\cr
+\deqn{y_i = Ae^{-(x_i - \mu)^2/(2\sigma)} \quad \text{with} \quad A\sqrt{2\pi} = 1/\sigma \,\,\, \text{normalization for density functions}}
 }
 \value{
 The returned value is always a numeric vector.
 }
 \references{
-%% ~put references to the literature/web site here ~
+\url{https://en.wikipedia.org/wiki/Gaussian_function}
 }
 \author{
 Chitran Ghosal
