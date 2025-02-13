@@ -63,7 +63,8 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-tens <- img_2_arr(source.png = 'STM.png', x.lim = c(0, 6.115*10^-9), y.lim = c(0, 6.115*10^-9))
+dat <- system.file("extdata", "STM.png", package = "StatsChitran")
+tens <- img_2_arr(source.png = dat, x.lim = c(0, 6.115*10^-9), y.lim = c(0, 6.115*10^-9))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
