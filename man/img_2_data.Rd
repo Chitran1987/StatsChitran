@@ -64,9 +64,6 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or standard data sets, see data().
 
 library(StatsChitran)
 dat <- 'asymmetry.png'
