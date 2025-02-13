@@ -41,9 +41,10 @@ Default value set to NULL.
 \details{
 X and Y need to be numeric vectors.\cr
 Z needs to be a matrix.\cr
-for directly plotting the matrix from a function of X and Y, please see *plot2D()*.\cr
+for directly plotting the matrix from a function of X and Y, please see \link{plot2D}.\cr
 gray.dens has to be a whole number.\cr
-x.lab and y.lab have to be a single valued character vectors, if not NULL.~
+x.lab and y.lab have to be a single valued character vectors, if not NULL.\cr
+When building the matrix from a function, please use \link{function_2D} (and NOT \link{outer}).\cr
 }
 \value{
 This function returns a NULL value
