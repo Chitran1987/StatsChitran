@@ -66,7 +66,7 @@ Chitran Ghosal
 \examples{
 
 library(StatsChitran)
-dat <- 'asymmetry.png'
+dat <- system.file("extdata", "asymmetry.png", package = "StatsChitran")
 L <- img_2_data(source.png = dat, x.lim = c(0, 7), y.lim = c(0, 3), bgrnd = 0.1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
