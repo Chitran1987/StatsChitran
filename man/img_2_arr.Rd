@@ -39,6 +39,7 @@ Values of 1 and 0 determine white and black backgrounds respectively.
 For returning only the grayscale matrix without any array format explaining the independent co-ordinates, please see \link{img_2_data}.\cr
 Since \eqn{T_{m,n,2}} is the X-matrix, hence every row of the matrix will be the same vector, i.e. \eqn{T_{m,n,2} = T_{k,n,2}\,\,\forall m,n,k}.\cr
 Since \eqn{T_{m,n,3}} is the Y-matrix, hence every column of the matrix will be the same vector, i.e. \eqn{T_{m,n,3} = T_{m,k,3}\,\,\forall m,n,k}.\cr
+\figure{array.png}
 }
 \value{
 The returned value is a rank-3 tensor, \eqn{T_{m, n, p}}, in the form of an R-array.\cr
@@ -66,6 +67,7 @@ Chitran Ghosal
 dat <- system.file("extdata", "STM.png", package = "StatsChitran")
 tens <- img_2_arr(source.png = dat, x.lim = c(0, 6.115*10^-9), y.lim = c(0, 6.115*10^-9))
 }
+
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
