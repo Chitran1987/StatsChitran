@@ -7,25 +7,13 @@
 linreg(df)
 }
 \arguments{
-\item{df}{input a dataframe with more than two columns.\cr
-\cr
-The last column is always presumed to be the
-column of the independent variables in the predictor equation while the the others are presumed to be
-the dependent variables.\cr
-\cr
-The first column of the dataframe is the first regressor variable/independent variable.\cr
-\cr
-The next column, the second regressor variable/independent variable..so on and so forth till the second last column.\cr
-\cr
-This is important since the output vector corresponds accordingly.
-}
+\item{df}{input a dataframe with more than two columns. The last column is always presumed to be the
+column of the independent variables in the perictor equation while the the others are presumed to be
+the dependent variables.}
 }
 \value{
-A return vector comprising of your the estimated values of the regression weights (if the input data does not suffer from multicollinearity)
-\item{1st_element}{The first element of the vector contains the co-efficient for the first regressor/independent varaiable}
-\item{2nd_element}{The second element of the vector contains the co-efficient for the second regressor/independent varaiable so on and so forth till the second last element}
-\item{nth_element}{The last element of the returned vector contains the constant value of the predicted equation
-}
+A dataframe comprising of your the estimated values of the regression weights if the input
+data does not suffer from multicollinearity
 }
 \description{
 function for calculating the linear regression

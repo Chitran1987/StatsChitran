@@ -39,7 +39,8 @@ Values of 1 and 0 determine white and black backgrounds respectively.
 For returning only the grayscale matrix without any array format explaining the independent co-ordinates, please see \link{img_2_data}.\cr
 Since \eqn{T_{m,n,2}} is the X-matrix, hence every row of the matrix will be the same vector, i.e. \eqn{T_{m,n,2} = T_{k,n,2}\,\,\forall m,n,k}.\cr
 Since \eqn{T_{m,n,3}} is the Y-matrix, hence every column of the matrix will be the same vector, i.e. \eqn{T_{m,n,3} = T_{m,k,3}\,\,\forall m,n,k}.\cr
-\figure{array.png}
+See image below for clearer understanding.\cr
+\if{html}{\figure{array.png}{options: width=600px}}
 }
 \value{
 The returned value is a rank-3 tensor, \eqn{T_{m, n, p}}, in the form of an R-array.\cr
