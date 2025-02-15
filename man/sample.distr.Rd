@@ -2,7 +2,7 @@
 \alias{sample.distr}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-A User defined probability distribution
+Randomly sample from a user defined probability distribution
 }
 \description{
 Returns a set of values of the random variable, \eqn{\bar{X}}, sampled from a user defined probability distribution \eqn{f(\bar{X}, \hat{\theta})}.\cr
