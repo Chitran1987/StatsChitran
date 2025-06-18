@@ -14,17 +14,17 @@ GeomProg(st=5, r=3, n=10)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{st}{
-The starting point of your geometric progression set to a default of one
+The starting point of your geometric progression set to a default of one. Denoted as \eqn{a_0}
 }
   \item{n}{
-Defines the length of the vector returned by the function (or defines how many terms are present in the proghression)
+Defines the length of the vector returned by the function (or defines how many terms are present in the proghression). Denoted as \eqn{n}
 }
   \item{r}{
-Defines the ratio with which the geometric series progresses
+Defines the ratio with which the geometric series progresses. Denoted as \eqn{r}
 }
 }
 \details{
-The function always returns a vector. There are no other return types or no way to tune the return type in this function.
+The function returns a sequence \eqn{S_k = a_0 r^{k-1} \quad k \in \{1, 2, 3\, \dots \, n\} }
 }
 \value{
 The return type of the function is always a vector
