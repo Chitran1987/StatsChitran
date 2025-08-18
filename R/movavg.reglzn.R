@@ -1,7 +1,7 @@
 ####write a moving average function wih objective fitting which includes a regularization penalty
 ####This is called regularized uniform kernel regression
 ####The kernel in question is a uniform kernel
-movavg.reglzn <- function(X, Y, bn, fn, lambda, ord.min = 1, ord.max = 40, pl = T, grid.search = T){
+movavg.reglzn <- function(X, Y, bn, fn, lambda, ord.min = 1, ord.max, pl = T, grid.search = T){
 
   ##Library Import
   library(StatsChitran)
@@ -52,7 +52,7 @@ movavg.reglzn <- function(X, Y, bn, fn, lambda, ord.min = 1, ord.max = 40, pl = 
     L_ret[[1]] <- L
     L_ret[[2]] <- df
     L_ret[[3]] <- L$par
-    names(L_ret) <- c('optim-data', 'smoothed-dataframe', 'par')
+    names(L_ret) <- c('optim_data', 'smoothed_dataframe', 'par')
     if(pl){
       plot(X, Y)
       lines(df$X, df$Y, col = 'red')
@@ -75,7 +75,7 @@ movavg.reglzn <- function(X, Y, bn, fn, lambda, ord.min = 1, ord.max = 40, pl = 
     L_ret[[1]] <- df_grid
     L_ret[[2]] <- df
     L_ret[[3]] <- df_grid$ord.val[df_grid$ord.reg == min(df_grid$ord.reg)]
-    names(L_ret) <- c('GridOfVariance', 'smoothed-dataframe', 'par')
+    names(L_ret) <- c('GridOfVariance', 'smoothed_dataframe', 'par')
     return(L_ret)
   }
 
