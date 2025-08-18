@@ -1,8 +1,10 @@
-movavg <- function(X,Y, bn, fn){
+movavg <- function(X,Y, bn, fn, ord = 1){
   if( (length(bn) != 1)|(length(fn) != 1) ){
     stop('Inputs to fn and fb should be numeric and single digit')
   }else if(length(X) != length(Y)){
     stop('length of input vectors X and Y need to be the same')
+  }else if( ord <= 0 | ord%%1 != 0 ){
+    stop('Parmater ord needs to be a positive integer')
   }else{
     y_res <- NULL
     for (i in 1:length(Y)) {
@@ -11,5 +13,10 @@ movavg <- function(X,Y, bn, fn){
   }
   df <- data.frame(X,y_res)
   names(df) <- c('X','Y')
-  return(df)
+  if(ord == 1){
+    return(df)
+  }else{
+    df <- movavg(df$X, df$Y, bn, fn, ord = ord - 1)
+    return(df)
+  }
 }
