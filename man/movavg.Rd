@@ -9,6 +9,7 @@ The function returns a 2 column data frame with the first column named X.
 The second column named Y contains the averaged dataset
 }
 \usage{
+movavg(X,Y,bn,fn, ord = 2)
 movavg(X,Y,bn,fn)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -25,16 +26,17 @@ The no. of elements before the current element thatyou want included in the aver
  \item{fn}{
 The no. of elements after the current element(future element) thatyou want included in the average
 }
+ \item{ord}{
+The no. of times you want to run the movavg function for smoothing.\cr
+Ordinarily defaults to \code{ord = 1}.\cr
+}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+The returned value is always a 2 column dataframe.\cr
+The columns are named as X and Y.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -62,7 +64,9 @@ df <- movavg(x,y, 10, 10) #moving average of bn = fn = 10
 lines(df$X, df$Y, col='red')
 df <- movavg(x, y, 1, 10) ##moving average of bn = 1 and fn = 10
 lines(df$X, df$Y, col = 'blue')
-legend('top', legend = c('Noisy Data', 'movavg(bn = fn = 10)', 'movavg(bn = 1, fn = 10)'), col = c('black', 'red', 'blue'), lty = c(1,1,1))
+df <- movavg(x,y, 10, 10, ord = 3)
+lines(df$X, df$Y, col = 'green')
+legend('top', legend = c('Noisy Data', 'movavg(bn = fn = 10)', 'movavg(bn = 1, fn = 10)', 'movavg(bn = 10, fn = 10, ord = 3)'), col = c('black', 'red', 'blue', 'green'), lty = c(1,1,1,1))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
