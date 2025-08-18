@@ -58,7 +58,7 @@ Returned value is always a 3-element list
 \bold{If \code{grid.search = TRUE}}\cr
 List contains \cr
 1) \code{GridOfVaraiance}: A dataframe showing the values of \eqn{\mathcal{O}(n)} against values of \eqn{n} \cr
-2) \code{smoothed-dataframe}: Containing the X and Y values after smoothing \cr
+2) \code{smoothed_dataframe}: Containing the X and Y values after smoothing \cr
 3) \code{par}: The parameter or value of \eqn{n} for which the function \eqn{\mathcal{O}(n)} was found to be minimum
 
 \bold{If \code{grid.search = FALSE}}\cr
@@ -89,7 +89,7 @@ df <- noisy.gaussians
 ###call the kernel regularization/regression method and compare to movavg
 L <- movavg.reglzn(X = df$X, Y = df$Y, bn = 3, fn = 3, ord.min = 50, ord.max = 200, lambda = 0.05, grid.search = T)
 df_mov <- movavg(X = df$X, Y = df$Y, bn = 3, fn = 3, ord = 1)
-df_reg <- L$smoothed-dataframe
+df_reg <- L$smoothed_dataframe
 
 ###plot the data together
 plot(df$X, df$Y)
