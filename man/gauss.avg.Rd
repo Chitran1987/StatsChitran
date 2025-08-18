@@ -2,7 +2,7 @@
 \alias{gauss.avg}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Return a moving average of the 2D dataset in question
+Return a moving average with a gaussian kernel of the 2D dataset in question
 }
 \description{
 The function returns a 2 column data frame with the first column named X. The second column named Y contains the averaged dataset.\cr
