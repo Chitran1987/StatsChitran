@@ -87,7 +87,7 @@ data('noisy.gaussians', package = 'StatsChitran')
 df <- noisy.gaussians
 
 ###call the kernel regularization/regression method and compare to movavg
-L <- movavg.reg(X = df$X, Y = df$Y, bn = 3, fn = 3, ord.min = 50, ord.max = 200, lambda = 0.05, grid.search = T)
+L <- movavg.reglzn(X = df$X, Y = df$Y, bn = 3, fn = 3, ord.min = 50, ord.max = 200, lambda = 0.05, grid.search = T)
 df_mov <- movavg(X = df$X, Y = df$Y, bn = 3, fn = 3, ord = 1)
 df_reg <- L$smoothed-dataframe
 
