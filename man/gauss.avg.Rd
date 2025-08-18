@@ -61,8 +61,12 @@ Chitran Ghosal
 \code{\link{gauss}}, \code{\link{movavgf}}
 }
 \examples{
+#import the datasets
+df <- noisy.gaussians
+#call the averager
 df1 <- gauss.avg(X = df$X, Y = df$Y, fn = 3, bn = 3, sig = 3, pl = F)
 df2 <- gauss.avg(X = df$X, Y = df$Y, fn = 3, bn = 3, sig = 3, pl = F, ord = 300)
+#plot the datasets
 plot(df$X, df$Y)
 lines(df1$X, df1$Y, col = 'green')
 lines(df2$X, df2$Y, col = 'red')
