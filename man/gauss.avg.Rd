@@ -69,13 +69,19 @@ Chitran Ghosal
 rm(list=ls())
 library(StatsChitran)
 
-#build datasets
-X <- seq(-2, 2, by = 0.005)
-Y <- X*(X-1)*(X+1) + rnorm(n = length(X), mean = 0, sd = 1)
-df1 <- data.frame(X, Y)
+#import datasets
+df <- noisy.gaussians
 
 #call averager
-df2 <- gauss.avg(X = df1$X, Y = df1$Y, fn=3, bn=3, sig=3, ord = 30, pl = T)
+df0 <- gauss.avg(X = df$X, Y = df$Y, fn=3, bn=3, sig=3, pl = F)
+df1 <- gauss.avg(X = df$X, Y = df$Y, fn=3, bn=3, sig=3, ord = 30, pl = F)
+df2 <- gauss.avg(X = df$X, Y = df$Y, fn=3, bn=3, sig=3, ord = 300, pl = F)
+
+#plot the data
+plot(df$X, df$Y)
+lines(df0$X, df0$Y, col = 'green')
+lines(df1$X, df1$Y, col = 'red')
+lines(df2$X, df2$Y, col = 'blue')
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
