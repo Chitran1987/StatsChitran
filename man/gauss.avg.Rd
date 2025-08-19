@@ -68,9 +68,12 @@ Chitran Ghosal
 #import the datasets
 library(StatsChitran)
 df <- noisy.gaussians
+plot(df$X, df$Y)
+
 #call the averager
 df1 <- gauss.avg(X = df$X, Y = df$Y, fn = 3, bn = 3, sig = 3, pl = F)
 df2 <- gauss.avg(X = df$X, Y = df$Y, fn = 3, bn = 3, sig = 3, pl = F, ord = 300)
+
 #plot the datasets
 plot(df$X, df$Y)
 lines(df1$X, df1$Y, col = 'green')
