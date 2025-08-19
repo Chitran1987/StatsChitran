@@ -1,5 +1,7 @@
 #write a movavgf function to accept another function and use it as a moving window for moving average calculations
-movavgf <- function(X,Y, bn, fn, f, val){
+rm(list=ls())
+library(StatsChitran)
+movavgf <- function(X,Y, bn, fn, f, val, ord = 1){
   err.vec.dim(val, 1)
   err.WN.vec.dim(bn, 1)
   err.WN.vec.dim(fn, 1)
@@ -30,15 +32,19 @@ movavgf <- function(X,Y, bn, fn, f, val){
       stop('NAs exist in the window function')
     }
     #iterate over the window sequence############################
-    y_res <- NULL
-    for (i in 1:length(Y)) {
-      dmp <- sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ])*(Y[max(1,i-bn): min(i+fn, length(Y))]))/sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ]))
-      y_res <- c(y_res, dmp)
+    for (k1 in 1:ord) {
+      y_res <- NULL
+      for (i in 1:length(Y)) {
+        dmp <- sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ])*(Y[max(1,i-bn): min(i+fn, length(Y))]))/sum((f_seq[max(k + 1 - i, 1) : min(k + fn, k + length(Y) - i) ]))
+        y_res <- c(y_res, dmp)
+      }
+      Y <- y_res
     }
+
   }
   ###############################################################
   #build and return the smoothed dataframe#######################
-  df <- data.frame(X,y_res)
+  df <- data.frame(X, Y)
   names(df) <- c('X','Y')
   return(df)
   ###############################################################
