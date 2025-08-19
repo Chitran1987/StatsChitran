@@ -1,4 +1,4 @@
-library(StatsChitran)
+#library(StatsChitran)
 ###write a gaussian average function wih objective fitting which includes a regularization penalty
 ####This is called regularized gaussian kernel regression
 ####The kernel in question is a gaussian kernel
