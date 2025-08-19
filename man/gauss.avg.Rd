@@ -66,6 +66,7 @@ Chitran Ghosal
 }
 \examples{
 #import the datasets
+library(StatsChitran)
 df <- noisy.gaussians
 #call the averager
 df1 <- gauss.avg(X = df$X, Y = df$Y, fn = 3, bn = 3, sig = 3, pl = F)
