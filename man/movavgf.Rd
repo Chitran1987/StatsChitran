@@ -99,6 +99,7 @@ plot(df$X, df$Y, main = 'Data Processing')
 lines(df1$X, df1$Y, col = 'green')
 lines(df2$X, df2$Y, col = 'red')
 lines(df3$X, df3$Y, col = 'blue')
+legend(x = 'topright', legend = c('data', 'smooth. ord = 1', 'smooth. ord = 10', 'smooth. ord = 100'), fill = c('black', 'green', 'red', 'blue'))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
