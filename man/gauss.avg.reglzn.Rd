@@ -1,5 +1,5 @@
-\name{gauss.avg.reglzn.Rd}
-\alias{gauss.avg.reglzn.Rd}
+\name{gauss.avg.reglzn}
+\alias{gauss.avg.reglzn}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Iterative gaussian average smoother with a roughness penalty over a 2D X vs Y dataset
