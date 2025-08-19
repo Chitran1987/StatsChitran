@@ -1,5 +1,4 @@
 #write a movavgf function to accept another function and use it as a moving window for moving average calculations
-rm(list=ls())
 movavgf <- function(X,Y, bn, fn, f, val, ord = 1){
   err.vec.dim(val, 1)
   err.WN.vec.dim(bn, 1)
