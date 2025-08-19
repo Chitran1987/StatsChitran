@@ -69,6 +69,7 @@ Chitran Ghosal
 library(StatsChitran)
 
 #import datasets
+data('noisy.gaussians', package = 'StatsChitran')
 df <- noisy.gaussians
 
 #call averager
