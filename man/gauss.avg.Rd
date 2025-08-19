@@ -69,12 +69,13 @@ Chitran Ghosal
 rm(list=ls())
 library(StatsChitran)
 
-#import datasets
-data('noisy.gaussians', package = 'StatsChitran')
-df1 <- noisy.gaussians
+#build datasets
+X <- seq(-2, 2, by = 0.005)
+Y <- X*(X-1)*(X+1) + runif(n = length(X), mean = 0, sd = 1)
+df1 <- data.frame(X, Y)
 
 #call averager
-df2 <- gauss.avg(X = df1$X, Y = df1$Y, fn=3, bn=3, sig=3, pl = T)
+df2 <- gauss.avg(X = df1$X, Y = df1$Y, fn=3, bn=3, sig=3, ord = 30, pl = T)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
