@@ -71,7 +71,7 @@ library(StatsChitran)
 
 #build datasets
 X <- seq(-2, 2, by = 0.005)
-Y <- X*(X-1)*(X+1) + runif(n = length(X), mean = 0, sd = 1)
+Y <- X*(X-1)*(X+1) + rnorm(n = length(X), mean = 0, sd = 1)
 df1 <- data.frame(X, Y)
 
 #call averager
