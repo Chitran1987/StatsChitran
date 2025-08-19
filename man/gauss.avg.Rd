@@ -70,10 +70,10 @@ library(StatsChitran)
 
 #import datasets
 data('noisy.gaussians', package = 'StatsChitran')
-df <- noisy.gaussians
+df1 <- noisy.gaussians
 
 #call averager
-df1 <- gauss.avg(X = df$X, Y = df$Y, fn=3, bn=3, sig=3)
+df1 <- gauss.avg(X = df1$X, Y = df1$Y, fn=3, bn=3, sig=3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
