@@ -7,16 +7,15 @@ movavg <- function(X,Y, bn, fn, ord = 1){
     stop('Parmater ord needs to be a positive integer')
   }else{
     y_res <- NULL
-    for (i in 1:length(Y)) {
-      y_res <- c( y_res, sum( Y[max(1,i-bn): min(i+fn, length(Y))] )/( min(i+fn, length(Y)) - max(1, i-bn) + 1 ) )
+    for (k in 1:ord) {
+      y_res <- NULL
+      for (i in 1:length(Y)) {
+        y_res <- c( y_res, sum( Y[max(1,i-bn): min(i+fn, length(Y))] )/( min(i+fn, length(Y)) - max(1, i-bn) + 1 ) )
+      }
+      Y <- y_res
+
     }
-  }
-  df <- data.frame(X,y_res)
-  names(df) <- c('X','Y')
-  if(ord == 1){
-    return(df)
-  }else{
-    df <- movavg(df$X, df$Y, bn, fn, ord = ord - 1)
+    df <- data.frame(X, Y)
     return(df)
   }
 }
