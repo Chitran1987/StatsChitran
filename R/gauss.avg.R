@@ -11,7 +11,7 @@ gauss.avg <- function(X, Y, bn, fn, sig = 1, ord = 1, pl = T){
 
   #Loop through code for gauss.avg
   for (k in 1:ord) {
-    if(i == 1){
+    if(k == 1){
       df <- suppressWarnings(movavgf(X, Y, bn, fn, f = gauss.h, val = 0))
     }else{
       df <- suppressWarnings(movavgf(X = df$X, Y = df$Y, bn, fn, f = gauss.h, val = 0))
