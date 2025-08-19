@@ -65,7 +65,14 @@ Chitran Ghosal
 \code{\link{gauss}}, \code{\link{movavgf}}
 }
 \examples{
+#import libraries
+library(StatsChitran)
 
+#import datasets
+df <- noisy.gaussians
+
+#call averager
+df1 <- gauss.avg(X = df$X, Y = df$Y, fn=3, bn=3, sig=3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
