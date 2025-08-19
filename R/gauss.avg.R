@@ -10,7 +10,7 @@ gauss.avg <- function(X, Y, bn, fn, sig = 1, ord = 1, pl = T){
   }
 
   #call the movavgf function
-  df <- movavgf(X, Y, bn, fn, f = gauss.h, val = 0)
+  df <- suppressWarnings(movavgf(X, Y, bn, fn, f = gauss.h, val = 0))
 
   #Recursion using ord argument
   if(ord == 1){
