@@ -36,6 +36,10 @@ The window ordinate is calculated as f_seq = f(w).
 The value around which the averaging window should be centered.\cr
 For example, for a standard normal distribution val = 0, but for a gaussian with a mean of 4, val = 4.
 }
+    \item{ord}{
+The no. of times you want to run the movavgf fucntion for smoothing.\cr
+Defaults to \code{ord = 1}
+}
 }
 \details{
 Ensure before using that... \cr
@@ -64,64 +68,37 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+#call the relevant libraries
 library(StatsChitran)
-#build the dataset
-set.seed(11)
-X <- seq(-4, 4, by = 0.001)
-Y <- X^2/16 + gauss(X, mu =  2, sig = 0.3, amp = 3, probability = F)
-Y <- Y + rnorm(length(X), mean = 1, sd = 5)
+
+#Call the dataset
+df <- noisy.gaussians
 
 
-##define the averaging function
-lorentz <- function(v){
-  y <- 1/((v - 3)^2 + 5)
-  return(y)
+##define the kernel function (lorentzian)
+lor.avg <- function(v){
+  return(lorentz(X = v, x_0 = 0, gamm = 1, probability = T))
 }
 
-##divide the plot into 4 co-ordinates
-subplot(c(2,2))
+##divide the plot into two
+subplot(c(1,2))
 
-##plot to check the averaging function
-v <- seq(-10, 10, by=0.001)
-plot(v, lorentz(v), type='l', col = 'red', main = 'averaging window', lwd=3)
-#mark the position of the center value "val"
-abline(v = 3)
-
-
-##plot the dataset
-plot(X, Y, col = rgb(0, 0.5, 0, 0.1), pch = 19, main = 'dataset vs averages')
-#calculate the lorentz moving average
-dat <- movavgf(X, Y, bn=300, fn=300, f=lorentz, val = 3)
-#calculate the simple moving average (available in StatsChitran)
-dat1 <- movavg(X, Y, bn=300, fn=300)
-#plot the averages
-lines(dat$X, dat$Y, col=rgb(1,0,0, 0.5), type='l', lwd = 3)
-lines(dat1$X, dat1$Y, col=rgb(0,0,1, 0.25), type='l', lwd = 3)
-#add legend
-legend("topleft", legend = c("dataset", "lorentz MA", "MA"),
-       col = c(rgb(0, 0.5, 0, 0.5), rgb(1,0,0, 0.5), rgb(0,0,1, 0.25)), lwd = c(0, 3, 3), pch = c(19, NA, NA),
-        bty = "n")
+##plot the kernel function
+Y_kernel <- lor.avg(df$X)
+plot(df$X, Y_kernel, type = 'l', col = 'red', main = 'The lorentzian kernel')
+abline(v = 0)
 
 
+##Perform kernel smoothening of ord = 1, 10, 100
+df1 <- movavgf1(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 1)
+df2 <- movavgf1(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 10)
+df3 <- movavgf1(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 100)
 
-##plot the averages only
-plot(dat$X, dat$Y, col=rgb(1,0,0, 0.5), type='l', lwd = 3, main = 'moving averages')
-lines(dat1$X, dat1$Y, col=rgb(0,0,1, 0.25), type='l', lwd = 3)
-#add legend
-legend("topleft", legend = c("lorentz MA", "MA"),
-       col = c(rgb(1,0,0, 0.5), rgb(0,0,1, 0.25)), lwd = c( 3, 3), pch = c( NA, NA),
-       bty = "n")
-
-
-##plot the errors
-vec <- dat1$Y -dat$Y
-plot(X, vec, type = 'l', col=rgb(0,1,1), main = 'absolute diff bw averages')
-#add legend
-legend("bottomleft", legend = "lorentz MA - MA",
-       col = rgb(0,1,1), lwd = 1, pch = NA,
-       bty = "n")
-
-
+##Plot the smoothed dataframes against the main data
+plot(df$X, df$Y, main = 'Data Processing')
+lines(df1$X, df1$Y, col = 'green')
+lines(df2$X, df2$Y, col = 'red')
+lines(df3$X, df3$Y, col = 'blue')
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
