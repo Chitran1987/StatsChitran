@@ -90,9 +90,9 @@ abline(v = 0)
 
 
 ##Perform kernel smoothening of ord = 1, 10, 100
-df1 <- movavgf1(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 1)
-df2 <- movavgf1(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 10)
-df3 <- movavgf1(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 100)
+df1 <- movavgf(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 1)
+df2 <- movavgf(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 10)
+df3 <- movavgf(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 100)
 
 ##Plot the smoothed dataframes against the main data
 plot(df$X, df$Y, main = 'Data Processing')
