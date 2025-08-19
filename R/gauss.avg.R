@@ -10,7 +10,7 @@ gauss.avg <- function(X, Y, bn, fn, sig = 1, ord = 1, pl = T){
   }
 
   #Call the movavgf function
-      df <- suppressWarnings(movavgf(X = df$X, Y = df$Y, bn, fn, f = gauss.h, val = 0, ord = ord))
+      df <- suppressWarnings(movavgf(X, Y, bn, fn, f = gauss.h, val = 0, ord = ord))
   if(pl){
     plot(X, Y)
     lines(df$X, df$Y, col = 'red')
