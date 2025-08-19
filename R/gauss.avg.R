@@ -9,17 +9,19 @@ gauss.avg <- function(X, Y, bn, fn, sig = 1, ord = 1, pl = T){
     return(gauss(X, sig = sig, probability = T))
   }
 
-  #call the movavgf function
-  df <- suppressWarnings(movavgf(X, Y, bn, fn, f = gauss.h, val = 0))
-
-  #Recursion using ord argument
-  if(ord == 1){
-    if(pl){
-      plot(X, Y)
-      lines(df$X, df$Y, col = 'red')
+  #Loop through code for gauss.avg
+  for (k in 1:ord) {
+    if(i == 1){
+      df <- suppressWarnings(movavgf(X, Y, bn, fn, f = gauss.h, val = 0))
+    }else{
+      df <- suppressWarnings(movavgf(X = df$X, Y = df$Y, bn, fn, f = gauss.h, val = 0))
     }
+  }
+  if(pl){
+    plot(X, Y)
+    lines(df$X, df$Y, col = 'red')
     return(df)
   }else{
-    df <- gauss.avg(X = df$X, Y = df$Y, bn, fn, sig, ord = ord-1, pl)
+    return(df)
   }
 }
