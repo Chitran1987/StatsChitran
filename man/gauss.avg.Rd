@@ -66,6 +66,7 @@ Chitran Ghosal
 }
 \examples{
 #import libraries
+rm(list=ls())
 library(StatsChitran)
 
 #import datasets
@@ -73,7 +74,7 @@ data('noisy.gaussians', package = 'StatsChitran')
 df1 <- noisy.gaussians
 
 #call averager
-df1 <- gauss.avg(X = df1$X, Y = df1$Y, fn=3, bn=3, sig=3, pl = T)
+df2 <- gauss.avg(X = df1$X, Y = df1$Y, fn=3, bn=3, sig=3, pl = T)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
