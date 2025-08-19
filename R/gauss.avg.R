@@ -5,23 +5,15 @@ gauss.avg <- function(X, Y, bn, fn, sig = 1, ord = 1, pl = T){
   #error checking
 
   #build the gaussian function
-  gauss.h <- function(X){
-    return(gauss(X, sig = sig, probability = T))
+  gauss.h <- function(v){
+    return(gauss(X = v, sig = sig, probability = T))
   }
 
-  #Loop through code for gauss.avg
-  for (k in 1:ord) {
-    if(k == 1){
-      df <- suppressWarnings(movavgf(X, Y, bn, fn, f = gauss.h, val = 0))
-    }else{
-      df <- suppressWarnings(movavgf(X = df$X, Y = df$Y, bn, fn, f = gauss.h, val = 0))
-    }
-  }
+  #Call the movavgf function
+      df <- suppressWarnings(movavgf(X = df$X, Y = df$Y, bn, fn, f = gauss.h, val = 0, ord = ord))
   if(pl){
     plot(X, Y)
     lines(df$X, df$Y, col = 'red')
-    return(df)
-  }else{
-    return(df)
   }
+   return(df)
 }
