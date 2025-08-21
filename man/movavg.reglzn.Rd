@@ -29,7 +29,7 @@ movavg.reglzn(X, Y, bn, fn, lambda, ord.max)
   For very large \eqn{\lambda}, the smoothing will overshadow the nature of the data. So \eqn{\lambda} should be picked carefully.
   }
   \item{ord.min, ord.max}{
-  The minimum and maximum values of the order of the moving average \code{ord}. See \link{movavg}\cr
+  The minimum and maximum values of the smoothing order of the moving average \code{ord}. See \link{movavg}\cr
   Must be positive integers \cr
   \code{ord.min} defaults to one, if not provided
   }
@@ -112,7 +112,7 @@ legend(x = 'topleft', legend = c('data', 'movavg, ord = 10', 'movavg, ord = 100'
 
 ##Once converged plot the function O(n) versus n to verify L$par
 df_reg <- L$GridOfVariance
-plot(df_reg$ord.val, df_reg$ord.reg, xlab = 'n', ylab = 'O(n)')
+plot(df_reg$ord.val, df_reg$ord.reg, xlab = 'n', ylab = 'O(n)', main = 'Objective function versus smoothing order')
 abline(v = L$par, col = 'gray', lwd = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
