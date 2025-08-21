@@ -85,9 +85,6 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##Call the important library
-library(StatsChitran)
-
 ##Import the noisy dataset and plot it
 df <- noisy.gaussians
 plot(df$X, df$Y)
@@ -95,17 +92,28 @@ plot(df$X, df$Y)
 ##Call the gauss.avg function to see whether the smoothing is moving away from the original data
 df1 <- gauss.avg(df$X, df$Y, bn = 3, fn = 3, sig = 1, pl = F, ord = 10)
 df2 <- gauss.avg(df$X, df$Y, bn = 3, fn = 3, sig = 1, pl = F, ord = 100)
-lines(df1$X, df1$Y, col = 'green')
-lines(df2$X, df2$Y, col = 'red')
+lines(df1$X, df1$Y, col = 'green', lwd = 2)
+lines(df2$X, df2$Y, col = 'red', lwd = 2)
+legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord = 100'), fill = c('white', 'green', 'red'))
 
-##It is clear that ord = 100 is moving away from the data while ord = 10 is too noisy
+##It is clear that ord = 100 is moving away from the data while ord = 1 is too noisy
 ##Pick a very low value of lambda and then minimize O(n) by calling the gauss.avg.reglzn function
 L <- gauss.avg.reglzn(df$X, df$Y, bn = 3, fn = 3, sig = 1, lambda = 0.005, ord.min = 10, ord.max = 100)
+df3 <- L$smoothed_dataframe
+##Figure what the optimized order parameter is (given the specified value of lambda)
 L$par
+
+##Compare the plots of the ord = 10, ord = L$par, ord = 100
+plot(df$X, df$Y)
+lines(df1$X, df1$Y, col = 'green', lwd = 2)
+lines(df2$X, df2$Y, col = 'red', lwd = 2)
+lines(df3$X, df3$Y, col = 'blue', lwd = 2)
+legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord = 100', 'gauss.avg, optimized'), fill = c('white', 'green', 'red', 'blue'))
 
 ##Once converged plot the function O(n) versus n to verify L$par
 df_reg <- L$GridOfVariance
 plot(df_reg$ord.val, df_reg$ord.reg)
+abline(v = L$par, col = 'gray', lwd = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
