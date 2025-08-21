@@ -83,18 +83,35 @@ Chitran Ghosal
 }
 \examples{
 ###Load the dataset
-data('noisy.gaussians', package = 'StatsChitran')
+##Import the noisy dataset and plot it
 df <- noisy.gaussians
-
-###call the kernel regularization/regression method and compare to movavg
-L <- movavg.reglzn(X = df$X, Y = df$Y, bn = 3, fn = 3, ord.min = 50, ord.max = 200, lambda = 0.05, grid.search = T)
-df_mov <- movavg(X = df$X, Y = df$Y, bn = 3, fn = 3, ord = 1)
-df_reg <- L$smoothed_dataframe
-
-###plot the data together
 plot(df$X, df$Y)
-lines(df_mov$X, df_mov$Y, col = 'green')
-lines(df_reg$X, df_reg$Y, col = 'red')
+
+##Call the movavg function to see whether the smoothing is moving away from the original data
+df1 <- movavg(df$X, df$Y, bn = 3, fn = 3, ord = 10)
+df2 <- movavg(df$X, df$Y, bn = 3, fn = 3, ord = 100)
+lines(df1$X, df1$Y, col = 'green', lwd = 2)
+lines(df2$X, df2$Y, col = 'red', lwd = 2)
+legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord = 100'), fill = c('white', 'green', 'red'))
+
+##It is clear that ord = 100 is moving away from the data while ord = 1 is too noisy
+##Pick a very low value of lambda and then minimize O(n) by calling the movavg.reglzn function
+L <- movavg.reglzn(df$X, df$Y, bn = 3, fn = 3, lambda = 0.005, ord.min = 10, ord.max = 100)
+df3 <- L$smoothed_dataframe
+##Figure what the optimized order parameter is (given the specified value of lambda)
+L$par
+
+##Compare the plots of the ord = 10, ord = L$par, ord = 100
+plot(df$X, df$Y)
+lines(df1$X, df1$Y, col = 'green', lwd = 2)
+lines(df2$X, df2$Y, col = 'red', lwd = 2)
+lines(df3$X, df3$Y, col = 'blue', lwd = 2)
+legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord = 100', 'gauss.avg, optimized'), fill = c('white', 'green', 'red', 'blue'))
+
+##Once converged plot the function O(n) versus n to verify L$par
+df_reg <- L$GridOfVariance
+plot(df_reg$ord.val, df_reg$ord.reg)
+abline(v = L$par, col = 'gray', lwd = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
