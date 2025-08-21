@@ -24,7 +24,9 @@ Y-component of the X-Y dataset
 Backward and Forward window sizes. Please see \code{\link{gauss.avg}}
 }
   \item{lambda}{
-Co-efficient of the regularization penalty described in the \emph{description} as \eqn{\lambda}
+  Co-efficient for the regularization penalty shown in the \emph{description} as \eqn{\lambda}\cr
+  At \eqn{\lambda = 0}, the \code{ord} parameter will converge to the \code{ord.min} parameter since the MSE term is lowest there\cr
+  For very large \eqn{\lambda}, the smoothing will overshadow the nature of the data. So \eqn{\lambda} should be picked carefully.
 }
   \item{sig}{
 The standard deviation, \eqn{\sigma}, of the gaussian kernel used. Please see \code{\link{gauss}}, \code{\link{gauss.avg}}
@@ -112,7 +114,7 @@ legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord 
 
 ##Once converged plot the function O(n) versus n to verify L$par
 df_reg <- L$GridOfVariance
-plot(df_reg$ord.val, df_reg$ord.reg)
+plot(df_reg$ord.val, df_reg$ord.reg, xlab = 'n', ylab = 'O(n)', main = 'Objective function versus smoothing order')
 abline(v = L$par, col = 'gray', lwd = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
