@@ -21,7 +21,7 @@ X-component of the X-Y dataset
 Y-component of the X-Y dataset
 }
   \item{bn, fn}{
-Backward and Forward window sizes. Please see \cdoe{\link{gauss.avg}}
+Backward and Forward window sizes. Please see \code{\link{gauss.avg}}
 }
   \item{lambda}{
 Co-efficient of the regularization penalty described in the \emph{description} as \eqn{\lambda}
@@ -30,7 +30,7 @@ Co-efficient of the regularization penalty described in the \emph{description} a
 The standard deviation, \eqn{\sigma}, of the gaussian kernel used. Please see \code{\link{gauss}}, \code{\link{gauss.avg}}
 }
   \item{ord.min, ord.max}{
-Min and max values of the \code{ord} variable of the gaussian moving average. Please see \cdoe{\link{gauss.avg}}\cr
+Min and max values of the \code{ord} variable of the gaussian moving average. Please see \code{\link{gauss.avg}}\cr
 Must be positive integers
 }
   \item{pl}{
