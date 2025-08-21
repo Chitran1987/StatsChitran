@@ -112,7 +112,7 @@ legend(x = 'topleft', legend = c('data', 'movavg, ord = 10', 'movavg, ord = 100'
 
 ##Once converged plot the function O(n) versus n to verify L$par
 df_reg <- L$GridOfVariance
-plot(df_reg$ord.val, df_reg$ord.reg)
+plot(df_reg$ord.val, df_reg$ord.reg, xlab = 'n', ylab = 'O(n)')
 abline(v = L$par, col = 'gray', lwd = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
