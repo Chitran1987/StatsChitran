@@ -17,10 +17,10 @@ Dataset created using two noisy gaussians
   }
 }
 \details{
-Was built using the code shown in the \underline{source} section
+Was built using the code shown in the \emph{Source} section
 }
 \source{
-This idataset was generated using the following R code:
+This dataset was generated using the following R code:
 
 \preformatted{
 X <- seq(-10, 10, by=0.05)
