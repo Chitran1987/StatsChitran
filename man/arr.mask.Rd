@@ -26,7 +26,7 @@ Should have the same dimesions, \eqn{m \times n}, as any slice \eqn{T_{m,n,k}} o
 }
   \item{drop.dat}{
 Boolean bit, defaults to \code{FALSE}.\cr
-When set to \code{FALSE}, the output array will have the same dimesnionality as \code{arr}, i.e. \code{m \times n \times p}\cr
+When set to \code{FALSE}, the output array will have the same dimesnionality as \code{arr}, i.e. \code{m \eqn{\times} n \eqn{\times} p}\cr
 When set to \code{TRUE}, the output array dimesnionality might be different. Please see \link{mat.mask} for more details.
 }
 }
