@@ -24,7 +24,9 @@ movavg.reglzn(X, Y, bn, fn, lambda, ord.max)
   backward forward window sizes. Please see \link{movavg}
   }
   \item{lambda}{
-  Co-efficient for the regularization penalty shown in the \emph{description} as \eqn{\lambda}
+  Co-efficient for the regularization penalty shown in the \emph{description} as \eqn{\lambda}\cr
+  At \eqn{\lambda = 0}, the \code{ord} parameter will converge to the \code{ord.min} parameter since the MSE term is lowest there\cr
+  For very large \eqn{\lambda}, the smoothing will overshadow the nature of the data. So \eqn{\lambda} should be picked carefully.
   }
   \item{ord.min, ord.max}{
   The minimum and maximum values of the order of the moving average \code{ord}. See \link{movavg}\cr
@@ -92,7 +94,7 @@ df1 <- movavg(df$X, df$Y, bn = 3, fn = 3, ord = 10)
 df2 <- movavg(df$X, df$Y, bn = 3, fn = 3, ord = 100)
 lines(df1$X, df1$Y, col = 'green', lwd = 2)
 lines(df2$X, df2$Y, col = 'red', lwd = 2)
-legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord = 100'), fill = c('white', 'green', 'red'))
+legend(x = 'topleft', legend = c('data', 'movavg, ord = 10', 'movavg, ord = 100'), fill = c('white', 'green', 'red'))
 
 ##It is clear that ord = 100 is moving away from the data while ord = 1 is too noisy
 ##Pick a very low value of lambda and then minimize O(n) by calling the movavg.reglzn function
@@ -106,7 +108,7 @@ plot(df$X, df$Y)
 lines(df1$X, df1$Y, col = 'green', lwd = 2)
 lines(df2$X, df2$Y, col = 'red', lwd = 2)
 lines(df3$X, df3$Y, col = 'blue', lwd = 2)
-legend(x = 'topleft', legend = c('data', 'gauss.avg, ord = 10', 'gauss.avg, ord = 100', 'gauss.avg, optimized'), fill = c('white', 'green', 'red', 'blue'))
+legend(x = 'topleft', legend = c('data', 'movavg, ord = 10', 'movavg, ord = 100', 'movavg, optimized'), fill = c('white', 'green', 'red', 'blue'))
 
 ##Once converged plot the function O(n) versus n to verify L$par
 df_reg <- L$GridOfVariance
