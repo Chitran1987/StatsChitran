@@ -46,7 +46,6 @@ Chitran Ghosal
 Please note that the probability of success of at least \eqn{r = 0} succesful events is 1.\cr
 Since it encompasses the entire sample space. See \emph{details}
 }
-}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
