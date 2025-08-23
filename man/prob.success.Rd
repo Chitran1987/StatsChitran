@@ -57,7 +57,10 @@ Since it encompasses the entire sample space. See \emph{details}
 library(StatsChitran)
 
 #Call the function
+prob.success(N.trials = 3, p = 0.5, r = 0)
+prob.success(N.trials = 3, p = 0.5, r = 1)
 prob.success(N.trials = 3, p = 0.5, r = 2)
+prob.success(N.trials = 3, p = 0.5, r = 3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
