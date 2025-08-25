@@ -5,7 +5,7 @@
 Probability of at least \eqn{r} succesful events
 }
 \description{
-Returns the probability of AT LEAST \eqn{r} succesful events in a series of \eqn{N} independent events\cr
+Returns the probability of AT LEAST \eqn{r} succesful events in a series of \eqn{n} independent events\cr
 The probability of occurence/success of a single event is \eqn{p}\cr
 Should not be confused with the binomial mass function \eqn{P[k] = {}^nC_kp^k(1-p)^{n-k}}. \cr
 See \emph{details}.
