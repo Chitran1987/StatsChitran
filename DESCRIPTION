@@ -1,24 +1,24 @@
 Package: StatsChitran
 Type: Package
-Title: StatsChitran
+Title: Fast Utilities for Basic Statistical Tasks
 Version: 1.1.0
-Author: Chitran Ghosal
-Maintainer: The package maintainer <ghosal.chitran@gmail.com>
-Description: This package is a creation of functions used for doing basic statistical tasks.
-Imports: 
+Authors@R: 
+    c(person("Chitran", "Ghosal", role = c("aut","cre"),
+             email = "ghosal.chitran@gmail.com"))
+Description: Functions for basic statistical tasks with optional C++ backends via Rcpp.
+License: GPL-3
+Encoding: UTF-8
+Depends: R (>= 3.5)
+Imports:
+    Rcpp,
     ggplot2,
     dplyr,
-    png,
-    Rcpp
-Suggests: 
+    png
+LinkingTo: Rcpp
+Suggests:
     testthat,
     knitr
-License: GNU General Public License v3.0
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.3.2
-Depends: 
-    R (>= 3.5)
 Roxygen: list(markdown = TRUE)
-LinkingTo: 
-    Rcpp
+RoxygenNote: 7.3.2
+URL: https://github.com/Chitran1987/StatsChitran
+BugReports: https://github.com/Chitran1987/StatsChitran/issues
