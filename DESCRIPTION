@@ -8,7 +8,8 @@ Description: This package is a creation of functions used for doing basic statis
 Imports: 
     ggplot2,
     dplyr,
-    png
+    png,
+    Rcpp
 Suggests: 
     testthat,
     knitr
@@ -18,3 +19,6 @@ LazyData: true
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.5)
+Roxygen: list(markdown = TRUE)
+LinkingTo: 
+    Rcpp
