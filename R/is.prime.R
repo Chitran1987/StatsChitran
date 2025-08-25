@@ -12,5 +12,5 @@ is.prime <- function(vec){
   if(!all(vec > 0)){
     stop('vec can only have positive integers')
   }
-  retrun(is_prime(vec))
+  return(is_prime(vec))
 }
