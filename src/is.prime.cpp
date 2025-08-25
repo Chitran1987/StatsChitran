@@ -38,7 +38,7 @@ LogicalVector is_prime(NumericVector x) {
 
 
   //Loop through x using
-  LogicalVector dmp(x.size()-1);
+  LogicalVector dmp(x.size());
   for (int i = 0; i <= x.size()-1; i++) {
     dmp.at(i) = primefunc(x.at(i));
   }
