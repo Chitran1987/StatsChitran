@@ -12,7 +12,9 @@ using namespace Rcpp;
 //
 
 
-//define the function primefunc (Helper function-not directly needed)
+//define the function primefunc
+//Returns whether a value is a prime or not
+// [[Rcpp::export]]
 bool primefunc(int n){
 
   if( n == 1){
