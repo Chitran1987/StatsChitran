@@ -10,17 +10,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// primefunc
-bool primefunc(int n);
-RcppExport SEXP _StatsChitran_primefunc(SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(primefunc(n));
-    return rcpp_result_gen;
-END_RCPP
-}
 // is_prime
 LogicalVector is_prime(NumericVector x);
 RcppExport SEXP _StatsChitran_is_prime(SEXP xSEXP) {
@@ -32,10 +21,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// prime_firstN
+NumericVector prime_firstN(int n);
+RcppExport SEXP _StatsChitran_prime_firstN(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(prime_firstN(n));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_StatsChitran_primefunc", (DL_FUNC) &_StatsChitran_primefunc, 1},
     {"_StatsChitran_is_prime", (DL_FUNC) &_StatsChitran_is_prime, 1},
+    {"_StatsChitran_prime_firstN", (DL_FUNC) &_StatsChitran_prime_firstN, 1},
     {NULL, NULL, 0}
 };
 
