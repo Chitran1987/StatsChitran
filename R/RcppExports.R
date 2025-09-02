@@ -13,6 +13,10 @@ is_prime_par <- function(N) {
     .Call(`_StatsChitran_is_prime_par`, N)
 }
 
+movavg_cpp <- function(Y, bn, fn, ord) {
+    .Call(`_StatsChitran_movavg_cpp`, Y, bn, fn, ord)
+}
+
 prime_firstN <- function(n) {
     .Call(`_StatsChitran_prime_firstN`, n)
 }
