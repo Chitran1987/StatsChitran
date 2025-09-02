@@ -13,6 +13,6 @@ is.prime.large <- function(vec){
   if(length(vec) < 10^7){
     return(is_prime(vec))
   }else{
-    return(is_prime_large(vec))
+    return(as.logical(is_prime_large(vec)))
   }
 }
