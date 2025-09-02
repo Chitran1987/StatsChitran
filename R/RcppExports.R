@@ -5,6 +5,10 @@ is_prime <- function(x) {
     .Call(`_StatsChitran_is_prime`, x)
 }
 
+is_prime_large <- function(X) {
+    .Call(`_StatsChitran_is_prime_large`, X)
+}
+
 is_prime_par <- function(N) {
     .Call(`_StatsChitran_is_prime_par`, N)
 }
