@@ -1,6 +1,7 @@
 #include <Rcpp.h>
 #include <thread>
 #include <vector>
+#include <cstdint>
 #include "prime_helpers.h"
 
 //Selective imports
@@ -22,7 +23,7 @@ using std::copy;
 //   http://gallery.rcpp.org/
 //
 //declare the worker function
-static void worker(vector<int> X, vector<int>& c) {
+static void worker(vector<uint64_t> X, vector<int>& c) {
   c.resize(X.size());
   for (int i = 0; i < X.size(); i++)
   {
@@ -35,7 +36,7 @@ static void worker(vector<int> X, vector<int>& c) {
 
 //declare the function that initializes the threads
 // [[Rcpp::export]]
-IntegerVector is_prime_large(IntegerVector X) {
+IntegerVector is_prime_large(NumericVector X) {
   //declare variables needed
   int nth;
   nth = std::thread::hardware_concurrency() - 1;
@@ -47,7 +48,7 @@ IntegerVector is_prime_large(IntegerVector X) {
   //create datachunks for worker input at each loop
   int N = X.size();
   int del = ceil(N / nth) - 1;
-  vector<vector<int>> df(nth);
+  vector<vector<uint64_t>> df(nth);
   //vector<int> X(2);
   for (int i = 0; i < nth; i++)
   {
@@ -100,7 +101,7 @@ IntegerVector is_prime_large(IntegerVector X) {
   {
     sz = sz + res_df[i].size();
   }
-  vector<int> res_vec(sz);
+  vector<uint64_t> res_vec(sz);
   int out = 0;
   for (size_t i = 0; i < nth; i++)
   {
