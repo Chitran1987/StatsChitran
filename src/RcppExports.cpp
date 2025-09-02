@@ -21,6 +21,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// is_prime_large
+IntegerVector is_prime_large(IntegerVector X);
+RcppExport SEXP _StatsChitran_is_prime_large(SEXP XSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type X(XSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_prime_large(X));
+    return rcpp_result_gen;
+END_RCPP
+}
 // is_prime_par
 IntegerVector is_prime_par(int N);
 RcppExport SEXP _StatsChitran_is_prime_par(SEXP NSEXP) {
@@ -46,6 +57,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_is_prime", (DL_FUNC) &_StatsChitran_is_prime, 1},
+    {"_StatsChitran_is_prime_large", (DL_FUNC) &_StatsChitran_is_prime_large, 1},
     {"_StatsChitran_is_prime_par", (DL_FUNC) &_StatsChitran_is_prime_par, 1},
     {"_StatsChitran_prime_firstN", (DL_FUNC) &_StatsChitran_prime_firstN, 1},
     {NULL, NULL, 0}
