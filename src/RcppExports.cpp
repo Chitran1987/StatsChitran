@@ -22,12 +22,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // is_prime_large
-IntegerVector is_prime_large(IntegerVector X);
+IntegerVector is_prime_large(NumericVector X);
 RcppExport SEXP _StatsChitran_is_prime_large(SEXP XSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerVector >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type X(XSEXP);
     rcpp_result_gen = Rcpp::wrap(is_prime_large(X));
     return rcpp_result_gen;
 END_RCPP
