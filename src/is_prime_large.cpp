@@ -29,7 +29,7 @@ static void worker(vector<uint64_t> X, vector<int>& c) {
   {
     //int dmp = i - st;
     //c.push_back(is_prime(X.at(i))) ;
-    c.at(i) = primefunc_int(X.at(i));
+    c.at(i) = primefunc_large_int(X.at(i));
   }
 }
 
