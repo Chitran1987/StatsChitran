@@ -5,7 +5,8 @@
 Returns a vector indicating which elements of the input vector are primes
 }
 \description{
-Returns a vector indicating which elements of the input vector are primes
+Returns a vector indicating which elements of the input vector are primes.\cr
+For very large integers or very large vectors, use \code{\link{is.prime.large}}
 }
 \usage{
 is.prime(vec)
