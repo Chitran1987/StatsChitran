@@ -9,7 +9,7 @@ The function returns a 2 column data frame with the first column named X.
 The second column named Y contains the averaged dataset
 }
 \usage{
-movavg(X,Y,bn,fn, ord = 2)
+movavg(X,Y,bn,fn, ord = 2, base = 'cpp')
 movavg(X,Y,bn,fn)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -29,6 +29,10 @@ The no. of elements after the current element(future element) thatyou want inclu
  \item{ord}{
 The no. of times you want to run the movavg function for smoothing.\cr
 Ordinarily defaults to \code{ord = 1}.\cr
+}
+  \item{base}{
+Determines whether movavg acts as a R wrapper over a Rcpp backend (\code{base = "cpp"}) or whether a pure R function.\cr
+Defaults to \code{base = "cpp"}
 }
 }
 \details{
