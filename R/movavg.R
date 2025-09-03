@@ -5,6 +5,8 @@ movavg <- function(X,Y, bn, fn, ord = 1, base = 'cpp'){
     stop('length of input vectors X and Y need to be the same')
   }else if( ord <= 0 | ord%%1 != 0 ){
     stop('Parmater ord needs to be a positive integer')
+  }else if(length(base) != 1 | !(is.charcter(base))){
+    stop('base accept caharcter vectors of length 1 as an argument')
   }else if( (base != 'cpp') & (base != 'R') ){
     stop("base can take values either equal to 'cpp' or equal to 'R' ")
   }else{
