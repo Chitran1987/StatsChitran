@@ -32,6 +32,7 @@ Ordinarily defaults to \code{ord = 1}.\cr
 }
   \item{base}{
 Determines whether movavg acts as a R wrapper over a Rcpp backend (\code{base = "cpp"}) or whether a pure R function.\cr
+Can take values of \code{base = 'cpp'} or \code{base = 'R'}. Other values return an error.\cr
 Defaults to \code{base = "cpp"}
 }
 }
