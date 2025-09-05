@@ -31,7 +31,7 @@ The no. of times you want to run the movavg function for smoothing.\cr
 Ordinarily defaults to \code{ord = 1}.\cr
 }
   \item{base}{
-Determines whether movavg acts as a R wrapper over a Rcpp backend (\code{base = "cpp"}) or whether a pure R function.\cr
+A single character determining whether movavg acts as a R wrapper over a Rcpp backend (\code{base = "cpp"}) or whether a pure R function.\cr
 Can take values of \code{base = 'cpp'} or \code{base = 'R'}. Other values return an error.\cr
 Defaults to \code{base = "cpp"}
 }
