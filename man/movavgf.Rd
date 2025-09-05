@@ -72,6 +72,7 @@ Chitran Ghosal
 library(StatsChitran)
 
 #Call the dataset
+data("noisy.gaussians")
 df <- noisy.gaussians
 
 
