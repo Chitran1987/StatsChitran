@@ -86,6 +86,7 @@ Chitran Ghosal
 \examples{
 ###Load the dataset
 ##Import the noisy dataset and plot it
+data("noisy.gaussians")
 df <- noisy.gaussians
 plot(df$X, df$Y)
 
