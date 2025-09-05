@@ -70,6 +70,7 @@ rm(list=ls())
 library(StatsChitran)
 
 #import datasets
+data("noisy.gaussians")
 df <- noisy.gaussians
 
 #call averager
