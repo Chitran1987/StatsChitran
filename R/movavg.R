@@ -18,14 +18,11 @@ movavg <- function(X,Y, bn, fn, ord = 1, base = 'cpp'){
           y_res <- c( y_res, sum( Y[max(1,i-bn): min(i+fn, length(Y))] )/( min(i+fn, length(Y)) - max(1, i-bn) + 1 ) )
         }
         Y <- y_res
-
       }
-      df <- data.frame(X, Y)
-      return(df)
     }else{
       Y <- movavg_cpp(Y, bn, fn, ord)
-      df <- data.frame(X, Y)
     }
-
+    df <- data.frame(X, Y)
+    return(df)
   }
 }
