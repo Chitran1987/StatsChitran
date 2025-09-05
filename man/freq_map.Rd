@@ -90,6 +90,8 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+### Call the data frame to be used
+data("my_voice_01")
 ### define the w_int dataframe
 w1 <- c(550, 850)
 w2 <- c(3000, 3300)
