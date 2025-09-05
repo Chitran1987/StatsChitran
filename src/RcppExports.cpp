@@ -10,6 +10,20 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// num_integrate_cpp
+double num_integrate_cpp(NumericVector X, NumericVector Y, double xmin, double xmax);
+RcppExport SEXP _StatsChitran_num_integrate_cpp(SEXP XSEXP, SEXP YSEXP, SEXP xminSEXP, SEXP xmaxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< double >::type xmin(xminSEXP);
+    Rcpp::traits::input_parameter< double >::type xmax(xmaxSEXP);
+    rcpp_result_gen = Rcpp::wrap(num_integrate_cpp(X, Y, xmin, xmax));
+    return rcpp_result_gen;
+END_RCPP
+}
 // is_prime
 LogicalVector is_prime(NumericVector x);
 RcppExport SEXP _StatsChitran_is_prime(SEXP xSEXP) {
@@ -57,6 +71,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// num_integrate_par
+double num_integrate_par(NumericVector X, NumericVector Y, double xmin, double xmax);
+RcppExport SEXP _StatsChitran_num_integrate_par(SEXP XSEXP, SEXP YSEXP, SEXP xminSEXP, SEXP xmaxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< double >::type xmin(xminSEXP);
+    Rcpp::traits::input_parameter< double >::type xmax(xmaxSEXP);
+    rcpp_result_gen = Rcpp::wrap(num_integrate_par(X, Y, xmin, xmax));
+    return rcpp_result_gen;
+END_RCPP
+}
 // prime_firstN
 NumericVector prime_firstN(int n);
 RcppExport SEXP _StatsChitran_prime_firstN(SEXP nSEXP) {
@@ -70,10 +98,12 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_StatsChitran_num_integrate_cpp", (DL_FUNC) &_StatsChitran_num_integrate_cpp, 4},
     {"_StatsChitran_is_prime", (DL_FUNC) &_StatsChitran_is_prime, 1},
     {"_StatsChitran_is_prime_large", (DL_FUNC) &_StatsChitran_is_prime_large, 1},
     {"_StatsChitran_is_prime_par", (DL_FUNC) &_StatsChitran_is_prime_par, 1},
     {"_StatsChitran_movavg_cpp", (DL_FUNC) &_StatsChitran_movavg_cpp, 4},
+    {"_StatsChitran_num_integrate_par", (DL_FUNC) &_StatsChitran_num_integrate_par, 4},
     {"_StatsChitran_prime_firstN", (DL_FUNC) &_StatsChitran_prime_firstN, 1},
     {NULL, NULL, 0}
 };
