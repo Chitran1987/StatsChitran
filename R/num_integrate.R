@@ -10,41 +10,22 @@ num_integrate <- function(X,Y, xmin, xmax, type='avg'){
   if(length(X) != length(Y)){
     stop('X and Y are not of the same lengths')
   }
+  if(!is.numeric(X) | !is.numeric(Y) ){
+    stop('X and Y need to be numeric vectors')
+  }
   if(xmax == xmin){
     return(0)
   }
   if(abs(xmax - xmin) < 4*mean(diff(X))){
     stop('Not enough samples to measure an integral')
   }
-  #1.0#####################################################################
-  ##subseting the data into the upper(xmax) and lower(xmin) limits####
-  df <- data.frame(X,Y)
-  names(df) <- c('X', 'Y')
-  df <- subset(df, (df$X >= xmin) & (df$X <= xmax))
-  #1.1#####################################################################
-  ##extra error checking after subsetting because of the case of non-uniform sampling######
-  if(length(df$X) < 4){
+  if(length(X) < 4){
     stop('Not enough samples with probably non-uniform sampling')
   }
-  s <- 0 #sum to update the area of the cumulative reimann rectangles
-  if(type == 'right'){
-  for (i in 1:(length(df$X)-1)){
-    ar <- df$Y[i]*(df$X[i+1] - df$X[i]) #calculate the area of each reimann rectangle
-    s <- s + ar #updating the reimann area into the sum
-  }
-  }
-  if(type == 'left'){
-    for (i in 2:length(df$X)) {
-      ar <- df$Y[i]*(df$X[i]-df$X[i-1]) #calculate the area of each reimann rectangle
-      s <- s + ar #updating the reimann area into the sum
-    }
-  }
-  if(type == 'avg'){
-    LL <- xmin
-    UL <- xmax
-    sL <- num_integrate(X,Y,xmin=LL, xmax=UL, type='left')
-    sR <- num_integrate(X,Y,xmin=LL, xmax=UL, type='right')
-    s <- 0.5*(sL + sR) #averaging over the left and right integrals
+  if(length(X) <= 5*10^5){
+    s = num_integrate_cpp(X, Y, xmin, xmax)
+  }else{
+    s = num_integrate_par(X, Y, xmin, xmax)
   }
   return(s)
 }
