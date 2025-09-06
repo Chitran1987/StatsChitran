@@ -45,8 +45,8 @@ The function simply solves for the integral shown below.\cr
 The function always returns a numeric scalar\cr
 }
 \references{
-\link{https://en.wikipedia.org/wiki/Riemann_integral}\cr
-\link{https://en.wikipedia.org/wiki/Trapezoidal_rule}
+\url{https://en.wikipedia.org/wiki/Riemann_integral}\cr
+\url{https://en.wikipedia.org/wiki/Trapezoidal_rule}
 }
 \author{
 Chitran Ghosal
