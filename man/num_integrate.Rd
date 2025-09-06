@@ -2,10 +2,10 @@
 \alias{num_integrate}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Returns the 2D reimann integration of a curve within specified limits
+Returns the 2D trapezoid integration of a curve within specified limits
 }
 \description{
-The function returns a single numeric scalar as a result for the integration between upper and lower bounds
+The function returns a single numeric scalar as a result for the trapezoidal approximation of the integration between upper and lower bounds
 }
 \usage{
 num_integrate(X,Y, xmin=2, xmax=5)
@@ -23,35 +23,37 @@ num_integrate(X,Y, xmin=2, xmax=5, type='right')
 }
   \item{xmin}{
   The lower bound of the integral.\cr
-  Caution: xmin >= min(X), otherwise an error will be thrown.
+  Caution: \code{xmin >= min(X)}, otherwise an error will be thrown.
 }
   \item{xmax}{
   The upper bound of the integral\cr
-  Caution: xmax <= max(X), otherwise an error will be thrown.
+  Caution: \code{xmax <= max(X)}, otherwise an error will be thrown.
 }
   \item{type}{
-  The type defines the kind of reimann integral and is ordinaarily set to "avg".\cr
+  The type defines the kind of reimann integral sum and is ordinaarily set to "avg".\cr
   The other possible options are "left" and "right". Defines the placement of the       reimann rectangles w.r.t. the vertical y-axis height being considered.\cr
   The "avg" input averages between the left and right reimann integrals.
 }
 }
 \details{
 The X vector should include the bounds of xmax and xmin or else an error will be thrown. Look at the arguments section above.\cr
-The funcion is by default set to type='avg'. Hence, if needed, this factor can be changed to 'left' or 'right'.\cr
 The no. of points within the bounds of xmax and xmin should at least be 4. \cr
-The sampling density in the dataset should allow on an average for at least 4 points within the xmax and xmin window length. \cr
+The function simply solves for the integral shown below.\cr
+\deqn{\displaystyle \int_{x_{min}}^{x_{max}}y(x)\,\mathrm{d}x \approx \sum_{i = 1}^{n-1}\frac{y_i + y_{i+1}}{2}\cdot (x_{i+1} - x_i)}
 }
 \value{
 The function always returns a numeric scalar\cr
 }
 \references{
-\link{https://en.wikipedia.org/wiki/Riemann_integral}{Reimann Integration}\cr
+\link{https://en.wikipedia.org/wiki/Riemann_integral}\cr
+\link{https://en.wikipedia.org/wiki/Trapezoidal_rule}
 }
 \author{
 Chitran Ghosal
 }
 \note{
-%%  ~~further notes~~
+The \code{type} argument has been phased out of the present implementation and has no effect on the output. \cr
+It is simply made available for backward compatibility.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
