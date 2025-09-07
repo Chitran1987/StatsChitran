@@ -30,6 +30,19 @@ double num_integrate_cpp(NumericVector X, NumericVector Y, double xmin, double x
   return sum;
 }
 
+//Riemann summation
+double RSum(NumericVector X, NumericVector Y, double xmin, double xmax){
+  double res = 0;
+  auto xmin_it = std::lower_bound(X.begin(), X.end(), xmin);
+  auto xmax_it = std::upper_bound(X.begin(), X.end(), xmax);
+  size_t i_min = std::distance(X.begin(), xmin_it);
+  size_t i_max = std::distance(X.begin(), xmax_it);
+  for (size_t i = i_min; i < i_max - 1; i++)
+  {
+    res += (X[i + 1] - X[i]) * Y[i];
+  }
+  return res;
+}
 
 // You can include R code blocks in C++ files processed with sourceCpp
 // (useful for testing and development). The R code will be automatically
