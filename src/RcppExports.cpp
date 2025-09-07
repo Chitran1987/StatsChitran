@@ -38,6 +38,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// RSum
+double RSum(NumericVector X, NumericVector Y, double xmin, double xmax);
+RcppExport SEXP _StatsChitran_RSum(SEXP XSEXP, SEXP YSEXP, SEXP xminSEXP, SEXP xmaxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< double >::type xmin(xminSEXP);
+    Rcpp::traits::input_parameter< double >::type xmax(xmaxSEXP);
+    rcpp_result_gen = Rcpp::wrap(RSum(X, Y, xmin, xmax));
+    return rcpp_result_gen;
+END_RCPP
+}
 // is_prime
 LogicalVector is_prime(NumericVector x);
 RcppExport SEXP _StatsChitran_is_prime(SEXP xSEXP) {
@@ -114,6 +128,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_RSum_par", (DL_FUNC) &_StatsChitran_RSum_par, 4},
     {"_StatsChitran_num_integrate_cpp", (DL_FUNC) &_StatsChitran_num_integrate_cpp, 4},
+    {"_StatsChitran_RSum", (DL_FUNC) &_StatsChitran_RSum, 4},
     {"_StatsChitran_is_prime", (DL_FUNC) &_StatsChitran_is_prime, 1},
     {"_StatsChitran_is_prime_large", (DL_FUNC) &_StatsChitran_is_prime_large, 1},
     {"_StatsChitran_is_prime_par", (DL_FUNC) &_StatsChitran_is_prime_par, 1},
