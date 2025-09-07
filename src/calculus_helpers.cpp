@@ -31,6 +31,7 @@ double num_integrate_cpp(NumericVector X, NumericVector Y, double xmin, double x
 }
 
 //Riemann summation
+// [[Rcpp::export]]
 double RSum(NumericVector X, NumericVector Y, double xmin, double xmax){
   double res = 0;
   auto xmin_it = std::lower_bound(X.begin(), X.end(), xmin);
