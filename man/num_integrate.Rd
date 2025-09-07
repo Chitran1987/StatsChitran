@@ -38,6 +38,7 @@ num_integrate(X,Y, xmin=2, xmax=5, type='right')
 \details{
 The X vector should include the bounds of xmax and xmin or else an error will be thrown. Look at the arguments section above.\cr
 The no. of points within the bounds of xmax and xmin should at least be 4. \cr
+If the no. of data points in X or Y are \eqn{n \geq 5 \times 10^5}, then the Rcpp backend uses all cores of the machine to parallelize the computaion.\cr
 The function simply solves for the integral shown below.\cr
 \deqn{\displaystyle \int_{x_{min}}^{x_{max}}y(x)\,\mathrm{d}x \approx \sum_{i = 1}^{n-1}\frac{y_i + y_{i+1}}{2}\cdot (x_{i+1} - x_i)}
 }
@@ -59,7 +60,7 @@ It is simply made available for backward compatibility.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{num.integrate.riemann}}
 }
 \examples{
 X <- seq(0,10, by=0.001)
