@@ -9,6 +9,10 @@ num_integrate_cpp <- function(X, Y, xmin, xmax) {
     .Call(`_StatsChitran_num_integrate_cpp`, X, Y, xmin, xmax)
 }
 
+RSum <- function(X, Y, xmin, xmax) {
+    .Call(`_StatsChitran_RSum`, X, Y, xmin, xmax)
+}
+
 is_prime <- function(x) {
     .Call(`_StatsChitran_is_prime`, x)
 }
