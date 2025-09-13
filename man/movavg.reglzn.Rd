@@ -50,9 +50,9 @@ movavg.reglzn(X, Y, bn, fn, lambda, ord.max)
 }
 \details{
 Herein, \eqn{f(n,x)} and \eqn{\mathcal{O}(n)} are the \link{movavg} and objective functions respectively \cr
-\deqn{f(n, x) = \code{movavg(X, Y, bn, fn, ord = n, pl)}} please see \link{movavg} \cr
-\deqn{\mathcal{O}(n) = \{\sum_i (y_i - f(n, x_i))^2)\}/N + \lambda \int \{\ddot{f}(x)\}^2 \mathrm{d}x} \cr
-\deqn{\min_{n}\mathcal{O}(n)}
+\deqn{\displaystyle f(n, x) = \code{movavg(X, Y, bn, fn, ord = n, pl)}} please see \link{movavg} \cr
+\deqn{\displaystyle \mathcal{O}(n) = \frac{1}{N}\sum_i \Big\{y_i - f(n, x_i) \Big\}^2 + \lambda \int_{\mathbb{R}} \{\ddot{f}(x)\}^2 \mathrm{d}x} \cr
+\deqn{\displaystyle \min_{n}\mathcal{O}(n)}
 }
 \value{
 Returned value is always a 3-element list
