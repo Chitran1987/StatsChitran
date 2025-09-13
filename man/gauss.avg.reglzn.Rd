@@ -53,9 +53,9 @@ Defaults to true
 \details{
 The function runs an optimization, either through \code{grid.search} or through \link[rgenoud]{genoud}, to estimate \eqn{n} \cr
 Herein, \eqn{f(n, \sigma, x)} and \eqn{\mathcal{O}(n)} are the \code{\link{gauss.avg}} and objective functions respectively \cr
-\deqn{f(n, \sigma, x) = \code{gauss.avg(X, Y, bn, fn, sig, ord = n, pl)}}
-\deqn{\mathcal{O}(n) = \{\sum_i (y_i - f(n, \sigma, x_i))^2)\}/N + \lambda \int \{\ddot{f}(x, \sigma, n)\}^2 \mathrm{d}x}
-\deqn{\min_{n}\mathcal{O}(n)}
+\deqn{\displaystyle f(n, \sigma, x) = \code{gauss.avg(X, Y, bn, fn, sig, ord = n, pl)}}
+\deqn{\displaystyle \mathcal{O}(n) = \frac{1}{N}\sum_i \Big\{ y_i - f(n, \sigma, x_i) \Big\}^2 + \lambda \int_{\mathbb{R}} \{\ddot{f}(x, \sigma, n)\}^2 \mathrm{d}x}
+\deqn{\displaystyle \min_{n}\mathcal{O}(n)}
 }
 \value{
 Returned value is always a 3-element list
