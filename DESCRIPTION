@@ -14,7 +14,8 @@ Imports:
     ggplot2,
     dplyr,
     png
-LinkingTo: Rcpp
+LinkingTo: Rcpp, RcppEigen
+SystemRequirements: C++17
 Suggests:
     testthat,
     knitr
