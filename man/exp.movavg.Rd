@@ -35,7 +35,7 @@ exp.movavg.Rd(X, Y, bn, fn, dec, ord = 100)
   Defaults to one
   }
 }
-}
+
 \details{
 The function basically wraps around \code{kernel_movavgf.cpp} and forces a decaying exponential kernel smoother \eqn{f(x, \lambda) = e^{-\lambda x}} to smooth the \eqn{(X, Y)} as shown below.\cr
 \deqn{\large\displaystyle Y_{res}[i] =  \bigg\{\displaystyle\sum_{j = -bn}^{fn}Y[i + j] e^{-\lambda [bn + j]} \bigg\}/\bigg\{ \sum_{j = -bn}^{fn} e^{-\lambda [bn+j]} \bigg\}     }
