@@ -68,39 +68,38 @@ All inconsistencies like \eqn{f(\code{w}) = \pm\infty,\,\code{NA},\,\code{NAN},\
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-#call the relevant libraries
+#Call the relevant libraries
 library(StatsChitran)
 
-#Call the dataset
-data("noisy.gaussians")
-df <- noisy.gaussians
+#Build the noisy data
+X <- seq(-10, 10, by = 0.001)
+Y <- gauss(X, sig = 1, probability = T)+rnorm(length(X), mean = 0, sd=0.1)
+
+#Plot the noisy data
+plot(X,Y)
 
 
-##define the kernel function (lorentzian)
-lor.avg <- function(v){
-  return(lorentz(X = v, x_0 = 0, gamm = 1, probability = T))
+#Build the kernel function (a lorentzian)
+f <- function(vec){
+  Y <- lorentz(X=vec, x_0 = 0, gamm = 1, probability = T)
+  return(Y)
 }
 
-##divide the plot into two
-subplot(c(1,2))
+#Call two smoothers for ord=1 and ord=10
+df1 <- movavgf(X, Y, bn=3, fn=3, f, val = 0, ord = 1)
+df10 <- movavgf(X, Y, bn=3, fn=3, f, val = 0, ord = 100)
 
-##plot the kernel function
-Y_kernel <- lor.avg(df$X)
-plot(df$X, Y_kernel, type = 'l', col = 'red', main = 'The lorentzian kernel')
-abline(v = 0)
+#Plot the results
+plot(X,Y)
+lines(df1$X, df1$Y, col='blue')
+lines(df10$X, df10$Y, col='red')
+legend('topright',
+       legend = c('data-noisy std.gaussian', 'lor.smooth, ord = 1', 'lor.smooth, ord = 10'),
+       col = c('black', 'blue', 'red'),
+       pch =c(1, NA, NA),
+       lty = c(NA, 1, 1)
+         )
 
-
-##Perform kernel smoothening of ord = 1, 10, 100
-df1 <- movavgf(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 1)
-df2 <- movavgf(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 10)
-df3 <- movavgf(X = df$X, Y = df$Y, bn=3, fn=3, f = lor.avg, val = 0, ord = 100)
-
-##Plot the smoothed dataframes against the main data
-plot(df$X, df$Y, main = 'Data Processing')
-lines(df1$X, df1$Y, col = 'green')
-lines(df2$X, df2$Y, col = 'red')
-lines(df3$X, df3$Y, col = 'blue')
-legend(x = 'topright', legend = c('data', 'smooth. ord = 1', 'smooth. ord = 10', 'smooth. ord = 100'), fill = c('black', 'green', 'red', 'blue'))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
