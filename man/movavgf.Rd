@@ -51,7 +51,7 @@ The function basically lets the user choose a kernel smoother \eqn{f(x)} to smoo
 The return type is always a 2 column data frame with the first column named X is same as the input argument X, while the second column Y is the smoothed dataset.
 }
 \references{
-%% ~put references to the literature/web site here ~
+\url{https://en.wikipedia.org/wiki/Kernel_density_estimation}
 }
 \author{
 Chitran Ghosal
