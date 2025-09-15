@@ -98,6 +98,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// kernel_movavgf
+NumericVector kernel_movavgf(NumericVector Y, int bn, int fn, NumericVector w, int ord);
+RcppExport SEXP _StatsChitran_kernel_movavgf(SEXP YSEXP, SEXP bnSEXP, SEXP fnSEXP, SEXP wSEXP, SEXP ordSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< int >::type bn(bnSEXP);
+    Rcpp::traits::input_parameter< int >::type fn(fnSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type w(wSEXP);
+    Rcpp::traits::input_parameter< int >::type ord(ordSEXP);
+    rcpp_result_gen = Rcpp::wrap(kernel_movavgf(Y, bn, fn, w, ord));
+    return rcpp_result_gen;
+END_RCPP
+}
 // movavg_cpp
 NumericVector movavg_cpp(NumericVector Y, size_t bn, size_t fn, size_t ord);
 RcppExport SEXP _StatsChitran_movavg_cpp(SEXP YSEXP, SEXP bnSEXP, SEXP fnSEXP, SEXP ordSEXP) {
@@ -146,6 +161,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_is_prime", (DL_FUNC) &_StatsChitran_is_prime, 1},
     {"_StatsChitran_is_prime_large", (DL_FUNC) &_StatsChitran_is_prime_large, 1},
     {"_StatsChitran_is_prime_par", (DL_FUNC) &_StatsChitran_is_prime_par, 1},
+    {"_StatsChitran_kernel_movavgf", (DL_FUNC) &_StatsChitran_kernel_movavgf, 5},
     {"_StatsChitran_movavg_cpp", (DL_FUNC) &_StatsChitran_movavg_cpp, 4},
     {"_StatsChitran_num_integrate_par", (DL_FUNC) &_StatsChitran_num_integrate_par, 4},
     {"_StatsChitran_prime_firstN", (DL_FUNC) &_StatsChitran_prime_firstN, 1},

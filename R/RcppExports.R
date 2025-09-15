@@ -29,6 +29,10 @@ is_prime_par <- function(N) {
     .Call(`_StatsChitran_is_prime_par`, N)
 }
 
+kernel_movavgf <- function(Y, bn, fn, w, ord) {
+    .Call(`_StatsChitran_kernel_movavgf`, Y, bn, fn, w, ord)
+}
+
 movavg_cpp <- function(Y, bn, fn, ord) {
     .Call(`_StatsChitran_movavg_cpp`, Y, bn, fn, ord)
 }
