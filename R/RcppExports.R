@@ -13,6 +13,10 @@ RSum <- function(X, Y, xmin, xmax) {
     .Call(`_StatsChitran_RSum`, X, Y, xmin, xmax)
 }
 
+dot_prd <- function(X, Y) {
+    .Call(`_StatsChitran_dot_prd`, X, Y)
+}
+
 is_prime <- function(x) {
     .Call(`_StatsChitran_is_prime`, x)
 }
