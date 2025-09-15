@@ -41,9 +41,9 @@ gauss.avg(X, Y, bn, fn)
 \details{
 Mathematically each point in the moving average is acted on by a gaussian kernel \cr
 The gaussian kernel for a point of index \eqn{i} in the kernel is defined as \eqn{g_i} with \eqn{x_k} as the gaussian center\cr
-\deqn{\displaystyle g_i = A e^{-((x_i - x_k)/\sqrt{2}\sigma)^2} }
+\deqn{\Large\displaystyle g_i = A e^{-((x_i - x_k)/\sqrt{2}\sigma)^2} }
 As a result, the point \eqn{y_i} in the original dataset gets transformed to its estimate \eqn{\hat{y_i}}\cr
-\deqn{\displaystyle \hat{y}_i = \sum_{k = i - b_n}^{i + f_n}y_k g_k = A\sum_{k = i - b_n}^{i + f_n}y_k e^{-((x_k - x_i)/\sqrt{2}\sigma)^2}}
+\deqn{\Large\displaystyle \hat{y}_i = \sum_{k = i - b_n}^{i + f_n}y_k g_k = A\sum_{k = i - b_n}^{i + f_n}y_k e^{-((x_k - x_i)/\sqrt{2}\sigma)^2}}
 }
 \value{
 The returned value is always a 2 column dataframe\cr
