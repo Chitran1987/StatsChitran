@@ -63,15 +63,25 @@ Chitran Ghosal
 ##Call the relevant libraries
 library(StatsChitran)
 
-##Build a dataset
+##Build a dataset and plot
 X <- seq(-10, 10, by = 0.01)
 Y <- gauss(X, mu = -2, sig = 2, probability = T) + gauss(X, mu = 3, sig = 2.7, probability = T) + rnorm(length(X), mean = 0, sd = 0.02)
 plot(X, Y, col =rgb(0,0,0, 0.25))
 
+##Call the function
 df1 <- exp.movavg(X, Y, bn = 5, fn = 5, dec = -3)
 df10 <- exp.movavg(X, Y, bn = 5, fn = 5, dec = -3, ord = 10)
+
+##Plot the smoothed datasets
+plot(X, Y, col =rgb(0,0,0, 0.25))
 lines(df1$X, df1$Y, col='blue', lwd = 1)
 lines(df10$X, df10$Y, col='red', lwd = 3)
+legend('topright',
+       legend = c('data-noisy std.gaussian', 'exp.smooth, ord = 1', 'exp.smooth, ord = 10'),
+       col = c('black', 'blue', 'red'),
+       pch =c(1, NA, NA),
+       lty = c(NA, 1, 1)
+         )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
