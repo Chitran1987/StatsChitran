@@ -2,14 +2,14 @@
 \alias{movavgf}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Return a self-defined-functionalized (not just a table function ) moving average of the 2D dataset in question
+Return a self-defined-kernel moving average of the 2D dataset in question
 }
 \description{
 The function returns a 2 column data frame with the first column named X.
 The second column named Y contains the smoothed dataset
 }
 \usage{
-movavgf(X, Y, bn, fn, f, val)
+movavgf(X, Y, bn, fn, f, val, ord)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,21 +20,21 @@ The X vector of the 2D dataset
 The Y vector of the 2D dataset
 }
   \item{bn}{
-The no of elements before the current element that is needed to be included in the averaging window
+The no of elements before the element under investigation that shoul included in the averaging window
 }
   \item{fn}{
-The no of elements after the current element that is needed to be included in the averaging window
+The no of elements after the element under investigation that should be included in the averaging window
 }
   \item{f}{
-This argument is a function using which the moving window used for averaging of the X, Y dataset is created.\cr
-The window is centered at wc = "val", (see argument "val").\cr
-If "s" is the sampling interval of variable X, then the window abscissa vector "w"" is calculated as..\cr
-w = seq(val - bn*s, val + fn*s) \cr
-The window ordinate is calculated as f_seq = f(w).
+The kernel function, \eqn{f(x)}, used for the averaging.\cr
+The window is centered at \code{wc = "val"}, (see argument \code{"val"}).\cr
+If \eqn{\code{s} = (\sum_i\code{X[i+1] - X[i]})/N} is the sampling interval of variable \code{X}, then the averaging window \code{"w"} is shown below\cr
+\code{w = seq(val - bn*s, val + fn*s)} \cr
+The window ordinate is calculated as \code{f_seq = f(w)}.
 }
   \item{val}{
 The value around which the averaging window should be centered.\cr
-For example, for a standard normal distribution val = 0, but for a gaussian with a mean of 4, val = 4.
+For example, for a standard normal distribution \code{val = 0}, but for a gaussian with a mean of 4, \code{val = 4}.
 }
     \item{ord}{
 The no. of times you want to run the movavgf fucntion for smoothing.\cr
@@ -42,11 +42,9 @@ Defaults to \code{ord = 1}
 }
 }
 \details{
-Ensure before using that... \cr
-1) f_seq does not contain Inf elements. \cr
-2) f_seq does not contain NAs. \cr
-3) f_seq does not contain NANs. \cr
-All of the above will result in errors being thrown by the function.
+The function basically lets the user choose a kernel smoother \eqn{f(x)} to smooth the \eqn{(X, Y)} as shown below.\cr
+\deqn{\large\displaystyle Y_{res}[i] =  \bigg\{\displaystyle\sum_{j = -bn}^{fn}Y[i + j] f[\code{val} + j] \bigg\}/{ \sum_{j = -bn}^{fn} f[\code{val}+j]}     }
+
 
 }
 \value{
@@ -59,7 +57,9 @@ The return type is always a 2 column data frame with the first column named X is
 Chitran Ghosal
 }
 \note{
-%%  ~~further notes~~
+Ensure before using that... \cr
+All elements of \eqn{f(\code{w})} are finite and defined. \cr
+All inconsistencies like \eqn{f(\code{w}) = \pm\infty,\,\code{NA},\,\code{NAN},\, \ldots} will throw errors
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
