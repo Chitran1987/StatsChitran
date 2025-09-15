@@ -50,7 +50,7 @@ The returned value is always a 2 column dataframe\cr
 Columns named as X and Y
 }
 \references{
-%% ~put references to the literature/web site here ~
+\url{https://en.wikipedia.org/wiki/Kernel_density_estimation}
 }
 \author{
 Chitran Ghosal
