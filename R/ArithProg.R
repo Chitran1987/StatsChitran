@@ -1,6 +1,16 @@
 #write an arithmetic progression with st as start point, d as the difference and n as no. of points
 ArithProg<-function(st=0, n, d){
-  v <- seq(from = st, by = d, length.out = n)
+  ####error handling
+  if( !is.numeric(st) || length(st)!=1 ){
+    stop('st should be a numeric scalar')
+  }
+  if( !is.numeric(d) || length(d)!=1 ){
+    stop('d should be a numeric scalar')
+  }
+  if( !is.numeric(n) || length(n)!=1 || n%%1 != 0 ){
+    stop('n should be an integer scalar')
+  }
+  v <- Arith_Prog(st, n, d)
   return(v)
 }
 
