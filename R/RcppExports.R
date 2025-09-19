@@ -5,6 +5,10 @@ Arith_Prog <- function(st, n, d) {
     .Call(`_StatsChitran_Arith_Prog`, st, n, d)
 }
 
+Geom_Prog <- function(st, r, n) {
+    .Call(`_StatsChitran_Geom_Prog`, st, r, n)
+}
+
 RSum_par <- function(X, Y, xmin, xmax) {
     .Call(`_StatsChitran_RSum_par`, X, Y, xmin, xmax)
 }
