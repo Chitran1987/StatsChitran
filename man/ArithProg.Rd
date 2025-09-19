@@ -16,7 +16,8 @@ ArithProg(st=0, n, d)
 The term, \eqn{S_1}, starting point of your arithmetic progression. Defaults to zero.
 }
   \item{n}{
-Defines the no. of terms in the progression.
+Defines the no. of terms in the progression.\cr
+Expects an integer \eqn{\geq 1}
 }
   \item{d}{
 Denotes the difference term, \eqn{d = S_{k+1} - S_k}, between consecutive terms of the progression.
