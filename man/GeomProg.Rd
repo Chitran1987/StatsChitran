@@ -17,7 +17,8 @@ GeomProg(st=5, r=3, n=10)
 The starting point of your geometric progression set to a default of one. Denoted as \eqn{a_0}
 }
   \item{n}{
-Defines the length of the vector returned by the function (or defines how many terms are present in the proghression). Denoted as \eqn{n}
+Defines the length of the vector returned by the function (or defines how many terms are present in the proghression). Denoted as \eqn{n}\cr
+Expects an integer \eqn{\geq 1}
 }
   \item{r}{
 Defines the ratio with which the geometric series progresses. Denoted as \eqn{r}
