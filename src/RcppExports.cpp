@@ -11,6 +11,19 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// Arith_Prog
+std::vector<double> Arith_Prog(double st, int n, double d);
+RcppExport SEXP _StatsChitran_Arith_Prog(SEXP stSEXP, SEXP nSEXP, SEXP dSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type st(stSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< double >::type d(dSEXP);
+    rcpp_result_gen = Rcpp::wrap(Arith_Prog(st, n, d));
+    return rcpp_result_gen;
+END_RCPP
+}
 // RSum_par
 double RSum_par(NumericVector X, NumericVector Y, double xmin, double xmax);
 RcppExport SEXP _StatsChitran_RSum_par(SEXP XSEXP, SEXP YSEXP, SEXP xminSEXP, SEXP xmaxSEXP) {
@@ -154,6 +167,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_StatsChitran_Arith_Prog", (DL_FUNC) &_StatsChitran_Arith_Prog, 3},
     {"_StatsChitran_RSum_par", (DL_FUNC) &_StatsChitran_RSum_par, 4},
     {"_StatsChitran_num_integrate_cpp", (DL_FUNC) &_StatsChitran_num_integrate_cpp, 4},
     {"_StatsChitran_RSum", (DL_FUNC) &_StatsChitran_RSum, 4},
