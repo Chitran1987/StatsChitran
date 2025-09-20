@@ -8,6 +8,7 @@ lineval <- function(v1, v2, X){
   y1 <- v1[2]
   x2 <- v2[1]
   y2 <- v2[2]
-  Y <- ((y2 - y1)/(x2 - x1))*X + (x2*y1 - y2*x1)/(x2 - x1)
-  return(Y)
+  #Y <- ((y2 - y1)/(x2 - x1))*X + (x2*y1 - y2*x1)/(x2 - x1)
+  line_val(x1, y1, x2, y2, X)
+  return(X)
 }
