@@ -11,6 +11,20 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// Arith_Geom_Prog
+NumericVector Arith_Geom_Prog(const double st, const double d, const double r, const int n);
+RcppExport SEXP _StatsChitran_Arith_Geom_Prog(SEXP stSEXP, SEXP dSEXP, SEXP rSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const double >::type st(stSEXP);
+    Rcpp::traits::input_parameter< const double >::type d(dSEXP);
+    Rcpp::traits::input_parameter< const double >::type r(rSEXP);
+    Rcpp::traits::input_parameter< const int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(Arith_Geom_Prog(st, d, r, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 // Arith_Prog
 std::vector<double> Arith_Prog(double st, int n, double d);
 RcppExport SEXP _StatsChitran_Arith_Prog(SEXP stSEXP, SEXP nSEXP, SEXP dSEXP) {
@@ -194,6 +208,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_StatsChitran_Arith_Geom_Prog", (DL_FUNC) &_StatsChitran_Arith_Geom_Prog, 4},
     {"_StatsChitran_Arith_Prog", (DL_FUNC) &_StatsChitran_Arith_Prog, 3},
     {"_StatsChitran_Geom_Prog", (DL_FUNC) &_StatsChitran_Geom_Prog, 3},
     {"_StatsChitran_RSum_par", (DL_FUNC) &_StatsChitran_RSum_par, 4},
