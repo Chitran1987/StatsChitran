@@ -61,3 +61,7 @@ prime_firstN <- function(n) {
     .Call(`_StatsChitran_prime_firstN`, n)
 }
 
+seq_sc <- function(st, end, n) {
+    .Call(`_StatsChitran_seq_sc`, st, end, n)
+}
+
