@@ -206,6 +206,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// seq_sc
+std::vector<double> seq_sc(double st, double end, int n);
+RcppExport SEXP _StatsChitran_seq_sc(SEXP stSEXP, SEXP endSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type st(stSEXP);
+    Rcpp::traits::input_parameter< double >::type end(endSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(seq_sc(st, end, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_Arith_Geom_Prog", (DL_FUNC) &_StatsChitran_Arith_Geom_Prog, 4},
@@ -223,6 +236,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_movavg_cpp", (DL_FUNC) &_StatsChitran_movavg_cpp, 4},
     {"_StatsChitran_num_integrate_par", (DL_FUNC) &_StatsChitran_num_integrate_par, 4},
     {"_StatsChitran_prime_firstN", (DL_FUNC) &_StatsChitran_prime_firstN, 1},
+    {"_StatsChitran_seq_sc", (DL_FUNC) &_StatsChitran_seq_sc, 3},
     {NULL, NULL, 0}
 };
 
