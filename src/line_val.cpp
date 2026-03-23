@@ -3,10 +3,19 @@ using namespace Rcpp;
 
 
 // [[Rcpp::export]]
-void line_val(double pX, double pY, double qX, double qY, NumericVector X){
-  double m = (pY-qY)/(pX-qX); double c = pY - m*pX;
-  double* ptr = X.begin(); double* ptr_end = ptr + size_t(X.size());
-  while(ptr < ptr_end){ *ptr = m*(*ptr)+c; ptr++;}
+NumericVector line_val(double pX, double pY, double qX, double qY, NumericVector X) {
+  double m = (pY - qY) / (pX - qX);
+  double c = pY - m * pX;
+
+  NumericVector::iterator ptr = X.begin();
+  NumericVector::iterator ptr_end = X.end();
+
+  while (ptr < ptr_end) {
+    *ptr = m * (*ptr) + c;
+    ++ptr;
+  }
+
+  return X;
 }
 
 
