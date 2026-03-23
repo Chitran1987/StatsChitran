@@ -46,7 +46,7 @@ kernel_movavgf <- function(Y, bn, fn, w, ord) {
 }
 
 line_val <- function(pX, pY, qX, qY, X) {
-    invisible(.Call(`_StatsChitran_line_val`, pX, pY, qX, qY, X))
+    .Call(`_StatsChitran_line_val`, pX, pY, qX, qY, X)
 }
 
 movavg_cpp <- function(Y, bn, fn, ord) {

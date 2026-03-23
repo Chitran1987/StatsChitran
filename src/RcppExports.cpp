@@ -154,17 +154,18 @@ BEGIN_RCPP
 END_RCPP
 }
 // line_val
-void line_val(double pX, double pY, double qX, double qY, NumericVector X);
+NumericVector line_val(double pX, double pY, double qX, double qY, NumericVector X);
 RcppExport SEXP _StatsChitran_line_val(SEXP pXSEXP, SEXP pYSEXP, SEXP qXSEXP, SEXP qYSEXP, SEXP XSEXP) {
 BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< double >::type pX(pXSEXP);
     Rcpp::traits::input_parameter< double >::type pY(pYSEXP);
     Rcpp::traits::input_parameter< double >::type qX(qXSEXP);
     Rcpp::traits::input_parameter< double >::type qY(qYSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type X(XSEXP);
-    line_val(pX, pY, qX, qY, X);
-    return R_NilValue;
+    rcpp_result_gen = Rcpp::wrap(line_val(pX, pY, qX, qY, X));
+    return rcpp_result_gen;
 END_RCPP
 }
 // movavg_cpp
