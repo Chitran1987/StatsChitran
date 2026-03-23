@@ -43,8 +43,8 @@ Chitran Ghosal
 }
 \examples{
 X <- seq(0, 20, by=0.01)
-v1 <- (0,0)
-v2 <- (3,4)
+v1 <- c(0,0)
+v2 <- c(3,4)
 Y <- lineval(v1, v2, X)
 plot(X, Y)
 }
