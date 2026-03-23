@@ -42,10 +42,10 @@ Chitran Ghosal
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-X <- seq(0, 20, by=0.01)
 v1 <- c(0,0)
 v2 <- c(3,4)
-Y <- lineval(v1, v2, X)
+Y <- lineval(v1, v2, seq(0, 20, by=0.01))
+X <- seq(0, 20, by=0.01)
 plot(X, Y)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
