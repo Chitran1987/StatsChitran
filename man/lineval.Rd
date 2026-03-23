@@ -21,10 +21,11 @@ Numeric sequence for which Y values are required
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The source code \code{line_val.cpp} used in the function call changes the variable at the same location as \code{X}\cr
+Hence, define the independent variable for plotting after using the function (See examles).
 }
 \value{
-The return type is a numeric vector(Y) with the same length as X
+The return type is a numeric vector(Y) with the same length as X AND in place of X (backward compatibility)
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -45,6 +46,7 @@ Chitran Ghosal
 v1 <- c(0,0)
 v2 <- c(3,4)
 Y <- lineval(v1, v2, seq(0, 20, by=0.01))
+#define the independent variable later
 X <- seq(0, 20, by=0.01)
 plot(X, Y)
 }
