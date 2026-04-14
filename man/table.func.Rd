@@ -1,5 +1,5 @@
 \name{table.func}
-\alias{multitable}
+\alias{table.func}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Construct a table function over a numeric vector
