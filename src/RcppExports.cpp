@@ -220,6 +220,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// table_func
+NumericVector table_func(NumericVector X, NumericVector BP, NumericVector H);
+RcppExport SEXP _StatsChitran_table_func(SEXP XSEXP, SEXP BPSEXP, SEXP HSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type X(XSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type BP(BPSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type H(HSEXP);
+    rcpp_result_gen = Rcpp::wrap(table_func(X, BP, H));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_Arith_Geom_Prog", (DL_FUNC) &_StatsChitran_Arith_Geom_Prog, 4},
@@ -238,6 +251,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_StatsChitran_num_integrate_par", (DL_FUNC) &_StatsChitran_num_integrate_par, 4},
     {"_StatsChitran_prime_firstN", (DL_FUNC) &_StatsChitran_prime_firstN, 1},
     {"_StatsChitran_seq_sc", (DL_FUNC) &_StatsChitran_seq_sc, 3},
+    {"_StatsChitran_table_func", (DL_FUNC) &_StatsChitran_table_func, 3},
     {NULL, NULL, 0}
 };
 

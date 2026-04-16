@@ -20,6 +20,6 @@ Suggests:
     testthat,
     knitr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 URL: https://github.com/Chitran1987/StatsChitran
 BugReports: https://github.com/Chitran1987/StatsChitran/issues

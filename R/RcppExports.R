@@ -65,3 +65,7 @@ seq_sc <- function(st, end, n) {
     .Call(`_StatsChitran_seq_sc`, st, end, n)
 }
 
+table_func <- function(X, BP, H) {
+    .Call(`_StatsChitran_table_func`, X, BP, H)
+}
+

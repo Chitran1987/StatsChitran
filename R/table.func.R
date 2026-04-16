@@ -24,20 +24,24 @@ table.func <- function(X, BP, H){
   #error magement########################################
 
   #core code#############################################
-  Y <- rep(1.0, length(X))
-  df <- data.frame(X, Y)
-  for (k in 1:N) {
-    if(k == 1){
-      df$Y[df$X <= BP[1]] <- H[1]
-
-    }else{
-      df$Y[df$X <= BP[k] & df$X > BP[k-1]] <- H[k]
-    }
-  }
-  df$Y[df$X > BP[N]] <- H[N+1]
+  #Y <- rep(1.0, length(X))
+  #df <- data.frame(X, Y)
+  #for (k in 1:N) {
+    #if(k == 1){
+      #df$Y[df$X <= BP[1]] <- H[1]
+#
+    #}else{
+      #df$Y[df$X <= BP[k] & df$X > BP[k-1]] <- H[k]
+    #}
+  #}
+  #df$Y[df$X > BP[N]] <- H[N+1]
   #core code#############################################
 
   #arrange return########################################
-  return(df)
+  #return(df)
   #arrange return########################################
+  Y <- table_func(X, BP, H)
+  df <- data.frame(X, Y)
+  names(df) <- c('X', 'Y')
+  return(df)
 }
