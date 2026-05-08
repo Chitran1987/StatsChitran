@@ -67,5 +67,8 @@ avg.curves <- function(L, X, pl=T, norm.gr=T, interp = 'spline', lin.wd = 3, pl.
     plot.grp(L, lin.wid = lin.wd, norm.gr = norm.gr, pl.col = pl.col)
     lines(d.fr$X, d.fr$Y, col='black')
   }
+  if(norm.gr){
+    d.fr$Y <- nrm(d.fr$Y)
+  }
   return(d.fr)
 }
