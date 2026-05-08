@@ -115,7 +115,7 @@ for(i in 1:length(L)){
 plot.grp(L, norm.gr = F)
 
 #call the group_avg result
-df <- group.avg(L, X = seq(-10, 10, by=0.01), norm.gr = T, pl.col = rgb(0.1,0.5,0.5,0.1))
+df <- avg.curves(L, X = seq(-10, 10, by=0.01), norm.gr = T, pl.col = rgb(0.1,0.5,0.5,0.1))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
