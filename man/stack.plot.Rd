@@ -19,8 +19,9 @@ The function\cr
 11. The no. of stacks to be plotted is equal to the length of the gr.data list as specified in point 5.
 }
 \usage{
-stack.plot(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', ''))
-stack.plot(gr.data, stack.len)
+stack.plot(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', ''), x.lim)
+stack.plot(gr.data, stack.len, lwd.mat)
+stack.plot(gr.data, stack.len, lwd.mat, x.lim)
 stack.plot(gr.data, stack.len, col.eq = F)
 stack.plot(gr.data, stack.len, stack.rat = 1.2, color.mat = M, axlab = c('X', 'Y'))
 stack.plot(gr.data, stack.len, color.mat = M, axlab = c('X', 'Y'))
@@ -78,6 +79,12 @@ stack.plot(gr.data, stack.len, color.mat = M, axlab = c('X', 'Y'))
 1.  Needs to be a two element character vector, defaults to 'c('', '')'. \cr
 2.  Defines the labels for the x-axis and the y-axis
 }
+ \item{x.lim}{
+    Numeric two element vector providing the X-values of the plotting range. \cr
+    Lower limit should be x.lim[1]\cr
+    Upper limit should be x.lim[2]\cr
+    If not supplied, limit calculation is automated from data range.
+ }
 }
 \details{
 1.  'gr.data' and 'stack.len' are the only absolutely necessary arguments. \cr

@@ -1,5 +1,5 @@
 ###Build a function for plotting a line stacked graph
-stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', '')){
+stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', ''), x.lim){
   ##error handling##############################################################
   #gr.data should be present
   if(missing(gr.data) == T){
@@ -95,22 +95,40 @@ stack.plot <- function(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat,
       stop('no. of rows and columns of lwd.mat argument should be equal to stack.len and n respectively')
     }
   }
+  #x.lim should be a length 2 numeric vector
+  #min x.lim should be less than max of x.lim
+  if(!missing(x.lim)){
+    if(!is.numeric(x.lim) || length(x.lim)!=2){
+      stop('x.lim should be a numeric vector of length 2')
+    }
+    if(x.lim[1] >= x.lim[2]){
+      stop('x.lim[1] should be the lower value within the range')
+    }
+  }
+
+
   #########################################################################################################
 
 
   ##actual code############################################################################################
   L <- gr.data
   #figure out xmax and xmin for entire stack
-  X <- NULL
-  for (i in 1:stack.len) {
-    for (j in 1:dim(L[[i]])[2]) {
-      if(j%%2 == 1){
-        X <- c(X, L[[i]][,j])
+  if(missing(x.lim)){
+    X <- NULL
+    for (i in 1:stack.len) {
+      for (j in 1:dim(L[[i]])[2]) {
+        if(j%%2 == 1){
+          X <- c(X, L[[i]][,j])
+        }
       }
     }
+    xmax <- max(X)
+    xmin <- min(X)
+  }else{
+    xmax <- x.lim[2]
+    xmin <- x.lim[1]
   }
-  xmax <- max(X)
-  xmin <- min(X)
+
 
   #figure out the ymax and ymin for entire stack
   Y_span <- NULL #A vector containing the heights of each individual level of the stack
