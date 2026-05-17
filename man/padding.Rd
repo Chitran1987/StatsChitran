@@ -23,7 +23,7 @@ df <- padding(X, Y, fwd, bwd, fval, bval, pad.type = 'custom')
 An atomic numeric vector X signifying the X-axis of the dataset
 }
   \item{Y}{
-An atomic numeric vector Y signifying the X-axis of the dataset
+An atomic numeric or complex vector Y signifying the Y-axis of the dataset
 }
   \item{fwd}{
 A single whole number or integer specifying the no. of periods by which to increase the span of the dataset in the forward direction

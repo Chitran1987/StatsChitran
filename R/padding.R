@@ -22,8 +22,8 @@ padding <- function(X, Y, fwd, bwd, fval, bval, pad.type = 'default'){
   }
   #Y is a numeric vector
   len_Y <- length(Y)
-  if( (!( err.vec.dim.bit(Y, len_Y) )&( is.numeric(Y) )) == F ){
-    stop('Y has to be a numeric vector of the atomic type')
+  if( (!( err.vec.dim.bit(Y, len_Y) )&( is.numeric(Y) || is.complex(Y))) == F ){
+    stop('Y has to be a numeric vector or a complex vector of the atomic type')
   }
   #length(X) = length(Y)
   if(len_X != len_Y){
