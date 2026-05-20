@@ -2,33 +2,53 @@
 % Please edit documentation in R/linreg.R
 \name{linreg}
 \alias{linreg}
-\title{function for calculating the linear regression}
+\title{Fit a multiple linear regression model using the normal equations}
 \usage{
 linreg(df)
 }
 \arguments{
-\item{df}{input a dataframe with more than two columns. The last column is always presumed to be the
-column of the independent variables in the perictor equation while the the others are presumed to be
-the dependent variables.}
+\item{df}{A data frame containing the regression data. The last column is
+interpreted as the dependent/response variable. All preceding columns are
+interpreted as independent/predictor variables.}
 }
 \value{
-A dataframe comprising of your the estimated values of the regression weights if the input
-data does not suffer from multicollinearity
+A numeric vector containing the estimated regression coefficients.
+The first coefficients correspond to the predictor variables in the order
+in which they appear in \code{df}. The final coefficient is the intercept term.
+If the normal-equation matrix is computationally singular, the function
+returns \code{NULL}.
 }
 \description{
-function for calculating the linear regression
+\code{linreg()} estimates the coefficients of a multiple linear regression model
+using the normal-equation form of ordinary least squares. The input must be a
+data frame in which the last column is treated as the dependent/response
+variable and all preceding columns are treated as independent/predictor
+variables.
+}
+\details{
+The function constructs the normal-equation matrix manually and solves for the
+regression coefficients. An intercept term is included automatically. If the
+normal-equation matrix is computationally singular, which can occur for
+example when the predictor variables suffer from strong multicollinearity, the
+function returns \code{NULL}.
+
+This function implements ordinary least squares by explicitly constructing and
+solving the normal equations. Because the method relies on matrix inversion,
+the calculation may fail or become unstable when the predictor variables are
+linearly dependent or nearly linearly dependent. In such cases, the determinant
+of the normal-equation matrix becomes very small and the function returns
+\code{NULL}.
 }
 \examples{
 linreg(reg_data1)
-[,1]
-[1,] 2.950339
-[2,] 5.052787
-[3,] 0.999999
-[4,] 9.599983
-(The reg_data1 dataset is available with the "StatsChitran" package)
+
+# The dataset reg_data1 is included with the StatsChitran package.
+# Example output:
+# [1] 2.950339 5.052787 0.999999 9.599983
 
 linreg(reg_data2)
-NULL
-(The reg_data2 dataset is available with "StatsChitran" package. The function returns NULL in case
-is an issue with multicollinearity in the input dataset)
+
+# The dataset reg_data2 is included with the StatsChitran package.
+# This example returns NULL when the input data suffer from multicollinearity.
+
 }

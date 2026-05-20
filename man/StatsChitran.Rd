@@ -19,4 +19,9 @@ Useful links:
 \author{
 \strong{Maintainer}: Chitran Ghosal \email{ghosal.chitran@gmail.com}
 
+Authors:
+\itemize{
+  \item Chitran Ghosal \email{ghosal.chitran@gmail.com}
+}
+
 }
