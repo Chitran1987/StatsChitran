@@ -40,12 +40,14 @@ of the normal-equation matrix becomes very small and the function returns
 \code{NULL}.
 }
 \examples{
+data('reg_data1')
 linreg(reg_data1)
 
 # The dataset reg_data1 is included with the StatsChitran package.
 # Example output:
 # [1] 2.950339 5.052787 0.999999 9.599983
 
+data('reg_data2')
 linreg(reg_data2)
 
 # The dataset reg_data2 is included with the StatsChitran package.
