@@ -1,0 +1,3 @@
+This vignette provides mathematical and practical documentation for selected functions in the `StatsChitran` package.
+
+The aim is to document both the usage of the functions and the mathematical reasoning behind their implementation.

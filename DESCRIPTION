@@ -18,8 +18,10 @@ LinkingTo: Rcpp, RcppEigen
 SystemRequirements: C++17
 Suggests:
     testthat,
-    knitr
+    knitr,
+    rmarkdown
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/Chitran1987/StatsChitran
 BugReports: https://github.com/Chitran1987/StatsChitran/issues
 Config/roxygen2/version: 8.0.0
+VignetteBuilder: knitr

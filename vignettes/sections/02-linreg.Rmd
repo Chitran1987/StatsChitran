@@ -1,0 +1,199 @@
+## The linreg function
+
+This function `StatsChitran::linreg` involves fitting a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) model to a multivariate case while returning a message in case of [multicollinearity](https://en.wikipedia.org/wiki/Multicollinearity)
+
+The model used is a non-weighted [OLS](https://en.wikipedia.org/wiki/Ordinary_least_squares)
+
+\clearpage
+
+### The univariate function  
+Start with a simple fit for a $y = ax+b+\epsilon$ case where $\epsilon \sim N(0, \sigma^2)$. Obviously the model in this case would be $f(x) = ax+b$
+
+Then let $(x_i, y_i) \,\,| \,\, i \in [1,n]$ be the dataset. Then the the objective cost function involving the [RSS](https://en.wikipedia.org/wiki/Residual_sum_of_squares) according to OLS becomes
+$$
+\begin{align}
+\mathcal{L}(a, b) &= \sum_i \{y_i - ax_i -b\}^2\\
+\end{align}
+$$ 
+For minimizing $\mathcal{L}(a, b)$, we need
+$$\nabla \mathcal{L} = 
+\begin{pmatrix}
+	\partial \mathcal{L}/\partial a \\
+	\partial \mathcal{L}/\partial b
+\end{pmatrix} =
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix}
+$$
+
+Hence,
+$$
+\begin{align}
+	\frac{\partial \mathcal{L}}{\partial a} = 
+	-2\sum_i\{y_i - ax_i -b\}x_i &= 0\\
+	\implies a\sum_i x_i^2 + b\sum_i x_i &= \sum_i x_i y_i
+\end{align}
+$$
+
+Additionally,
+$$
+\begin{align}
+	\frac{\partial \mathcal{L}}{\partial b} = -2\sum_i\{y_i - ax_i -b\} &= 0\\
+	\implies a\sum_i x_i + b\sum_i 1 &= \sum_i y_i
+\end{align}
+$$
+
+Thus, in this case, estimating the coefficient pair $a,\, b$ is a simple case for solving for the matrix
+
+$$
+\begin{pmatrix}
+	\sum_i x_i^2 &\sum_i x_i\\
+	\sum_i x_i &\sum_i 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+	a\\
+	b\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\sum_i x_i y_i\\
+\sum_i y_i
+\end{pmatrix}
+$$
+
+Avoiding multicollinearity simply becomes a restriction of imposed non singularity on the matrix  
+$$
+M =
+\begin{pmatrix}
+	\sum_i x_i^2 &\sum_i x_i\\
+	\sum_i x_i &\sum_i 1
+\end{pmatrix}
+$$
+In a strict theoretial sense that becomes 
+$$\sum_i x_i^2 \ne \frac{1}{n}\bigg\{\sum_i x_i \bigg\}^2$$
+That is only possible if all $x_i$ values are the same, hence the dataset would be reduced by a dimension of at least one with respect to the geometry that it is trying to fit itself to, basically the definition of a [singular matrix](https://en.wikipedia.org/wiki/Singular_matrix).
+
+\clearpage
+
+### The multivariate function  
+Now, if the issue is extended to the multivariate case, herein one would have $y = a_1 x_1 + a_2 x_2 + \cdots + a_m x_m + a_{m+1} + \epsilon$ with $\epsilon \sim N(0, \sigma^2)$. Obviously the linear fit in this case is $f(x)=a_1 x_1 + a_2 x_2 + \cdots + a_m x_m + a_{m+1}$. 
+
+Thus the dataset in this case would be $(x_{1,i},\,\, x_{2,i}, \,\,\cdots x_{m,i},\,\, y_i )$ with $i \in [1,n]$
+
+In this case the objective would be $\mathcal{L}(a_1, a_2, \cdots, a_{m+1})$  
+$$
+\begin{align}
+\mathcal{L} &= \sum_i\{a_1 x_{1,i} + a_2 x_{2,i} + \cdots + a_m x_{m,i} + a_{m+1} - y_i\}^2 \\
+&= \sum_{i=1}^n \bigg\{a_{m+1} - y_i + \sum_{k=1}^{m}a_k x_{k, i}  \bigg\}^2
+\end{align}
+$$
+
+Thus for the gradient to be zero  
+$$
+	\nabla \mathcal{L} = 
+	\begin{pmatrix}
+	\partial\mathcal{L}/\partial a_1\\
+	\partial\mathcal{L}/\partial a_2\\
+	\vdots\\
+	\partial\mathcal{L}/\partial a_m\\
+	\partial\mathcal{L}/\partial a_{m+1}\\
+	\end{pmatrix} = 
+	\begin{pmatrix}
+	0\\
+	0\\
+	\vdots \\
+	0\\
+	0
+	\end{pmatrix}
+$$
+
+That implies that $\forall p \in [1, m]$  
+
+$$
+\begin{align}
+\partial \mathcal{L}/\partial a_p = 2\sum_{i = 1}^n \{a_{m+1} - y_i + \sum_{k=1}^m a_k x_{k,i}\}x_{p,i} &= 0 \\
+\implies a_{m+1}\sum_{i=1}^n x_{p,i} + \sum_{i=1}^n x_{p,i}\bigg\{\sum_{k=1}^m a_k x_{k,i} \bigg\} &= \sum_{i=1}^n x_{p,i}y_i\\ 
+\implies \sum_{k=1}^m a_k \sum_{i=1}^n x_{k,i}x_{p,i} + a_{m+1}\sum_{i=1}^n x_{p,i} &= \sum_{i=1}^n x_{p,i}y_i
+\end{align}
+$$
+
+This means that the first $m$ equations can be written down as shown below  
+$$
+\begin{align}
+	a_1(\sum_{i=1}^n x_{1,i}x_{1,i})+a_2(\sum_{i=1}^n x_{2,i}x_{1,i}) + \cdots +a_m(\sum_{i=1}^n x_{m,i}x_{1,i}) + a_{m+1}\sum_{i=1}^n x_{1,i} &= \sum_{i=1}^n x_{1,i}y_i\\
+	a_1(\sum_{i=1}^n x_{1,i}x_{2,i})+a_2(\sum_{i=1}^n x_{2,i}x_{2,i}) + \cdots +a_m(\sum_{i=1}^n x_{m,i}x_{2,i}) + a_{m+1}\sum_{i=1}^n x_{2,i} &= \sum_{i=1}^n x_{2,i}y_i\\
+	a_1(\sum_{i=1}^n x_{1,i}x_{3,i})+a_2(\sum_{i=1}^n x_{2,i}x_{3,i}) + \cdots +a_m(\sum_{i=1}^n x_{m,i}x_{3,i}) + a_{m+1}\sum_{i=1}^n x_{3,i} &= \sum_{i=1}^n x_{3,i}y_i\\
+	a_1(\sum_{i=1}^n x_{1,i}x_{4,i})+a_2(\sum_{i=1}^n x_{2,i}x_{4,i}) + \cdots +a_m(\sum_{i=1}^n x_{m,i}x_{4,i}) + a_{m+1}\sum_{i=1}^n x_{4,i} &= \sum_{i=1}^n x_{4,i}y_i\\
+	a_1(\sum_{i=1}^n x_{1,i}x_{5,i})+a_2(\sum_{i=1}^n x_{2,i}x_{5,i}) + \cdots +a_m(\sum_{i=1}^n x_{m,i}x_{5,i}) + a_{m+1}\sum_{i=1}^n x_{5,i} &= \sum_{i=1}^n x_{5,i}y_i\\
+	\vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad &= \qquad \vdots\\
+	\vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad \vdots \qquad &= \qquad\vdots\\
+	a_1(\sum_{i=1}^n x_{1,i}x_{m,i})+a_2(\sum_{i=1}^n x_{2,i}x_{m,i}) + \cdots +a_m(\sum_{i=1}^n x_{m,i}x_{m,i}) + a_{m+1}\sum_{i=1}^n x_{m,i} &= \sum_{i=1}^n x_{m,i}y_i\\
+\end{align}
+$$
+
+However since in parameter space there are $m+1$ parameters $a_1, a_2, a_3, \cdots, a_m, a_{m+1}$ hence $m+1$ conditions are needed wherein the $(m+1)$th condition comes from setting the last minima $\partial \mathcal{L}/\partial a_{m+1} = 0$ as shown below  
+
+$$
+\begin{align}
+	\partial \mathcal{L}/\partial a_{m+1} = 2\sum_{i=1}^n \bigg\{ a_{m+1} - y_i + \sum_{k=1}^m a_k x_{k,i}\bigg\} &= 0\\
+	\implies \sum_{k=1}^m a_k\sum_{i=1}^n x_{k,i} + a_{m+1}\sum_{i=1}^n 1 &= \sum_{i=1}^n y_i
+\end{align}
+$$
+
+In an expanded form this expands to the form shown below  
+$$
+a_1\sum_{i=1}^n x_{1,i} + a_2\sum_{i=1}^n x_{2,i} + \cdots + a_m\sum_{i=1}^n x_{m,i} + a_{m+1}\sum_{i=1}^n 1 = \sum_{i=1}^n y_i
+$$
+
+With $m+1$ linear conditions in the parameters from $a_1$ to $a_{m+1}$, the $(m+1) \times (m+1)$ matrix representation of $[M]$ can be shown below  
+
+$$
+[M] = 
+\begin{pmatrix}
+\sum_{i=1}^n x_{1,i}^2 &\sum_{i=1}^n x_{2,i}x_{1,i} &\cdots &\sum_{i=1}^n x_{m,i}x_{1,i} &\sum_{i=1}^n x_{1,i}\\
+\sum_{i=1}^n x_{1,i}x_{2,i} &\sum_{i=1}^n x_{2,i}^2 &\cdots &\sum_{i=1}^n x_{m,i}x_{2,i} &\sum_{i=1}^n x_{2,i}\\
+\sum_{i=1}^n x_{1,i}x_{3,i} &\sum_{i=1}^n x_{2,i}x_{3,i} &\cdots &\sum_{i=1}^n x_{m,i}x_{3,i} &\sum_{i=1}^n x_{3,i}\\
+\sum_{i=1}^n x_{1,i}x_{4,i} &\sum_{i=1}^n x_{2,i}x_{4,i} &\cdots &\sum_{i=1}^n x_{m,i}x_{4,i} &\sum_{i=1}^n x_{4,i}\\
+\sum_{i=1}^n x_{1,i}x_{5,i} &\sum_{i=1}^n x_{2,i}x_{5,i} &\cdots &\sum_{i=1}^n x_{m,i}x_{5,i} &\sum_{i=1}^n x_{5,i}\\
+\vdots &\vdots &\ddots &\vdots &\vdots\\
+\sum_{i=1}^n x_{1,i}x_{m,i} &\sum_{i=1}^n x_{2,i}x_{m,i} &\cdots &\sum_{i=1}^n x_{m,i}^2 &\sum_{i=1}^n x_{m,i}\\
+\sum_{i=1}^n x_{1,i} &\sum_{i=1}^n x_{2, i} &\cdots &\sum_{i=1}^n x_{m,i} &\sum_{i=1}^n 1
+\end{pmatrix}
+$$
+
+Similarly, the $(m+1) \times 1$ coefficient matrix $[C]$ can be drawn as shown below.
+
+$$
+[C] =
+\begin{pmatrix}
+a_1\\
+a_2\\
+a_3\\
+\vdots\\
+a_{m}\\
+a_{m+1}
+\end{pmatrix}
+$$
+
+To be able to complete the definition, the reslt vector also has to be defined as a $(m+1) \times 1$ matrix $[B]$ as shown below
+
+$$
+[B] = 
+\begin{pmatrix}
+\sum_{i=1}^n x_{1,i}y_i\\
+\sum_{i=1}^n x_{2,i}y_i\\
+\sum_{i=1}^n x_{3,i}y_i\\
+\vdots\\
+\sum_{i=1}^n x_{m,i}y_i\\
+\sum_{i=1}^n y_i\\
+\end{pmatrix}
+$$
+
+With these definitions structured, now the relationship can be established  
+$$
+[M]\cdot [C] = [B]
+$$
+
+Obviously the non-singularity of $[M]$ is necessary in order not to reduce its rank else the situation of multicollinearity can arise.

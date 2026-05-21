@@ -1,0 +1,55 @@
+---
+title: "StatsChitran: Mathematical and Practical Documentation"
+author: "Chitran Ghosal"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+vignette: >
+  %\VignetteIndexEntry{StatsChitran: Mathematical and Practical Documentation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.align = "center"
+)
+
+library(StatsChitran)
+```
+
+```{css, echo=FALSE}
+.pagebreak {
+  page-break-after: always;
+  break-after: page;
+}
+
+.section-separator {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  border: none;
+  border-top: 1px solid #cccccc;
+}
+```
+
+# Introduction
+
+```{r child="sections/01-introduction.Rmd"}
+```
+
+\clearpage
+
+# Linear modelling functions
+
+```{r child="sections/02-linreg.Rmd"}
+```
+
+\clearpage
