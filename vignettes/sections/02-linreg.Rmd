@@ -4,7 +4,7 @@ This function `StatsChitran::linreg` involves fitting a [linear regression](http
 
 The model used is a non-weighted [OLS](https://en.wikipedia.org/wiki/Ordinary_least_squares)
 
-\clearpage
+\newpage
 
 ### The univariate function  
 Start with a simple fit for a $y = ax+b+\epsilon$ case where $\epsilon \sim N(0, \sigma^2)$. Obviously the model in this case would be $f(x) = ax+b$
@@ -75,7 +75,7 @@ In a strict theoretial sense that becomes
 $$\sum_i x_i^2 \ne \frac{1}{n}\bigg\{\sum_i x_i \bigg\}^2$$
 That is only possible if all $x_i$ values are the same, hence the dataset would be reduced by a dimension of at least one with respect to the geometry that it is trying to fit itself to, basically the definition of a [singular matrix](https://en.wikipedia.org/wiki/Singular_matrix).
 
-\clearpage
+\newpage
 
 ### The multivariate function  
 Now, if the issue is extended to the multivariate case, herein one would have $y = a_1 x_1 + a_2 x_2 + \cdots + a_m x_m + a_{m+1} + \epsilon$ with $\epsilon \sim N(0, \sigma^2)$. Obviously the linear fit in this case is $f(x)=a_1 x_1 + a_2 x_2 + \cdots + a_m x_m + a_{m+1}$. 
@@ -177,7 +177,7 @@ a_{m+1}
 \end{pmatrix}
 $$
 
-To be able to complete the definition, the reslt vector also has to be defined as a $(m+1) \times 1$ matrix $[B]$ as shown below
+To be able to complete the definition, the result vector also has to be defined as a $(m+1) \times 1$ matrix $[B]$ as shown below
 
 $$
 [B] = 
@@ -197,3 +197,138 @@ $$
 $$
 
 Obviously the non-singularity of $[M]$ is necessary in order not to reduce its rank else the situation of multicollinearity can arise.
+
+\newpage
+
+### Matrix representation
+
+Additionally, a better representation of the matrixes $[M]$ and $[B]$ can be created. For this purpose, each datacolumn which signify the independent variables $x_1, x_2, \cdots, x_m$ can be treated as vectors $\mathbf{X}_1, \mathbf{X}_2, \cdots, \mathbf{X}_m$.  
+An additional vector $\mathbf{1}$ is defined in this regard.  
+Each of these vectors are treated as possesing a length of $n$ since the data are $n$--observations long as defined previously.  
+
+Thus the vectors $\mathbf{X}_r, \mathbf{Y}, \mathbf{1}$ are defined in the manner shown below.  
+
+$$\mathbf{X_r} =
+\begin{pmatrix}
+x_{r,1}\\
+x_{r,2}\\
+x_{r,3}\\
+\vdots\\
+x_{r,n}
+\end{pmatrix}
+\quad
+\mathbf{Y} = 
+\begin{pmatrix}
+y_1\\
+y_2\\
+y_3\\
+\vdots\\
+y_n
+\end{pmatrix}
+\quad
+\mathbf{1} = 
+\begin{pmatrix}
+1\\
+1\\
+1\\
+\vdots\\
+1
+\end{pmatrix}
+$$ 
+
+As a consequence of these definitions, 
+$$
+\begin{align}
+\mathbf{X}_p \cdot \mathbf{X}_q &= \sum_{i=1}^n x_{p,i}x_{q,i}\\\
+\mathbf{X}_p \cdot \mathbf{Y} &= \sum_{i=1}^n x_{p,i}y_i \\
+\mathbf{X}_p \cdot \mathbf{1} &= \sum_{i=1}^n x_{p,i}\\
+\mathbf{Y} \cdot \mathbf{1} &= \sum_{i=1}^n y_i\\
+\mathbf{1} \cdot \mathbf{1} &= n\\
+\end{align}
+$$
+
+Hence, the matrix definitions can be updated as shown  
+
+$$[M] = 
+\begin{pmatrix}
+\mathbf{X}_1\cdot\mathbf{X}_1 &\mathbf{X}_1\cdot\mathbf{X}_2  &\cdots &\mathbf{X}_1\cdot\mathbf{X}_m &\mathbf{X}_1\cdot\mathbf{1}\\
+\mathbf{X}_2\cdot\mathbf{X}_1 &\mathbf{X}_2\cdot\mathbf{X}_2  &\cdots &\mathbf{X}_2\cdot\mathbf{X}_m &\mathbf{X}_2\cdot\mathbf{1}\\
+\mathbf{X}_3\cdot\mathbf{X}_1 &\mathbf{X}_3\cdot\mathbf{X}_2  &\cdots &\mathbf{X}_3\cdot\mathbf{X}_m &\mathbf{X}_3\cdot\mathbf{1}\\
+\vdots &\vdots &\ddots &\vdots &\vdots\\
+\mathbf{X}_m\cdot\mathbf{X}_1 &\mathbf{X}_m\cdot\mathbf{X}_2  &\cdots &\mathbf{X}_m\cdot\mathbf{X}_m &\mathbf{X}_m\cdot\mathbf{1}\\
+\mathbf{1}\cdot\mathbf{X}_1 &\mathbf{1}\cdot\mathbf{X}_2
+&\cdots &\mathbf{1}\cdot\mathbf{X}_m &\mathbf{1}\cdot\mathbf{1}
+\end{pmatrix}
+$$
+
+$$[B] =
+\begin{pmatrix}
+\mathbf{X}_1\cdot\mathbf{1}\\
+\mathbf{X}_2\cdot\mathbf{1}\\
+\mathbf{X}_3\cdot\mathbf{1}\\
+\vdots\\
+\mathbf{X}_m\cdot\mathbf{1}\\
+\mathbf{Y}\cdot\mathbf{1}\\
+\end{pmatrix}
+$$
+
+$$[C] = [M]^{-1}[B]$$
+
+\newpage
+
+### Function Implementation
+
+For the function's implementation in `R`, the function accepts a dataframe `df` as its argument.  
+This occurs such that each individual column of `df` is each of the vectors $\mathbf{X}_p$ along with $\mathbf{Y}$ being the last column of the dataframe.
+
+Hence,
+
+`df[,1]` = $\mathbf{X}_1$  
+`df[,2]` = $\mathbf{X}_2$  
+`df[,3]` = $\mathbf{X}_3$  
+`df[,m]` = $\mathbf{X}_m$  
+`df[,m+1]` = $\mathbf{Y}$  
+
+Thus, the argument `df` should be a $m+1$ column dataframe while the funtion returns vector $[C]^T$.
+
+\newpage
+
+### Examples
+
+
+```{r linreg-example, echo=TRUE, message=TRUE, warning=TRUE, fig.width=6, fig.height=6, fig.pos="H"}
+library(StatsChitran) #Call the relevant library
+
+###Estimate and plot the univariate case
+X <- seq(-10, 10, by=0.01)
+Y <- 3*X + 7.47 + rnorm(length(X), sd = 5) #Add gaussian noise
+df <- data.frame(X, Y) #Create the raw dataframe
+coeff <- linreg(df) #Call the function
+plot(X,Y, type = 'l', col=rgb(0,0,0,0.25)) #Plot the raw data first
+lines(X, coeff[1]*X+coeff[2], col='red') #Plot the fit onto the data
+coeff #Check the coefficients
+```
+
+```{=latex}
+\FloatBarrier
+\clearpage
+\Needspace{8\baselineskip}
+```
+
+
+
+```{r linreg-example1, echo=TRUE, message=TRUE, warning=TRUE, fig.width=6, fig.height=6}
+library(StatsChitran) #Call the relevant library
+###Estimate the multivariate case
+##Build the dataset##############
+X1 <- seq(-10, 10, by=0.01)
+X2 <- X1^2
+X3 <- X2^1.5
+X4 <- X3^2
+Y <- 7.3*X1 + 4.7*X2 + 3*X3 + 1.3*X4 + 11 + rnorm(n=length(X1), sd = 50) #Add gaussian noise
+df <- data.frame(X1, X2, X3, X4, Y)
+##Build the dataset##############
+coeff <- linreg(df) #call the function
+coeff #check the coefficients
+```
+

@@ -1,6 +1,10 @@
 ---
 title: "StatsChitran: Mathematical and Practical Documentation"
 author: "Chitran Ghosal"
+header-includes:
+  - \usepackage{float}
+  - \usepackage{placeins}
+  - \usepackage{needspace}
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -20,7 +24,9 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.align = "center"
+  fig.align = "center",
+  fig.pos = "H",
+   out.width = "80%"
 )
 
 library(StatsChitran)
@@ -45,11 +51,11 @@ library(StatsChitran)
 ```{r child="sections/01-introduction.Rmd"}
 ```
 
-\clearpage
+\newpage
 
 # Linear modelling functions
 
 ```{r child="sections/02-linreg.Rmd"}
 ```
 
-\clearpage
+\newpage
