@@ -4,13 +4,13 @@
 
 \description{
 Computes an exponential decay function of the form
-\eqn{A \exp(-\lambda |x|)}
+\eqn{A \exp(-\lambda |x - x_0|)}
 or, when \code{probability = TRUE}, returns the normalized symmetric exponential probability distribution
-\eqn{\frac{\lambda}{2} \exp(-\lambda |x|)}.
+\eqn{\frac{\lambda}{2} \exp(-\lambda |x - x_0|)}.
 }
 
 \usage{
-exp.prob(X, amp, lambda, probability = FALSE)
+exp.prob(X, amp, lambda, x_0 = 0.0, probability = FALSE)
 }
 
 \arguments{
@@ -28,6 +28,11 @@ exp.prob(X, amp, lambda, probability = FALSE)
     Positive numeric value controlling the decay rate.
   }
 
+  \item{x_0}{
+    Numeric value specifying the center of the distribution or decay function.
+    The default is \code{0.0}.
+  }
+
   \item{probability}{
     Logical value. If \code{FALSE}, the function returns a scaled exponential decay.
     If \code{TRUE}, the function returns the normalized probability distribution.
@@ -39,7 +44,7 @@ exp.prob(X, amp, lambda, probability = FALSE)
 When \code{probability = FALSE}, the function evaluates
 
 \deqn{
-Y = A \exp(-\lambda |X|)
+Y = A \exp(-\lambda |X - x_0|)
 }
 
 where \eqn{A} is supplied through the \code{amp} argument.
@@ -47,12 +52,12 @@ where \eqn{A} is supplied through the \code{amp} argument.
 When \code{probability = TRUE}, the function evaluates
 
 \deqn{
-Y = \frac{\lambda}{2} \exp(-\lambda |X|)
+Y = \frac{\lambda}{2} \exp(-\lambda |X - x_0|)
 }
 
-This corresponds to a symmetric exponential distribution centered at zero,
-also known as the Laplace distribution with location parameter zero and
-scale parameter \eqn{1/\lambda}.
+This corresponds to a symmetric exponential distribution centered at \eqn{x_0}.
+It is also known as the Laplace distribution with location parameter \eqn{x_0}
+and scale parameter \eqn{1/\lambda}.
 
 If \code{probability = TRUE}, the argument \code{amp} should not be supplied,
 because the normalization factor is already determined by \code{lambda}.
@@ -75,11 +80,17 @@ Chitran Ghosal
 # Input vector
 x <- seq(-5, 5, length.out = 100)
 
-# Scaled exponential decay
+# Scaled exponential decay centered at x_0 = 0
 y1 <- exp.prob(X = x, amp = 2, lambda = 1)
 
-# Normalized probability distribution
-y2 <- exp.prob(X = x, lambda = 1, probability = TRUE)
+# Scaled exponential decay centered at x_0 = 1
+y2 <- exp.prob(X = x, amp = 2, lambda = 1, x_0 = 1)
+
+# Normalized probability distribution centered at x_0 = 0
+y3 <- exp.prob(X = x, lambda = 1, probability = TRUE)
+
+# Normalized probability distribution centered at x_0 = 1
+y4 <- exp.prob(X = x, lambda = 1, x_0 = 1, probability = TRUE)
 
 # Plot scaled exponential decay
 plot(x, y1, type = "l",
@@ -87,11 +98,11 @@ plot(x, y1, type = "l",
      ylab = "Y",
      main = "Scaled Exponential Decay")
 
-# Plot probability distribution
-plot(x, y2, type = "l",
+# Plot shifted probability distribution
+plot(x, y4, type = "l",
      xlab = "X",
      ylab = "Probability Density",
-     main = "Symmetric Exponential Probability Distribution")
+     main = "Shifted Symmetric Exponential Probability Distribution")
 }
 
 \seealso{
