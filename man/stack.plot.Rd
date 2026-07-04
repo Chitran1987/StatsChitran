@@ -1,177 +1,227 @@
 \name{stack.plot}
 \alias{stack.plot}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-Function for plotting X-Y graphs stacked one on top of the other
+Stacked plotting of multiple X-Y graphs
 }
+
 \description{
-The function\cr
-1.  Plots stacks of X-Y graphs \cr
-2.  Graphs can exist within the same stack or can belong to different stacks \cr
-3.  Graphs that exist within the same stack have properties like colour, type and width specified as elements within the same row of the concerned matrix
-4.  Accepts only a list as the main data argument (gr.data). This argument is obviously mandatory \cr
-5.  The length of the list is the no. of stacks/rows. This argument is also mandatory (stack.len)\cr
-6.  Each element of the list should be an even columned dataframe\cr
-7.  Preferably the no. of columns of each dataframe should be the same. If not, col.eq should be set to false\cr
-8.  Dataframes need to be even columned because each dataframe consists of X-Y pairs which exist in the stack/row\cr
-9.  A dataframe should be defined as  data.fame(X1, Y1, X2, Y2, X3, Y3,......Xn,Yn)\cr
-10. The dataframe shown above will have n graphs within the same stack
-11. The no. of stacks to be plotted is equal to the length of the gr.data list as specified in point 5.
+Plots several X-Y graphs stacked vertically, one stack level above another.
+
+The main data argument, \code{gr.data}, must be a list. Each element of the list
+represents one stack level and must be an even-columned data frame containing
+X-Y column pairs. For example, a data frame of the form
+\code{data.frame(X1, Y1, X2, Y2, X3, Y3)} contains three graphs in the same
+stack level.
+
+Different stack levels are supplied as different elements of \code{gr.data}.
+Graphical properties such as colour, plot type, point character, line width,
+and character expansion are supplied through matrices whose rows correspond to
+stack levels and whose columns correspond to graphs within each stack level.
 }
+
 \usage{
-stack.plot(gr.data, stack.len, stack.rat = 1, col.eq = T, color.mat, type.mat, pch.mat, lwd.mat, cex.mat, main.txt = NULL, axlab = c('', ''), x.lim)
-stack.plot(gr.data, stack.len, lwd.mat)
-stack.plot(gr.data, stack.len, lwd.mat, x.lim)
-stack.plot(gr.data, stack.len, col.eq = F)
-stack.plot(gr.data, stack.len, stack.rat = 1.2, color.mat = M, axlab = c('X', 'Y'))
-stack.plot(gr.data, stack.len, color.mat = M, axlab = c('X', 'Y'))
+stack.plot(gr.data, stack.len, stack.rat = 1, col.eq = T,
+           color.mat, type.mat, pch.mat, lwd.mat, cex.mat,
+           main.txt = NULL, axlab = c("", ""), x.lim,
+           show.y.axis = F)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{gr.data}{
-1.  gr.data has to be a list. Each element of the list should be an even columned dataframe. \cr
-2.  If the no. of columns of the dataframes existing as different elements of the list is not the same, this should be specified in the 'col.eq' argument. \cr
-3.  This argument is mandatory and has to be provided.
+A mandatory list containing the data to be plotted. Each element of the list
+must be an even-columned data frame. Consecutive column pairs are interpreted
+as X-Y pairs. For example, columns \code{1, 2} define the first graph,
+columns \code{3, 4} define the second graph, and so on.
 }
-  \item{col.eq}{
-1.  boolean bit, defaults to TRUE. \cr
-2.  If the no. of columns of the dataframes existing as different elements of the 'gr.data' list is not the same, then 'col.eq = F' should be set.
-}
+
   \item{stack.len}{
-1.  single numeric positive integer. \cr
-2.  'stack.len' should be equal to the length of the 'gr.data' list.
-3.  This argument is mandatory and has to be provided.
+A mandatory single positive integer giving the number of stack levels. This
+must be equal to \code{length(gr.data)}. Values of \code{stack.len < 2} are
+not allowed; for a single graph or a single stack level, use the base
+\code{\link{plot}} function instead.
 }
+
   \item{stack.rat}{
-1.  single numeric defaults to 1. \cr
-2.  defines the scaling of the height of each individual stack before the next stack starts. \cr
-3.  ht_stack is defined as ht_stack = stack.rat*(max(Y_stack) - min(Y_stack)). \cr
+A single numeric value controlling the vertical separation between successive
+stack levels. The default is \code{1}. Larger values increase the separation
+between stack levels, while smaller non-negative values reduce the separation
+and may cause overlap.
 }
+
+  \item{col.eq}{
+A logical scalar, defaulting to \code{TRUE}. If \code{TRUE}, all data frames
+inside \code{gr.data} must have the same number of columns. If different stack
+levels contain different numbers of X-Y graph pairs, set \code{col.eq = FALSE}.
+}
+
   \item{color.mat}{
-1.  A matrix of dimension (stack.len X n) which defaults to 'black' for each element. \cr
-2.  n here is the maximum no. of datasets in a stack compared to all stacks. \cr
-3.  This matrix contains the colors of each of the 'stack.len X n' plots.
+An optional matrix of dimension \code{stack.len} by \code{n}, where \code{n}
+is the maximum number of graphs in any stack level. The entries define the
+colours of the corresponding graphs. If not supplied, all graphs are plotted
+in black.
 }
+
   \item{type.mat}{
-1.  A matrix of dimension (stack.len X n) which defaults to 'l'(line) for each element. \cr
-2.  The matrix contains the 'type' information of each of the 'stack.len X n' plots. \cr
-3.  Each element of 'type.mat' can be specified as any of the allowed inputs of the 'type' argument in the 'plot' function in the base R package.
+An optional matrix of dimension \code{stack.len} by \code{n}. The entries
+define the plot type for each graph and are passed to the \code{type}
+argument of \code{\link{lines}}. If not supplied, all graphs are plotted as
+lines using \code{"l"}.
 }
+
   \item{pch.mat}{
-1.  A matrix of dimension (stack.len X n) which defaults to '1'(default 'points' in base R) for each element. \cr
-2.  The matrix contains the 'pch' information of each of the 'stack.len X n' plots. \cr
-3.  Each element of 'pch.mat' can be specified as any of the allowed inputs of the 'pch' argument in the 'plot' function in the base R package.
+An optional matrix of dimension \code{stack.len} by \code{n}. The entries
+define the plotting symbols and are passed to the \code{pch} argument of
+\code{\link{lines}}. If not supplied, all entries default to \code{1}.
 }
+
   \item{lwd.mat}{
-1.  A matrix of dimension (stack.len X n) which defaults to '1'(default 'points' in base R) for each element. \cr
-2.  The matrix contains the 'lwd' information of each of the 'stack.len X n' plots. \cr
-3.  Each element of 'lwd.mat' can be specified as any of the allowed inputs of the 'lwd' argument in the 'plot' function in the base R package.
+An optional matrix of dimension \code{stack.len} by \code{n}. The entries
+define the line widths and are passed to the \code{lwd} argument of
+\code{\link{lines}}. If not supplied, all entries default to \code{1}.
 }
+
   \item{cex.mat}{
-1.  A matrix of dimension (stack.len X n) which defaults to '1'(default value in base R) for each element. \cr
-2.  The matrix contains the 'cex' information of each of the 'stack.len X n' plots. \cr
-3.  Each element of 'cex.mat' can be specified as any of the allowed inputs of the 'cex' argument in the 'plot' function in the base R package.
+An optional matrix of dimension \code{stack.len} by \code{n}. The entries
+define the character expansion factors and are passed to the \code{cex}
+argument of \code{\link{lines}}. If not supplied, all entries default to
+\code{1}.
 }
+
   \item{main.txt}{
-1.  A single string to the used as a header of the plot, defaults to NULL.
+An optional character string used as the main title of the plot. The default
+is \code{NULL}.
 }
-  \item{ax.lab}{
-1.  Needs to be a two element character vector, defaults to 'c('', '')'. \cr
-2.  Defines the labels for the x-axis and the y-axis
+
+  \item{axlab}{
+A character vector of length two giving the x-axis and y-axis labels,
+respectively. The default is \code{c("", "")}.
 }
- \item{x.lim}{
-    Numeric two element vector providing the X-values of the plotting range. \cr
-    Lower limit should be x.lim[1]\cr
-    Upper limit should be x.lim[2]\cr
-    If not supplied, limit calculation is automated from data range.
- }
+
+  \item{x.lim}{
+An optional numeric vector of length two giving the x-axis plotting range.
+The lower limit is \code{x.lim[1]} and the upper limit is \code{x.lim[2]}.
+If \code{x.lim} is not supplied, the x-axis range is calculated automatically
+from the data.
 }
+
+  \item{show.y.axis}{
+A logical scalar, defaulting to \code{FALSE}. If \code{FALSE}, the default
+y-axis tick marks and tick labels are suppressed using \code{yaxt = "n"}.
+If \code{TRUE}, the standard y-axis is drawn using \code{yaxt = "s"}.
+For stacked plots, the y-axis usually represents shifted plotting coordinates
+rather than the original y-values.
+}
+}
+
 \details{
-1.  'gr.data' and 'stack.len' are the only absolutely necessary arguments. \cr
+Each element of \code{gr.data} corresponds to one stack level. Within each
+data frame, every pair of columns defines one graph:
+
+\preformatted{
+Column 1: X values for graph 1
+Column 2: Y values for graph 1
+Column 3: X values for graph 2
+Column 4: Y values for graph 2
+...
 }
+
+The function shifts the y-values of each stack level vertically so that the
+different stack levels are displayed one above another. For each stack level,
+the minimum y-value is subtracted before the vertical stack offset is added.
+
+The graphical parameter matrices \code{color.mat}, \code{type.mat},
+\code{pch.mat}, \code{lwd.mat}, and \code{cex.mat} use the same indexing
+convention. Row \code{i} corresponds to stack level \code{i}; column \code{j}
+corresponds to graph \code{j} within that stack level.
+
+If \code{col.eq = FALSE}, different stack levels may contain different numbers
+of graphs. In that case, the graphical parameter matrices must still have
+\code{n} columns, where \code{n} is the maximum number of graphs in any stack
+level. Entries corresponding to non-existent graphs in shorter stack levels
+are ignored.
+}
+
 \value{
-The function always returns a NULL value if execution is not interrupted by an error.
+The function is called for its plotting side effect and returns \code{NULL}
+invisibly if execution is not interrupted by an error.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Chitran Ghosal
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{plot}}, \code{\link{lines}}, \code{\link{axis}}
 }
+
 \examples{
-rm(list=ls())
-library(StatsChitran)
+## Build example X values
+X <- seq(-10, 10, by = 0.1)
 
+## Amplitudes for three Gaussian components across six stack levels
+vec <- c(1, 0.5, 0.125,
+         0.125, 0.5, 1,
+         0.25, 0.5, 1.0,
+         1.0, 0.5, 0.25,
+         0.25, 0.5, 1.0,
+         1.0, 0.5, 0.25)
 
-###### A 6-stack, 4-graph dataset is built out of (6 X 4) X-Y pairs.
-###### Each of the 6 dataframes hence contain 8 columns
-###### The first 6 columns of each dataframe contains the X values and Y values of 3 gaussians(df1, df2, df3) whose amplitudes we vary as we change stack
-###### The last two columns of each dataframe is the sum of the first three gaussians
+I <- matrix(data = vec, byrow = TRUE, nrow = 6)
 
-#build the X values
-X <- seq(-10, 10, by= 0.1)
-
-#build the amplitude values of the gaussians
-#since we have only three gaussians per stack and 6 independent stacks, hence we have 18 amplitude values in a (6 X 3) matrix
-vec <- c(1, 0.5, 0.125, 0.125, 0.5, 1, 0.25, 0.5, 1.0, 1.0, 0.5, 0.25, 0.25, 0.5, 1.0, 1.0, 0.5, 0.25)
-I <- matrix(data = vec, byrow = F, nrow = 6)
-
-#build the mu and sig vectors of the three gaussians
-#we don't change the center and width of the gaussians from stack to stack for this example
+## Gaussian centres and widths
 mu_vec <- c(0, 3, -3)
 sig_vec <- c(1, 2, 2)
 
-#build the dataset for gr.data
-#since we need 6 stacks, hence we need a 6 element list
-L <- vector(mode = 'list', length = 6) #list to store the dataframes in
+## Build gr.data as a six-element list
+L <- vector(mode = "list", length = 6)
+
 for (i in 1:6) {
-  df1 <-  data.frame(X, gauss(X, amp = I[i, 1], mu = mu_vec[1], sig = sig_vec[1]))
-  df2 <-  data.frame(X, gauss(X, amp = I[i, 2], mu = mu_vec[2], sig = sig_vec[2]))
-  df3 <-  data.frame(X, gauss(X, amp = I[i, 3], mu = mu_vec[3], sig = sig_vec[3]))
-  df4 <-  data.frame(X, df1[,2] + df2[,2] + df3[,2])
-  df  <-  as.data.frame(cbind(df1, df2, df3, df4))
- L[[i]] <- df
+  df1 <- data.frame(X, gauss(X, amp = I[i, 1], mu = mu_vec[1], sig = sig_vec[1]))
+  df2 <- data.frame(X, gauss(X, amp = I[i, 2], mu = mu_vec[2], sig = sig_vec[2]))
+  df3 <- data.frame(X, gauss(X, amp = I[i, 3], mu = mu_vec[3], sig = sig_vec[3]))
+  df4 <- data.frame(X, df1[, 2] + df2[, 2] + df3[, 2])
+
+  L[[i]] <- as.data.frame(cbind(df1, df2, df3, df4))
 }
 
-##build the parameters for testing
-#build the colour matrix
-#we don't change the color of the relevant component from stack to stack to study its behaviour
+## Build graphical parameter matrices
 v1 <- v2 <- v3 <- v4 <- NULL
+
 for (i in 1:6) {
-  v1 <- c( v1, rgb(1, 0, 0, 1) )
-  v2 <- c( v2, rgb(0, 1, 0, 1) )
-  v3 <- c( v3, rgb(0, 0, 1, 1) )
-  v4 <- c( v4, rgb(0, 0, 0, 0.2) )
+  v1 <- c(v1, rgb(1, 0, 0, 1))
+  v2 <- c(v2, rgb(0, 1, 0, 1))
+  v3 <- c(v3, rgb(0, 0, 1, 1))
+  v4 <- c(v4, rgb(0, 0, 0, 0.2))
 }
-Mcol <- matrix(data = c(v1, v2, v3, v4), nrow = 6, byrow = F)
 
-#build the type matrix
-Mtyp <- matrix(data = rep(c('l', 'l', 'l', 'p'), times = 6), nrow = 6, byrow = T)
+Mcol <- matrix(data = c(v1, v2, v3, v4), nrow = 6, byrow = FALSE)
+Mtyp <- matrix(data = rep(c("l", "l", "l", "p"), times = 6), nrow = 6, byrow = TRUE)
+Mpch <- matrix(data = rep(21, times = 24), nrow = 6, byrow = FALSE)
+Mlwd <- matrix(data = rep(2, times = 24), nrow = 6, byrow = FALSE)
 
-#build the pch matrix
-Mpch <- matrix(data = rep(21, times = 24), nrow = 6, byrow = F)
+## Plot stacked graph
+stack.plot(gr.data = L,
+           stack.len = 6,
+           stack.rat = 1.2,
+           color.mat = Mcol,
+           type.mat = Mtyp,
+           pch.mat = Mpch,
+           lwd.mat = Mlwd,
+           axlab = c("X", "Y"),
+           main.txt = "Example Graph")
 
-#build the lwd matrix
-Mlwd <- matrix(data = rep(2, times = 24), nrow = 6, byrow = F)
-
-stack.plot(gr.data = L, stack.len = 6, stack.rat = 1.2, color.mat = Mcol, type.mat = Mtyp, pch.mat = Mpch, lwd.mat = Mlwd, axlab = c('X', 'Y'), main.txt = 'Example Graph')
-
+## Same plot with standard y-axis shown
+stack.plot(gr.data = L,
+           stack.len = 6,
+           stack.rat = 1.2,
+           color.mat = Mcol,
+           type.mat = Mtyp,
+           pch.mat = Mpch,
+           lwd.mat = Mlwd,
+           axlab = c("X", "Y"),
+           main.txt = "Example Graph with y-axis",
+           show.y.axis = TRUE)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory (show via RShowDoc("KEYWORDS")):
-% \keyword{ ~kwd1 }
-% \keyword{ ~kwd2 }
-% Use only one keyword per line.
-% For non-standard keywords, use \concept instead of \keyword:
-% \concept{ ~cpt1 }
-% \concept{ ~cpt2 }
-% Use only one concept per line.
+
+\keyword{hplot}
